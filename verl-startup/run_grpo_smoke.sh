@@ -2,9 +2,12 @@
 set -euo pipefail
 
 MODEL_PATH="${MODEL_PATH:-Qwen/Qwen3-4B-Instruct}"
-DATA_DIR="${DATA_DIR:-$HOME/data/gsm8k}"
+DATA_DIR="${DATA_DIR:-$PWD/data/gsm8k}"
 N_GPUS="${N_GPUS:-4}"
 TOTAL_STEPS="${TOTAL_STEPS:-2}"
+CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0,1,2,3}"
+
+export CUDA_VISIBLE_DEVICES
 
 python3 -m verl.trainer.main_ppo \
   algorithm.adv_estimator=grpo \
