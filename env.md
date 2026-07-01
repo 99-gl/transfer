@@ -13,22 +13,9 @@ uv --version
 
 ## python
 
-cd $HOME
+wget https://github.com/astral-sh/python-build-standalone/releases/download/20241016/cpython-3.11.10+20241016-x86_64-unknown-linux-gnu-install_only.tar.gz
 
-wget https://www.python.org/ftp/python/3.12.13/Python-3.12.13.tar.xz
-tar -xf Python-3.12.13.tar.xz
-cd Python-3.12.13
+tar -xzf cpython-3.11.10+20241016-x86_64-unknown-linux-gnu-install_only.tar.gz -C ~/python3.11
 
-./configure --prefix=$HOME/.local/python-3.12
-make -j$(nproc)
-make install
-
-export PATH="$HOME/.local/python-3.12/bin:$PATH"
-
-python3.12 --version
-python3.12 -m pip --version
-
-cd /path/to/verl
-python3.12 -m venv .venv
+uv venv --python ~/python3.11/python/bin/python3.11
 source .venv/bin/activate
-pip install -U pip uv
