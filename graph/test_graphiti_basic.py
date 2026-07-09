@@ -9,6 +9,7 @@ from graphiti_core import Graphiti
 from graphiti_core.nodes import EpisodeType
 from graphiti_core.llm_client.config import LLMConfig
 from graphiti_core.embedder import OpenAIEmbedder
+from graphiti_core.embedder.openai import OpenAIEmbedderConfig
 
 # 导入自定义的清理 think 标签的 Client
 from custom_llm_client import ThinkTagCleaningClient
@@ -67,9 +68,12 @@ async def main():
     )
 
     # 配置本地 Embedding（用于向量检索）
-    embedder_config = LLMConfig(
+    # 使用 OpenAIEmbedderConfig 正确传入 embedding_model 参数
+    embedder_config = OpenAIEmbedderConfig(
         api_key=local_embed_api_key,
         base_url=local_embed_base_url,
+        embedding_model="BAAI/bge-m3",  # 明确指定 embedding 模型名
+        embedding_dim=1024  # BGE-M3 的 embedding 维度是 1024
     )
     embedder = OpenAIEmbedder(config=embedder_config)
 

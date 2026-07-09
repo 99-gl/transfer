@@ -1,0 +1,25 @@
+{
+  "violation_concept": "Setup Time Violation",
+  "symptom_method": "检查时序报告中 setup slack 为负值的路径",
+  "root_causes": [
+    {
+      "cause": "连线延迟过大",
+      "analysis_action": "检查 net delay 和布线拥塞情况，分析长距离连线",
+      "fix_method": "插入 buffer 降低驱动负载",
+      "tools": ["ICC2", "PrimeTime"]
+    },
+    {
+      "cause": "单元驱动能力不足",
+      "analysis_action": "检查驱动单元的 drive strength 和 fanout",
+      "fix_method": "增大驱动单元尺寸 (upsize)",
+      "tools": ["ICC2", "Design Compiler"]
+    },
+    {
+      "cause": "时钟偏斜过大",
+      "analysis_action": "分析 clock tree 和 clock latency 差异",
+      "fix_method": "优化时钟树结构或调整 clock routing",
+      "tools": ["ICC2", "CTS Tool"]
+    }
+  ],
+  "detection_tools": ["Synopsys PrimeTime", "Cadence Tempus"]
+}
