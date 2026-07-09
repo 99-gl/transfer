@@ -1,14 +1,24 @@
 import asyncio
 import json
 import os
+import logging
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 from graphiti_core import Graphiti
 from graphiti_core.nodes import EpisodeType
-from graphiti_core.llm_client import OpenAIClient
+from graphiti_core.llm_client import OpenAIGenericClient
 from graphiti_core.llm_client.config import LLMConfig
 from graphiti_core.embedder import OpenAIEmbedder
+
+# 禁用遥测
+os.environ['GRAPHITI_TELEMETRY_ENABLED'] = 'false'
+
+# 启用详细日志以查看模型实际返回内容
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
 
 # 加载 .env 文件
 load_dotenv()
@@ -33,6 +43,13 @@ if not neo4j_uri or not neo4j_user or not neo4j_password:
 
 async def main():
     print("Initializing Graphiti with local LLM and Embedding...")
+    print("⚙️  Telemetry disabled")
+    print("⚙️  Logging level: DEBUG")
+    print("⚙️  Structured output mode: json_object")
+    print("⚙️  Lower concurrency to avoid rate limits")
+
+    # 降低并发限制，避免本地模型过载或速率限制
+    os.environ['SEMAPHORE_LIMIT'] = '3'
 
     # 配置本地 LLM（用于实体抽取、关系推理等）
     llm_config = LLMConfig(
@@ -40,7 +57,12 @@ async def main():
         model=local_llm_model,
         base_url=local_llm_base_url,
     )
-    llm_client = OpenAIClient(config=llm_config)
+
+    # 使用 OpenAIGenericClient 并设置 json_object 模式以提高兼容性
+    llm_client = OpenAIGenericClient(
+        config=llm_config,
+        structured_output_mode="json_object"  # 使用 json_object 而非 json_schema，兼容性更好
+    )
 
     # 配置本地 Embedding（用于向量检索）
     embedder_config = LLMConfig(
