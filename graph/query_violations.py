@@ -54,7 +54,8 @@ async def query_examples(graphiti: Graphiti):
         logger.info('='*60)
 
         try:
-            results = await graphiti.search(query, limit=5)
+            # search() 的参数是 num_results，不是 limit
+            results = await graphiti.search(query, num_results=5)
 
             if not results:
                 logger.info("未找到相关结果")
@@ -78,22 +79,24 @@ async def get_node_by_name(graphiti: Graphiti, node_name: str):
     logger.info('='*60)
 
     try:
-        nodes = await graphiti.nodes.entity.get(name=node_name)
+        # 使用 get_by_uuid 需要先知道 uuid
+        # EntityNodeNamespace 没有 get 方法，需要用其他方式查询
+        # 这里改用 search 来查找节点
+        results = await graphiti.search(node_name, num_results=3)
 
-        if not nodes:
+        if not results:
             logger.info(f"未找到节点: {node_name}")
             return
 
-        for node in nodes:
-            logger.info(f"\n节点详情:")
-            logger.info(f"  UUID: {node.uuid}")
-            logger.info(f"  名称: {node.name}")
-            logger.info(f"  标签: {', '.join(node.labels)}")
-            logger.info(f"  摘要: {node.summary}")
-            if hasattr(node, 'attributes') and node.attributes:
-                logger.info(f"  属性:")
-                for key, value in node.attributes.items():
-                    logger.info(f"    - {key}: {value}")
+        logger.info(f"\n找到 {len(results)} 条相关结果:")
+        for idx, edge in enumerate(results, 1):
+            logger.info(f"\n[{idx}] 关系:")
+            logger.info(f"  UUID: {edge.uuid}")
+            logger.info(f"  事实: {edge.fact}")
+            logger.info(f"  源节点: {edge.source_node_uuid}")
+            logger.info(f"  目标节点: {edge.target_node_uuid}")
+            if hasattr(edge, 'valid_at') and edge.valid_at:
+                logger.info(f"  有效时间: {edge.valid_at}")
 
     except Exception as e:
         logger.error(f"查询失败: {e}", exc_info=True)
