@@ -1,13 +1,19 @@
 """
 自定义 LLM Client，用于清理推理模型的 <think> 标签
 """
+import json
 import re
 import logging
-from typing import Any
-from graphiti_core.llm_client import OpenAIGenericClient
-from graphiti_core.llm_client.config import LLMConfig, ModelSize
-from graphiti_core.prompts.models import Message
+import typing
+
+import openai
+from openai.types.chat import ChatCompletionMessageParam
 from pydantic import BaseModel
+
+from graphiti_core.llm_client import OpenAIGenericClient
+from graphiti_core.llm_client.config import DEFAULT_MAX_TOKENS, ModelSize
+from graphiti_core.llm_client.errors import EmptyResponseError, RateLimitError
+from graphiti_core.prompts.models import Message
 
 logger = logging.getLogger(__name__)
 
@@ -39,38 +45,47 @@ class ThinkTagCleaningClient(OpenAIGenericClient):
         self,
         messages: list[Message],
         response_model: type[BaseModel] | None = None,
-        max_tokens: int = 16384,
+        max_tokens: int = DEFAULT_MAX_TOKENS,
         model_size: ModelSize = ModelSize.medium,
-    ) -> dict[str, Any]:
+    ) -> dict[str, typing.Any]:
         """
-        重写 _generate_response，在解析前清理 think 标签
+        重写 _generate_response，在 json.loads 之前清理 think 标签
         """
-        # 调用父类方法获取原始响应
-        response = await super()._generate_response(
-            messages=messages,
-            response_model=response_model,
-            max_tokens=max_tokens,
-            model_size=model_size,
-        )
+        openai_messages: list[ChatCompletionMessageParam] = []
+        for m in messages:
+            m.content = self._clean_input(m.content)
+            if m.role == 'user':
+                openai_messages.append({'role': 'user', 'content': m.content})
+            elif m.role == 'system':
+                openai_messages.append({'role': 'system', 'content': m.content})
 
-        # 如果响应中包含 content 字段，清理 think 标签
-        if isinstance(response, dict):
-            # 可能的响应格式
-            content = response.get('content') or response.get('text') or response.get('message', {}).get('content')
+        try:
+            response = await self.client.chat.completions.create(
+                model=self.model or 'gpt-4.1-mini',
+                messages=openai_messages,
+                temperature=self.temperature,
+                max_tokens=max_tokens,
+                response_format=self._build_response_format(response_model),  # type: ignore[arg-type]
+            )
+            result = response.choices[0].message.content or ''
 
-            if content and isinstance(content, str):
-                original_content = content
-                cleaned_content = self._remove_think_tags(content)
+            # 检查空响应
+            if not result:
+                raise EmptyResponseError('LLM returned an empty response')
 
-                if original_content != cleaned_content:
-                    logger.debug(f"Removed <think> tags from response. Original length: {len(original_content)}, Cleaned length: {len(cleaned_content)}")
+            # ===== 关键修改：在这里清理 think 标签 =====
+            result = self._remove_think_tags(result)
+            logger.debug(f"After removing <think> tags, result length: {len(result)}")
+            # ==========================================
 
-                # 更新响应中的内容
-                if 'content' in response:
-                    response['content'] = cleaned_content
-                elif 'text' in response:
-                    response['text'] = cleaned_content
-                elif 'message' in response and isinstance(response['message'], dict):
-                    response['message']['content'] = cleaned_content
+            # 清理 Markdown 代码块
+            result = self._strip_code_fences(result)
 
-        return response
+            # 解析 JSON
+            return json.loads(result)
+
+        except openai.RateLimitError as e:
+            raise RateLimitError from e
+        except Exception as e:
+            logger.error(f'Error in generating LLM response: {e}')
+            raise
