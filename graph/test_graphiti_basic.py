@@ -20,17 +20,21 @@ neo4j_password = os.environ.get('NEO4J_PASSWORD', 'password')
 
 # 本地 LLM 配置
 local_llm_base_url = os.environ.get('LOCAL_LLM_BASE_URL', 'http://localhost:8000/v1')
-local_llm_model = os.environ.get('LOCAL_LLM_MODEL', 'gpt-3.5-turbo')  # 改成你的模型名
-local_llm_api_key = os.environ.get('LOCAL_LLM_API_KEY', 'dummy-key')  # 本地可能不需要真实 key
+local_llm_model = os.environ.get('LOCAL_LLM_MODEL', 'qwen2.5')  # 改成你的 LLM 模型名
+local_llm_api_key = os.environ.get('LOCAL_LLM_API_KEY', 'dummy-key')
+
+# 本地 Embedding 配置
+local_embed_base_url = os.environ.get('LOCAL_EMBED_BASE_URL', 'http://localhost:8001/v1')
+local_embed_api_key = os.environ.get('LOCAL_EMBED_API_KEY', 'dummy-key')
 
 if not neo4j_uri or not neo4j_user or not neo4j_password:
     raise ValueError('NEO4J_URI, NEO4J_USER, and NEO4J_PASSWORD must be set in .env')
 
 
 async def main():
-    print("Initializing Graphiti with local LLM...")
+    print("Initializing Graphiti with local LLM and Embedding...")
 
-    # 配置本地 LLM
+    # 配置本地 LLM（用于实体抽取、关系推理等）
     llm_config = LLMConfig(
         api_key=local_llm_api_key,
         model=local_llm_model,
@@ -38,10 +42,10 @@ async def main():
     )
     llm_client = OpenAIClient(config=llm_config)
 
-    # 配置本地 Embedder（如果你的 embedding 也是本地的）
+    # 配置本地 Embedding（用于向量检索）
     embedder_config = LLMConfig(
-        api_key=local_llm_api_key,
-        base_url=local_llm_base_url,
+        api_key=local_embed_api_key,
+        base_url=local_embed_base_url,
     )
     embedder = OpenAIEmbedder(config=embedder_config)
 
