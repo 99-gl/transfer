@@ -7,9 +7,11 @@ from dotenv import load_dotenv
 
 from graphiti_core import Graphiti
 from graphiti_core.nodes import EpisodeType
-from graphiti_core.llm_client import OpenAIGenericClient
 from graphiti_core.llm_client.config import LLMConfig
 from graphiti_core.embedder import OpenAIEmbedder
+
+# 导入自定义的清理 think 标签的 Client
+from custom_llm_client import ThinkTagCleaningClient
 
 # 禁用遥测
 os.environ['GRAPHITI_TELEMETRY_ENABLED'] = 'false'
@@ -58,8 +60,8 @@ async def main():
         base_url=local_llm_base_url,
     )
 
-    # 使用 OpenAIGenericClient 并设置 json_object 模式以提高兼容性
-    llm_client = OpenAIGenericClient(
+    # 使用自定义的 ThinkTagCleaningClient 自动清理 <think> 标签
+    llm_client = ThinkTagCleaningClient(
         config=llm_config,
         structured_output_mode="json_object"  # 使用 json_object 而非 json_schema，兼容性更好
     )
