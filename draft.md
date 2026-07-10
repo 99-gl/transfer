@@ -5,5 +5,10 @@ curl -X POST "http://localhost:8000/tokenize" \
     "messages": [
       {"role": "user", "content": "What is the capital of France?"}
     ],
-    "return_token_strs": true
+    "return_token_strs": true,
+    "extra_body": {
+      "chat_template_kwargs": {
+        "enable_thinking": true
+      }
+    }
   }'
