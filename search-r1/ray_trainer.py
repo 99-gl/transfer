@@ -685,8 +685,22 @@ class RayPPOTrainer(object):
         metric_dict = {}
         for data_source, rewards in data_source_reward.items():
             metric_dict[f'val/test_score/{data_source}'] = np.mean(rewards)
+        metric_dict['val/test_score/overall'] = reward_tensor.mean().item()
         metric_dict['val/trace_path'] = trace_path
         metric_dict['val/trace_record_count'] = trace_record_count
+        summary_record = {
+            'type': 'summary',
+            'metrics': _json_safe(metric_dict),
+            'trace_record_count': trace_record_count,
+            'val_num_to_run': val_num_to_run,
+            'val_dataset_size_after_filter': val_dataset_size,
+            'data_source_counts': {
+                str(data_source): len(rewards)
+                for data_source, rewards in data_source_reward.items()
+            },
+        }
+        with open(trace_path, 'a', encoding='utf-8') as trace_file:
+            trace_file.write(json.dumps(summary_record, ensure_ascii=False) + '\n')
 
         return metric_dict
 
