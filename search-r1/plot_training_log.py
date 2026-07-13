@@ -10,11 +10,11 @@ post-processing, but neither JSON nor Parquet is required before plotting.
 
 Examples
 --------
-    python plot_training_log.py experiment.log
-    python plot_training_log.py experiment.log --list-metrics
-    python plot_training_log.py experiment.log --metrics \
-        val/test_score/nq critic/rewards/mean actor/ppo_kl
-    python plot_training_log.py experiment.log --all --output-dir curves
+    # First edit LOG_FILE below, then run:
+    python plot_training_log.py
+
+Command-line arguments are optional overrides; the script is designed to be
+configured by editing the constants below when it is copied to a server.
 """
 
 from __future__ import annotations
@@ -26,6 +26,22 @@ import re
 import sys
 from collections import defaultdict
 from pathlib import Path
+
+
+# ============================ Server-side configuration ====================
+# Change this to the log created by `tee`, `nohup`, or Slurm on your server.
+LOG_FILE = Path("/path/to/your/experiment.log")
+
+# None means: create `<log-file-stem>_curves` next to LOG_FILE.
+OUTPUT_DIR: Path | None = None
+
+# Empty list uses the curated PPO metrics in PPO_METRICS below.  Add exact
+# names from `--list-metrics` here to plot only those metrics.
+METRICS_TO_PLOT: list[str] = []
+PLOT_ALL_METRICS = False       # True also plots timing_* and every other metric
+EXPORT_PARSED_CSV = True       # CSV is optional; JSON/Parquet are unnecessary
+SHOW_PLOT_WINDOWS = False      # Normally False on a headless server
+# ============================================================================
 
 
 # Metrics that are most useful for a PPO run.  Missing metrics are simply
@@ -155,13 +171,19 @@ def plot(data: dict[str, dict[int, float]], metrics: list[str], output_dir: Path
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Draw PPO curves directly from a Search-R1 console log.")
-    parser.add_argument("log_file", type=Path, help="stdout log saved by tee/nohup/Slurm")
-    parser.add_argument("--output-dir", type=Path, default=None, help="default: <log-stem>_curves")
-    parser.add_argument("--metrics", nargs="+", default=[], help="exact metric names to plot")
-    parser.add_argument("--all", action="store_true", help="plot every metric parsed from the log")
+    parser.add_argument(
+        "log_file",
+        nargs="?",
+        type=Path,
+        default=LOG_FILE,
+        help="optional override for LOG_FILE configured at the top of this file",
+    )
+    parser.add_argument("--output-dir", type=Path, default=OUTPUT_DIR, help="optional override for OUTPUT_DIR")
+    parser.add_argument("--metrics", nargs="+", default=METRICS_TO_PLOT, help="optional exact metric-name overrides")
+    parser.add_argument("--all", action="store_true", default=PLOT_ALL_METRICS, help="plot every metric parsed from the log")
     parser.add_argument("--list-metrics", action="store_true", help="print available metric names and exit")
-    parser.add_argument("--no-csv", action="store_true", help="do not export parsed_metrics.csv")
-    parser.add_argument("--show", action="store_true", help="also open each plot window (for a desktop environment)")
+    parser.add_argument("--no-csv", action="store_true", default=not EXPORT_PARSED_CSV, help="do not export parsed_metrics.csv")
+    parser.add_argument("--show", action="store_true", default=SHOW_PLOT_WINDOWS, help="also open each plot window (for a desktop environment)")
     args = parser.parse_args()
 
     if not args.log_file.is_file():
