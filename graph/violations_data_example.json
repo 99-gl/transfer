@@ -1,25 +1,73 @@
 {
-  "violation_concept": "Setup Time Violation",
-  "symptom_method": "检查时序报告中 setup slack 为负值的路径",
-  "root_causes": [
+  "nodes": [
     {
-      "cause": "连线延迟过大",
-      "analysis_action": "检查 net delay 和布线拥塞情况，分析长距离连线",
-      "fix_method": "插入 buffer 降低驱动负载",
-      "tools": ["ICC2", "PrimeTime"]
+      "id": "v_001",
+      "type": "ViolationConcept",
+      "properties": {
+        "name": "Setup Time Violation",
+        "automation_difficulty": "中",
+        "remarks": "EDA 时序违例，建立时间不满足"
+      }
     },
     {
-      "cause": "单元驱动能力不足",
-      "analysis_action": "检查驱动单元的 drive strength 和 fanout",
-      "fix_method": "增大驱动单元尺寸 (upsize)",
-      "tools": ["ICC2", "Design Compiler"]
+      "id": "p_001",
+      "type": "Phenomenon",
+      "properties": {
+        "name": "Setup Check",
+        "identification_method": "在时序报告中使用 PrimeTime 的 report_timing 命令检查 setup slack 是否为负值"
+      }
     },
     {
-      "cause": "时钟偏斜过大",
-      "analysis_action": "分析 clock tree 和 clock latency 差异",
-      "fix_method": "优化时钟树结构或调整 clock routing",
-      "tools": ["ICC2", "CTS Tool"]
+      "id": "r_001",
+      "type": "RootCause",
+      "properties": {
+        "scenario_id": "SC001",
+        "analysis_action": "检查 net delay 和布线拥塞情况，分析是否存在长距离连线",
+        "fix_method": "插入 buffer 降低驱动负载",
+        "dependent_tool": "ICC2, PrimeTime"
+      }
+    },
+    {
+      "id": "r_002",
+      "type": "RootCause",
+      "properties": {
+        "scenario_id": "SC002",
+        "analysis_action": "检查驱动单元的 drive strength 和 fanout 是否合理",
+        "fix_method": "增大驱动单元尺寸 (upsize)",
+        "dependent_tool": "ICC2, Design Compiler"
+      }
+    },
+    {
+      "id": "r_003",
+      "type": "RootCause",
+      "properties": {
+        "scenario_id": "SC003",
+        "analysis_action": "分析 clock tree 和 clock latency 是否存在较大差异",
+        "fix_method": "优化时钟树结构或调整 clock routing",
+        "dependent_tool": "ICC2, CTS Tool"
+      }
     }
   ],
-  "detection_tools": ["Synopsys PrimeTime", "Cadence Tempus"]
+  "edges": [
+    {
+      "source": "v_001",
+      "target": "p_001",
+      "relation": "has_phenomenon"
+    },
+    {
+      "source": "p_001",
+      "target": "r_001",
+      "relation": "has_root_cause"
+    },
+    {
+      "source": "p_001",
+      "target": "r_002",
+      "relation": "has_root_cause"
+    },
+    {
+      "source": "p_001",
+      "target": "r_003",
+      "relation": "has_root_cause"
+    }
+  ]
 }

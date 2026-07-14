@@ -1,5 +1,18 @@
 """
 从 JSON 文件加载电子设计违例知识到 Graphiti 图数据库
+
+JSON 格式:
+{
+  "nodes": [
+    {"id": "...", "type": "ViolationConcept", "properties": {"name": "...", "automation_difficulty": "...", "remarks": "..."}},
+    {"id": "...", "type": "Phenomenon",       "properties": {"name": "...", "identification_method": "..."}},
+    {"id": "...", "type": "RootCause",         "properties": {"scenario_id": "...", "analysis_action": "...", "fix_method": "...", "dependent_tool": "..."}}
+  ],
+  "edges": [
+    {"source": "v_xxx", "target": "p_xxx", "relation": "has_phenomenon"},
+    {"source": "p_xxx", "target": "r_xxx", "relation": "has_root_cause"}
+  ]
+}
 """
 import asyncio
 import json
@@ -44,200 +57,137 @@ local_embed_base_url = os.environ.get('LOCAL_EMBED_BASE_URL', 'http://localhost:
 local_embed_api_key = os.environ.get('LOCAL_EMBED_API_KEY', 'dummy-key')
 
 
-async def create_or_get_node(graphiti: Graphiti, name: str, labels: list, summary: str,
-                             attributes: dict = None, group_id: str = "default") -> EntityNode:
-    """创建或获取节点（如果已存在则复用）"""
-    try:
-        # 尝试获取已存在的节点
-        existing = await graphiti.nodes.entity.get(name=name, group_id=group_id)
-        if existing:
-            logger.info(f"  ✓ 节点已存在: {name}")
-            return existing[0]
-    except:
-        pass
-
-    # 创建新节点
-    node = EntityNode(
-        uuid=str(uuid4()),
-        name=name,
-        labels=labels,
-        summary=summary,
-        group_id=group_id,
-        created_at=datetime.now(timezone.utc)
-    )
-
-    if attributes:
-        node.attributes = attributes
-
-    await graphiti.nodes.entity.save(node)
-    logger.info(f"  ✓ 创建节点: {name} [{', '.join(labels)}]")
-    return node
-
-
-async def create_edge(graphiti: Graphiti, source_uuid: str, target_uuid: str,
-                     relation_type: str, fact: str, group_id: str = "default"):
-    """创建关系边"""
-    edge = EntityEdge(
-        uuid=str(uuid4()),
-        source_node_uuid=source_uuid,
-        target_node_uuid=target_uuid,
-        name=relation_type,
-        fact=fact,
-        group_id=group_id,
-        created_at=datetime.now(timezone.utc),
-        valid_at=datetime.now(timezone.utc)
-    )
-
-    await graphiti.edges.entity.save(edge)
-    logger.info(f"    → 创建关系: {relation_type}")
-
-
-async def load_violation_from_json(graphiti: Graphiti, violation_data: dict, group_id: str = "default"):
+async def load_nodes(graphiti: Graphiti, nodes_data: list[dict]) -> dict[str, str]:
     """
-    从单条违例数据构建图结构
+    加载所有节点，返回 json_id -> node_uuid 的映射
 
-    预期 JSON 格式:
-    {
-        "violation_concept": "违例概念名称",
-        "symptom_method": "现象识别方法描述",
-        "root_causes": [
-            {
-                "cause": "根因1描述",
-                "analysis_action": "排查动作1",
-                "fix_method": "修复方法1",
-                "tools": ["工具A", "工具B"]
-            },
-            ...
-        ],
-        "detection_tools": ["检测工具1", "检测工具2"]
-    }
+    支持三种节点类型:
+    - ViolationConcept: name, automation_difficulty, remarks
+    - Phenomenon:       name, identification_method
+    - RootCause:         scenario_id, analysis_action, fix_method, dependent_tool
     """
-    violation_concept = violation_data['violation_concept']
-    symptom_method = violation_data['symptom_method']
-    root_causes = violation_data.get('root_causes', [])
-    detection_tools = violation_data.get('detection_tools', [])
+    id_to_uuid = {}
 
-    logger.info(f"\n处理违例: {violation_concept}")
+    logger.info(f"加载 {len(nodes_data)} 个节点...\n")
 
-    # 1. 创建违例概念节点
-    violation_node = await create_or_get_node(
-        graphiti,
-        name=violation_concept,
-        labels=["Violation"],
-        summary=f"电子设计违例类型: {violation_concept}",
-        attributes={"category": "design_violation"},
-        group_id=group_id
-    )
+    for node_data in nodes_data:
+        node_id = node_data['id']
+        node_type = node_data['type']
+        properties = node_data['properties']
 
-    # 2. 创建现象识别方法节点
-    symptom_node = await create_or_get_node(
-        graphiti,
-        name=f"Symptom_{violation_concept}",
-        labels=["Symptom", "DetectionMethod"],
-        summary=symptom_method,
-        attributes={"method": symptom_method},
-        group_id=group_id
-    )
+        # 根据不同类型提取字段
+        if node_type == 'ViolationConcept':
+            name = properties['name']
+            automation_difficulty = properties.get('automation_difficulty', '')
+            remarks = properties.get('remarks', '')
 
-    # 连接: Violation -> Symptom
-    await create_edge(
-        graphiti,
-        source_uuid=violation_node.uuid,
-        target_uuid=symptom_node.uuid,
-        relation_type="HAS_SYMPTOM",
-        fact=f"{violation_concept} 的识别方法是: {symptom_method}",
-        group_id=group_id
-    )
+            summary = f"[{node_type}] {name}"
+            if remarks:
+                summary += f" - {remarks}"
 
-    # 3. 创建检测工具节点并连接
-    for tool_name in detection_tools:
-        tool_node = await create_or_get_node(
-            graphiti,
-            name=tool_name,
-            labels=["Tool", "DetectionTool"],
-            summary=f"检测工具: {tool_name}",
-            group_id=group_id
+            attributes = {
+                'automation_difficulty': automation_difficulty,
+                'remarks': remarks,
+            }
+
+        elif node_type == 'Phenomenon':
+            name = properties['name']
+            identification_method = properties.get('identification_method', '')
+
+            summary = f"[{node_type}] {name}"
+            if identification_method:
+                summary += f" - 识别方法: {identification_method}"
+
+            attributes = {
+                'identification_method': identification_method,
+            }
+
+        elif node_type == 'RootCause':
+            name = properties['scenario_id']  # 用 scenario_id 作为节点名称
+            scenario_id = properties.get('scenario_id', '')
+            analysis_action = properties.get('analysis_action', '')
+            fix_method = properties.get('fix_method', '')
+            dependent_tool = properties.get('dependent_tool', '')
+
+            summary = f"[{node_type}] 场景 {scenario_id}: {analysis_action}"
+
+            attributes = {
+                'scenario_id': scenario_id,
+                'analysis_action': analysis_action,
+                'fix_method': fix_method,
+                'dependent_tool': dependent_tool,
+            }
+
+        else:
+            logger.warning(f"  ⚠ 未知节点类型: {node_type}, 跳过节点 {node_id}")
+            continue
+
+        # 创建节点
+        node = EntityNode(
+            uuid=str(uuid4()),
+            name=name,
+            labels=[node_type],
+            summary=summary,
+            group_id='default',
+            created_at=datetime.now(timezone.utc),
         )
 
-        await create_edge(
-            graphiti,
-            source_uuid=symptom_node.uuid,
-            target_uuid=tool_node.uuid,
-            relation_type="REQUIRES_TOOL",
-            fact=f"{symptom_method} 需要使用工具 {tool_name}",
-            group_id=group_id
+        if attributes:
+            node.attributes = attributes
+
+        await graphiti.nodes.entity.save(node)
+        logger.info(f"  ✓ [{node_type}] {node_id} → {name} (uuid: {node.uuid[:8]}...)")
+
+        # 记录映射
+        id_to_uuid[node_id] = node.uuid
+
+    logger.info("")
+    return id_to_uuid
+
+
+async def load_edges(graphiti: Graphiti, edges_data: list[dict], id_to_uuid: dict[str, str]):
+    """根据映射表加载所有边"""
+    logger.info(f"加载 {len(edges_data)} 条边...\n")
+
+    for edge_data in edges_data:
+        source_id = edge_data['source']
+        target_id = edge_data['target']
+        relation = edge_data['relation']
+
+        # 通过映射表获取实际 UUID
+        source_uuid = id_to_uuid.get(source_id)
+        target_uuid = id_to_uuid.get(target_id)
+
+        if source_uuid is None:
+            logger.warning(f"  ⚠ 跳过边: source {source_id} 未找到")
+            continue
+        if target_uuid is None:
+            logger.warning(f"  ⚠ 跳过边: target {target_id} 未找到")
+            continue
+
+        # 构建语义化 fact 描述
+        if relation == 'has_phenomenon':
+            fact = f'{source_id} 的现象识别方法对应 {target_id}'
+        elif relation == 'has_root_cause':
+            fact = f'{source_id} 的根因包含 {target_id}'
+        else:
+            fact = f'{source_id} --[{relation}]--> {target_id}'
+
+        edge = EntityEdge(
+            uuid=str(uuid4()),
+            source_node_uuid=source_uuid,
+            target_node_uuid=target_uuid,
+            name=relation,
+            fact=fact,
+            group_id='default',
+            created_at=datetime.now(timezone.utc),
+            valid_at=datetime.now(timezone.utc),
         )
 
-    # 4. 处理每个根因及其对应的修复方法
-    for idx, root_cause_data in enumerate(root_causes):
-        cause_desc = root_cause_data['cause']
-        analysis_action = root_cause_data.get('analysis_action', '')
-        fix_method = root_cause_data['fix_method']
-        tools = root_cause_data.get('tools', [])
+        await graphiti.edges.entity.save(edge)
+        logger.info(f"  ✓ {source_id} --[{relation}]--> {target_id}")
 
-        logger.info(f"  处理根因 {idx+1}: {cause_desc}")
-
-        # 创建根因节点
-        cause_node = await create_or_get_node(
-            graphiti,
-            name=f"RootCause_{violation_concept}_{idx+1}",
-            labels=["RootCause"],
-            summary=cause_desc,
-            attributes={
-                "cause": cause_desc,
-                "analysis_action": analysis_action
-            },
-            group_id=group_id
-        )
-
-        # 连接: Symptom -> RootCause
-        await create_edge(
-            graphiti,
-            source_uuid=symptom_node.uuid,
-            target_uuid=cause_node.uuid,
-            relation_type="MAY_CAUSE",
-            fact=f"{violation_concept} 可能由以下原因引起: {cause_desc}",
-            group_id=group_id
-        )
-
-        # 创建修复方法节点
-        fix_node = await create_or_get_node(
-            graphiti,
-            name=f"Fix_{violation_concept}_{idx+1}",
-            labels=["Fix", "Solution"],
-            summary=fix_method,
-            attributes={"method": fix_method},
-            group_id=group_id
-        )
-
-        # 连接: RootCause -> Fix (一对一)
-        await create_edge(
-            graphiti,
-            source_uuid=cause_node.uuid,
-            target_uuid=fix_node.uuid,
-            relation_type="FIXED_BY",
-            fact=f"{cause_desc} 的修复方法是: {fix_method}",
-            group_id=group_id
-        )
-
-        # 创建修复工具节点并连接
-        for tool_name in tools:
-            tool_node = await create_or_get_node(
-                graphiti,
-                name=tool_name,
-                labels=["Tool", "FixTool"],
-                summary=f"修复工具: {tool_name}",
-                group_id=group_id
-            )
-
-            await create_edge(
-                graphiti,
-                source_uuid=fix_node.uuid,
-                target_uuid=tool_node.uuid,
-                relation_type="REQUIRES_TOOL",
-                fact=f"{fix_method} 需要使用工具 {tool_name}",
-                group_id=group_id
-            )
+    logger.info("")
 
 
 async def main():
@@ -247,7 +197,7 @@ async def main():
 
     if not os.path.exists(json_file_path):
         logger.error(f"❌ JSON 文件不存在: {json_file_path}")
-        logger.info("请先创建 violations_data.json 文件")
+        logger.info("请先创建 violations_data.json 文件，格式参考 violations_data_example.json")
         return
 
     logger.info("=" * 60)
@@ -291,21 +241,18 @@ async def main():
         # 读取 JSON 文件
         logger.info(f"读取 JSON 文件: {json_file_path}")
         with open(json_file_path, 'r', encoding='utf-8') as f:
-            violations_data = json.load(f)
+            data = json.load(f)
 
-        # 支持单个对象或对象数组
-        if isinstance(violations_data, dict):
-            violations_list = [violations_data]
-        else:
-            violations_list = violations_data
+        nodes_data = data.get('nodes', [])
+        edges_data = data.get('edges', [])
 
-        logger.info(f"共加载 {len(violations_list)} 条违例数据\n")
+        logger.info(f"节点数: {len(nodes_data)}, 边数: {len(edges_data)}\n")
 
-        # 逐条处理违例数据
-        for idx, violation in enumerate(violations_list, 1):
-            logger.info(f"[{idx}/{len(violations_list)}] 处理中...")
-            await load_violation_from_json(graphiti, violation)
-            logger.info(f"[{idx}/{len(violations_list)}] 完成\n")
+        # 1. 加载节点，获取 id → uuid 映射
+        id_to_uuid = await load_nodes(graphiti, nodes_data)
+
+        # 2. 加载边
+        await load_edges(graphiti, edges_data, id_to_uuid)
 
         logger.info("=" * 60)
         logger.info("✅ 所有数据加载完成！")
