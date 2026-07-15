@@ -31,6 +31,7 @@ from graphiti_core.nodes import EntityNode
 from graphiti_core.edges import EntityEdge
 from graphiti_core.llm_client.config import LLMConfig
 from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
+from graphiti_core.utils.maintenance.graph_data_operations import clear_data
 
 from custom_llm_client import ThinkTagCleaningClient
 
@@ -215,6 +216,11 @@ async def main():
     )
 
     try:
+        # 先清空现有数据，避免旧数据累积
+        logger.info("清空现有数据...")
+        await clear_data(graphiti.driver)
+        logger.info("✓ 已清空\n")
+
         logger.info(f"读取 JSON 文件: {json_file_path}")
         with open(json_file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
