@@ -1,0 +1,1 @@
+{"prompt":"Inspect README.md and report its first heading. Do not modify any file.","label":"smoke-001","metadata":{"instance_id":"smoke-001","image":"your-org/your-swe-image:latest","workdir":"/workspace/your-repo","problem_statement":"Inspect README.md and report its first heading. Do not modify any file.","eval_cmd":"git diff --exit-code"}}

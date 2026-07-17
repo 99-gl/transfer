@@ -1,0 +1,3 @@
+# Install into the same Python environment that runs Slime/Ray.
+# Slime itself supplies aiohttp, ray, transformers, and SGLang dependencies.
+docker>=7.0.0

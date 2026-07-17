@@ -12,3 +12,10 @@ curl -X POST "http://localhost:8000/tokenize" \
       }
     }
   }'
+```bash
+curl -sS -o /dev/null \
+  --connect-timeout 5 --max-time 30 \
+  -H 'Accept: application/vnd.oci.image.index.v1+json, application/vnd.docker.distribution.manifest.list.v2+json, application/vnd.docker.distribution.manifest.v2+json' \
+  -w 'HTTP=%{http_code} total=%{time_total}s bytes=%{size_download}\n' \
+  "${MIRROR}/v2/slimerl/slime/manifests/latest"
+```
