@@ -49,52 +49,53 @@ def convert_excel(input_path: Path, output_path: Path, sheet_name: str | None) -
 
         nodes: list[dict[str, Any]] = []
         edges: list[dict[str, str]] = []
-        used_ids: set[str] = set()
+        violation_ids: set[str] = set()
+        phenomenon_index = 0
+        current_violation_id = ""
 
         for row_number, row in enumerate(worksheet.iter_rows(min_row=3, max_col=4, values_only=True), start=3):
             serial, violation_name, phenomenon_name, identification_method = map(cell_text, row)
 
-            # 完全空白的行不产生任何数据；部分空白行属于输入错误，避免输出无意义节点。
+            # 完全空白的行不产生任何数据。序号和违例概念可能是纵向合并单元格，
+            # 因而仅在每个分组的首行有值，后续行需复用上一次的值。
             if not any((serial, violation_name, phenomenon_name, identification_method)):
                 continue
-            missing = [
-                label
-                for label, value in (
-                    ("序号", serial),
-                    ("违例概念", violation_name),
-                    ("现象", phenomenon_name),
-                    ("识别方法", identification_method),
-                )
-                if not value
-            ]
-            if missing:
-                raise ValueError(f"第 {row_number} 行缺少{'、'.join(missing)}")
 
-            violation_id = make_id("v", serial, row_number)
-            phenomenon_id = make_id("p", serial, row_number)
-            if violation_id in used_ids or phenomenon_id in used_ids:
-                raise ValueError(f"第 {row_number} 行序号 {serial!r} 重复，无法生成唯一节点 ID")
-            used_ids.update((violation_id, phenomenon_id))
-
-            nodes.extend(
-                (
+            if bool(serial) != bool(violation_name):
+                raise ValueError(f"第 {row_number} 行的序号和违例概念必须同时填写，或同时留空")
+            if serial:
+                current_violation_id = make_id("v", serial, row_number)
+                if current_violation_id in violation_ids:
+                    raise ValueError(f"第 {row_number} 行序号 {serial!r} 重复，无法生成唯一违例节点 ID")
+                violation_ids.add(current_violation_id)
+                nodes.append(
                     {
-                        "id": violation_id,
+                        "id": current_violation_id,
                         "type": "ViolationConcept",
                         "properties": {"name": violation_name},
-                    },
-                    {
-                        "id": phenomenon_id,
-                        "type": "Phenomenon",
-                        "properties": {
-                            "name": phenomenon_name,
-                            "identification_method": identification_method,
-                        },
-                    },
+                    }
                 )
+            elif not current_violation_id:
+                raise ValueError(f"第 {row_number} 行缺少序号和违例概念，且前面没有可继承的分组")
+
+            if not phenomenon_name or not identification_method:
+                missing = "现象" if not phenomenon_name else "识别方法"
+                raise ValueError(f"第 {row_number} 行缺少{missing}")
+
+            phenomenon_index += 1
+            phenomenon_id = f"p_{phenomenon_index:03d}"
+            nodes.append(
+                {
+                    "id": phenomenon_id,
+                    "type": "Phenomenon",
+                    "properties": {
+                        "name": phenomenon_name,
+                        "identification_method": identification_method,
+                    },
+                }
             )
             edges.append(
-                {"source": violation_id, "target": phenomenon_id, "relation": "has_phenomenon"}
+                {"source": current_violation_id, "target": phenomenon_id, "relation": "has_phenomenon"}
             )
     finally:
         workbook.close()
