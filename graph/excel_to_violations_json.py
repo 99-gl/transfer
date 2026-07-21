@@ -1,6 +1,7 @@
 """将违例 Excel 表转换为 Graphiti 导入所需的 JSON。
 
 Excel 从第 3 行起读取，前四列依次为：序号、违例概念、现象、识别方法。
+序号、违例概念和识别方法允许使用纵向合并单元格。
 """
 
 from __future__ import annotations
@@ -52,18 +53,21 @@ def convert_excel(input_path: Path, output_path: Path, sheet_name: str | None) -
         violation_ids: set[str] = set()
         phenomenon_index = 0
         current_violation_id = ""
+        current_identification_method = ""
 
         for row_number, row in enumerate(worksheet.iter_rows(min_row=3, max_col=4, values_only=True), start=3):
             serial, violation_name, phenomenon_name, identification_method = map(cell_text, row)
 
-            # 完全空白的行不产生任何数据。序号和违例概念可能是纵向合并单元格，
-            # 因而仅在每个分组的首行有值，后续行需复用上一次的值。
+            # 完全空白的行不产生任何数据。纵向合并单元格只有首个单元格有值，
+            # 所以序号、违例概念和识别方法都要在所属分组内向下继承。
             if not any((serial, violation_name, phenomenon_name, identification_method)):
                 continue
 
             if bool(serial) != bool(violation_name):
                 raise ValueError(f"第 {row_number} 行的序号和违例概念必须同时填写，或同时留空")
             if serial:
+                # 识别方法不能跨违例分组继承。
+                current_identification_method = ""
                 current_violation_id = make_id("v", serial, row_number)
                 if current_violation_id in violation_ids:
                     raise ValueError(f"第 {row_number} 行序号 {serial!r} 重复，无法生成唯一违例节点 ID")
@@ -78,9 +82,12 @@ def convert_excel(input_path: Path, output_path: Path, sheet_name: str | None) -
             elif not current_violation_id:
                 raise ValueError(f"第 {row_number} 行缺少序号和违例概念，且前面没有可继承的分组")
 
-            if not phenomenon_name or not identification_method:
-                missing = "现象" if not phenomenon_name else "识别方法"
-                raise ValueError(f"第 {row_number} 行缺少{missing}")
+            if not phenomenon_name:
+                raise ValueError(f"第 {row_number} 行缺少现象")
+            if identification_method:
+                current_identification_method = identification_method
+            elif not current_identification_method:
+                raise ValueError(f"第 {row_number} 行缺少识别方法，且前面没有可继承的值")
 
             phenomenon_index += 1
             phenomenon_id = f"p_{phenomenon_index:03d}"
@@ -90,7 +97,7 @@ def convert_excel(input_path: Path, output_path: Path, sheet_name: str | None) -
                     "type": "Phenomenon",
                     "properties": {
                         "name": phenomenon_name,
-                        "identification_method": identification_method,
+                        "identification_method": current_identification_method,
                     },
                 }
             )
