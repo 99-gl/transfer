@@ -17,6 +17,7 @@ RUN if ! id -u agent >/dev/null 2>&1; then useradd --create-home --shell /bin/ba
     && chown -R agent:agent /workspace /home/agent
 
 WORKDIR /workspace
+COPY --chown=agent:agent test_workspace/ /workspace/
 ENV HOME=/home/agent
 USER agent
 CMD ["/bin/bash"]
