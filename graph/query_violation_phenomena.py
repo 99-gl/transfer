@@ -14,7 +14,7 @@ from graphiti_core import Graphiti
 from graphiti_core.cross_encoder.openai_reranker_client import OpenAIRerankerClient
 from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
 from graphiti_core.llm_client.config import LLMConfig
-from graphiti_core.search.search_config_recipes import NODE_HYBRID_SEARCH_CROSS_ENCODER
+from graphiti_core.search.search_config_recipes import NODE_HYBRID_SEARCH_RRF
 
 from custom_llm_client import ThinkTagCleaningClient
 
@@ -72,7 +72,7 @@ def create_graphiti() -> Graphiti:
 
 async def find_violation_nodes(graphiti: Graphiti, query: str, group_id: str, limit: int):
     """通过 Graphiti 节点混合检索查询指定分组内的违例节点。"""
-    search_config = NODE_HYBRID_SEARCH_CROSS_ENCODER.model_copy(
+    search_config = NODE_HYBRID_SEARCH_RRF.model_copy(
         update={'limit': limit}
     )
     results = await graphiti.search_(
