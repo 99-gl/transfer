@@ -1,17 +1,10 @@
-FROM ubuntu:22.04
+FROM slimerl/slime:latest
 
-ENV DEBIAN_FRONTEND=noninteractive
 ENV CLAUDE_DIR=/cc_dir
 ENV PATH=/cc_dir:${PATH}
 ENV ANTHROPIC_BASE_URL=http://host.docker.internal:8005
 ENV ANTHROPIC_AUTH_TOKEN=dummy
 ENV ANTHROPIC_MODEL=qwen3-coder-30B-A3B
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        python3 \
-        python3-pytest \
-    && rm -rf /var/lib/apt/lists/*
 
 # Mount the host's Claude runtime here when starting the container:
 #   docker run -it --rm --add-host=host.docker.internal:host-gateway \
