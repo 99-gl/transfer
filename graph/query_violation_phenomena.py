@@ -14,6 +14,7 @@ from graphiti_core import Graphiti
 from graphiti_core.cross_encoder.openai_reranker_client import OpenAIRerankerClient
 from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
 from graphiti_core.llm_client.config import LLMConfig
+from graphiti_core.search.search_config_recipes import NODE_HYBRID_SEARCH_CROSS_ENCODER
 
 from custom_llm_client import ThinkTagCleaningClient
 
@@ -69,15 +70,17 @@ def create_graphiti() -> Graphiti:
     )
 
 
-async def find_violation_nodes(graphiti: Graphiti, query: str, group_id: str):
-    """通过 Graphiti 查询指定分组内名称匹配的违例节点。"""
-    nodes = await graphiti.nodes.entity.get_by_group_ids([group_id])
-    normalized_query = query.casefold()
-    return [
-        node
-        for node in nodes
-        if 'ViolationConcept' in node.labels and normalized_query in node.name.casefold()
-    ]
+async def find_violation_nodes(graphiti: Graphiti, query: str, group_id: str, limit: int):
+    """通过 Graphiti 节点混合检索查询指定分组内的违例节点。"""
+    search_config = NODE_HYBRID_SEARCH_CROSS_ENCODER.model_copy(
+        update={'limit': limit}
+    )
+    results = await graphiti.search_(
+        query,
+        config=search_config,
+        group_ids=[group_id],
+    )
+    return [node for node in results.nodes if 'ViolationConcept' in node.labels]
 
 
 async def get_phenomenon_nodes(graphiti: Graphiti, violation_uuid: str):
@@ -98,17 +101,23 @@ async def get_phenomenon_nodes(graphiti: Graphiti, violation_uuid: str):
 
 async def main() -> None:
     parser = argparse.ArgumentParser(description='查询违例节点及其关联的现象节点')
-    parser.add_argument('query', help='违例名称中的查询词，不区分大小写')
+    parser.add_argument('query', help='用于 Graphiti 混合检索的查询语句')
     parser.add_argument('--group-id', default='default', help='Graphiti group_id，默认 default')
+    parser.add_argument('--limit', type=int, default=10, help='Graphiti 返回的最大节点数，默认 10')
     args = parser.parse_args()
 
     os.environ['SEMAPHORE_LIMIT'] = '3'
     graphiti = create_graphiti()
 
     try:
-        violations = await find_violation_nodes(graphiti, args.query, args.group_id)
+        violations = await find_violation_nodes(
+            graphiti,
+            args.query,
+            args.group_id,
+            args.limit,
+        )
         if not violations:
-            logger.info("未找到名称包含 %r 的违例节点。", args.query)
+            logger.info("Graphiti 未检索到与 %r 相关的违例节点。", args.query)
             return
 
         for violation in violations:
