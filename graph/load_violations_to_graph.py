@@ -31,6 +31,7 @@ from graphiti_core.nodes import EntityNode
 from graphiti_core.edges import EntityEdge
 from graphiti_core.llm_client.config import LLMConfig
 from graphiti_core.embedder.openai import OpenAIEmbedder, OpenAIEmbedderConfig
+from graphiti_core.cross_encoder.openai_reranker_client import OpenAIRerankerClient
 from graphiti_core.utils.maintenance.graph_data_operations import clear_data
 
 from custom_llm_client import ThinkTagCleaningClient
@@ -55,6 +56,7 @@ local_llm_api_key = os.environ.get('LOCAL_LLM_API_KEY', 'dummy-key')
 
 local_embed_base_url = os.environ.get('LOCAL_EMBED_BASE_URL', 'http://localhost:8001/v1')
 local_embed_api_key = os.environ.get('LOCAL_EMBED_API_KEY', 'dummy-key')
+local_embed_model = os.environ.get('LOCAL_EMBED_MODEL', 'BAAI/bge-m3')
 
 ALLOWED_RELATIONS = {'has_phenomenon', 'has_root_cause'}
 
@@ -203,8 +205,7 @@ async def main():
     embedder_config = OpenAIEmbedderConfig(
         api_key=local_embed_api_key,
         base_url=local_embed_base_url,
-        embedding_model="BAAI/bge-m3",
-        embedding_dim=1024
+        embedding_model=local_embed_model,
     )
     embedder = OpenAIEmbedder(config=embedder_config)
 
@@ -213,6 +214,7 @@ async def main():
         neo4j_uri, neo4j_user, neo4j_password,
         llm_client=llm_client,
         embedder=embedder,
+        cross_encoder=OpenAIRerankerClient(client=llm_client, config=llm_config),
     )
 
     try:
