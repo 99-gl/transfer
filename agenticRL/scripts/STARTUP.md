@@ -7,6 +7,7 @@
 export MODEL_DIR=/data/slime/models/Qwen3-Coder-30B-A3B
 export WORKSPACE_DIR=/data/agent-workspace
 export SCRIPT_DIR=/data/slime/adapter
+export TRAJECTORY_DIR=/data/slime/trajectory
 ```
 
 三个容器必须位于同一个 Docker 网络。首次执行时创建网络：
@@ -56,8 +57,10 @@ docker run -d --name slime-anthropic-adapter \
   -e SGLANG_URL=http://sglang:30000 \
   -e SGLANG_TOOL_CALL_PARSER=qwen3_coder \
   -e SGLANG_REASONING_PARSER=qwen3 \
+  -e TRAJECTORY_LOG_PATH=/logs/trajectory.jsonl \
   -v "${MODEL_DIR}:/model:ro" \
   -v "${SCRIPT_DIR}:/app:ro" \
+  -v "${TRAJECTORY_DIR}:/logs" \
   slimerl/slime:latest \
   python3 /app/serve_anthropic_adapter.py
 ```
@@ -66,6 +69,12 @@ docker run -d --name slime-anthropic-adapter \
 
 ```bash
 curl http://127.0.0.1:18001/healthz
+```
+
+每个完成的 Claude Code 回合会追加到宿主机：
+
+```bash
+tail -f "${TRAJECTORY_DIR}/trajectory.jsonl"
 ```
 
 ## 3. 启动 Claude Code sandbox
