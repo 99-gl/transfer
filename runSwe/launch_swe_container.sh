@@ -35,6 +35,7 @@ mounts=(
 )
 
 docker run --rm -it \
+  --add-host=host.docker.internal:host-gateway \
   --entrypoint /bin/bash \
   "${mounts[@]}" \
   --env "INSTANCE_ID=$instance_id" \

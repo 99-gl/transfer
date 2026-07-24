@@ -24,7 +24,8 @@ bash launch_swe_container.sh
 The script requires `cc/claude`, mounts it at `/cc`, and adds `/cc` to `PATH`.
 It mounts the prompt at `/input/task.md`, the runner at `/runner`, and the
 result directory at `/output`. Inside the container it gives `agent` ownership
-of `/testbed` and starts the runner.
+of `/testbed` and starts the runner. It also maps `host.docker.internal` to the
+Linux Docker host, so `ANTHROPIC_BASE_URL` can target a host-side model service.
 
 Results are written under `OUTPUT_DIR/predictions`, `OUTPUT_DIR/logs`, and
 `OUTPUT_DIR/metadata`.
