@@ -12,7 +12,8 @@ separately, read-only.
 
 For a host-side Docker entry point that performs these mounts and switches to an
 `agent` user after giving it ownership of `/testbed`, use
-`../launch_swe_container.sh IMAGE INSTANCE_ID PROMPT_FILE OUTPUT_DIR MODEL_NAME`.
+`../launch_swe_container.sh`. Override its defaults through environment
+variables when launching a different instance.
 It mounts `../cc` at `/cc` and passes through `ANTHROPIC_BASE_URL`,
 `ANTHROPIC_AUTH_TOKEN`, `ANTHROPIC_API_KEY`, and `ANTHROPIC_MODEL` from the
 Linux server environment.

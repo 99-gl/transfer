@@ -3,22 +3,24 @@
 
 set -euo pipefail
 
-if [[ $# -ne 5 ]]; then
+if [[ $# -ne 0 ]]; then
   cat >&2 <<'EOF'
-Usage: bash launch_swe_container.sh IMAGE INSTANCE_ID PROMPT_FILE OUTPUT_DIR MODEL_NAME
+Usage: bash launch_swe_container.sh
+
+Override defaults with environment variables: IMAGE, INSTANCE_ID, PROMPT_FILE,
+OUTPUT_DIR, and MODEL_NAME.
 EOF
   exit 2
 fi
 
-image=$1
-instance_id=$2
-prompt_file=$3
-output_dir=$4
-model_name=$5
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
+image=${IMAGE:-swebench/sweb.eval.x86_64.django_1776_django-11099:latest}
+instance_id=${INSTANCE_ID:-django__django-11099}
+prompt_file=${PROMPT_FILE:-"$script_dir/prompts/$instance_id.md"}
+output_dir=${OUTPUT_DIR:-"$script_dir/runs/$instance_id"}
+model_name=${MODEL_NAME:-qwen3-coder-30b-a3b-via-claude-code}
 
 [[ -f $prompt_file ]] || { echo "prompt not found: $prompt_file" >&2; exit 2; }
-
-script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)
 cc_dir="$script_dir/cc"
 [[ -d $cc_dir ]] || { echo "Claude Code directory not found: $cc_dir" >&2; exit 2; }
 mkdir -p "$output_dir"
