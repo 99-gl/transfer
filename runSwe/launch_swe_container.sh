@@ -52,7 +52,7 @@ docker run --rm -it \
     exec su -s /bin/bash agent <<"AGENT_COMMAND"
 export HOME=/home/agent
 export PATH=/cc:\$PATH
-exec python3 /runner/run_instance.py \
+exec python /runner/run_instance.py \
   --instance-id "$INSTANCE_ID" \
   --prompt-file /input/task.md \
   --model-name "$MODEL_NAME" \

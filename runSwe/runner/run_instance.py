@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Run Claude Code for one SWE-bench instance and export its patch as JSONL."""
 
-from __future__ import annotations
-
 import argparse
 import json
 import subprocess
@@ -10,7 +8,7 @@ import sys
 import threading
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import TextIO
+from typing import List, Optional, TextIO
 
 
 POSTPROCESSING_ERROR = 70
@@ -113,15 +111,23 @@ def run_claude(args: argparse.Namespace, stdout_path: Path, stderr_path: Path) -
         return COMMAND_NOT_FOUND
 
 
-def run_git(command: list[str], testbed: Path) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=testbed, text=True, encoding="utf-8", errors="replace", capture_output=True)
+def run_git(command: List[str], testbed: Path) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        command,
+        cwd=testbed,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
 
 
 def write_text(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: Optional[List[str]] = None) -> int:
     args = build_parser().parse_args(argv)
     if not args.testbed.is_dir():
         print(f"runner error: testbed does not exist: {args.testbed}", file=sys.stderr)

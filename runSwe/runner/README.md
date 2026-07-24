@@ -4,6 +4,9 @@
 Claude Code in `/testbed`, then stages all resulting changes and converts the
 staged binary diff into a one-line SWE-bench prediction.
 
+The runner supports the Python 3.6 Anaconda interpreter present in older SWE
+task images and is launched with `python`, not `python3`.
+
 The runner must execute in the same container and filesystem as `/testbed`.
 Mount its code read-only and mount an output directory writable by the container
 user. Use a dedicated output directory for each run (or one already writable by
