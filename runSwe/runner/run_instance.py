@@ -86,7 +86,7 @@ def run_claude(args: argparse.Namespace, stdout_path: Path, stderr_path: Path) -
                 stdin=subprocess.DEVNULL,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True,
+                universal_newlines=True,
                 encoding="utf-8",
                 errors="replace",
             )
@@ -115,7 +115,7 @@ def run_git(command: List[str], testbed: Path) -> subprocess.CompletedProcess:
     return subprocess.run(
         command,
         cwd=testbed,
-        text=True,
+        universal_newlines=True,
         encoding="utf-8",
         errors="replace",
         stdout=subprocess.PIPE,
