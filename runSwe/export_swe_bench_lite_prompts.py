@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Export coding-agent prompts from the SWE-bench Lite dataset."""
+"""Export SWE-bench Lite prompts to ``transfer/runSwe/prompts``.
+
+Usage:
+    python export_swe_bench_lite_prompts.py --instance-id django__django-11099
+    python export_swe_bench_lite_prompts.py --instance-id ID_ONE --instance-id ID_TWO
+    python export_swe_bench_lite_prompts.py --slice 0:10
+
+Exactly one selection method is required. The dataset split is always ``test``.
+"""
 
 from __future__ import annotations
 
@@ -11,6 +19,8 @@ from typing import Any
 
 
 DATASET_NAME = "princeton-nlp/SWE-bench_Lite"
+DATASET_SPLIT = "test"
+DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "prompts"
 
 
 def parse_slice(value: str) -> slice:
@@ -38,7 +48,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Export English coding-agent prompts for SWE-bench Lite instances."
     )
-    selection = parser.add_mutually_exclusive_group()
+    selection = parser.add_mutually_exclusive_group(required=True)
     selection.add_argument(
         "--instance-id",
         action="append",
@@ -51,17 +61,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=parse_slice,
         metavar="START:STOP[:STEP]",
         help="Select dataset positions with Python slice syntax (for example, '0:5').",
-    )
-    parser.add_argument(
-        "--output-dir",
-        required=True,
-        type=Path,
-        help="Directory where one Markdown prompt per selected instance is written.",
-    )
-    parser.add_argument(
-        "--split",
-        default="test",
-        help="Dataset split to load (default: %(default)s).",
     )
     return parser
 
@@ -152,12 +151,12 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     try:
-        dataset = load_dataset(DATASET_NAME, split=args.split)
+        dataset = load_dataset(DATASET_NAME, split=DATASET_SPLIT)
         records = select_records(dataset, args)
-        args.output_dir.mkdir(parents=True, exist_ok=True)
+        DEFAULT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         for record in records:
             instance_id = required_text(record, "instance_id")
-            destination = args.output_dir / output_name(instance_id)
+            destination = DEFAULT_OUTPUT_DIR / output_name(instance_id)
             destination.write_text(render_prompt(record), encoding="utf-8")
             print(destination)
     except (OSError, ValueError) as error:
