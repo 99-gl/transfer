@@ -49,10 +49,13 @@ docker run --rm -it \
     id -u agent >/dev/null 2>&1 || useradd --create-home --shell /bin/bash agent
     chown -R agent:agent /testbed
     chown agent:agent /output
-    exec su -s /bin/bash agent <<"AGENT_COMMAND"
+    RUNNER_PYTHON=$(type -P python || true)
+    [ -n "$RUNNER_PYTHON" ] || { echo "python interpreter not found" >&2; exit 127; }
+    export RUNNER_PYTHON
+    exec su --preserve-environment -s /bin/bash agent <<"AGENT_COMMAND"
 export HOME=/home/agent
-export PATH=/cc:\$PATH
-exec python /runner/run_instance.py \
+export PATH=/cc:$PATH
+exec "$RUNNER_PYTHON" /runner/run_instance.py \
   --instance-id "$INSTANCE_ID" \
   --prompt-file /input/task.md \
   --model-name "$MODEL_NAME" \
