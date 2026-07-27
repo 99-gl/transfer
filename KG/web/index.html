@@ -12,7 +12,10 @@
         <p class="eyebrow">EDA KNOWLEDGE GRAPH</p>
         <h1>知识图谱工作台</h1>
       </div>
-      <span id="connection-state" class="status">Neo4j</span>
+      <div class="topbar-actions">
+        <span id="connection-state" class="status">Neo4j</span>
+        <button id="clear-graph-button" class="danger-button" type="button">清空图谱</button>
+      </div>
     </header>
 
     <main>
@@ -21,16 +24,23 @@
           <div class="panel-heading">
             <div>
               <p class="section-kicker">DATA SYNC</p>
-              <h2 id="import-title">导入 Excel</h2>
+              <h2 id="import-title">导入数据</h2>
             </div>
           </div>
           <form id="import-form" class="form-stack">
-            <label class="file-field" for="excel-file">
-              <span>Excel 文件</span>
-              <input id="excel-file" name="file" type="file" accept=".xlsx,.xlsm" required />
+            <label for="import-type">数据格式</label>
+            <select id="import-type" name="import_type">
+              <option value="excel">Excel</option>
+              <option value="json">JSON</option>
+            </select>
+            <label class="file-field" for="data-file">
+              <span>数据文件</span>
+              <input id="data-file" name="file" type="file" accept=".xlsx,.xlsm" required />
             </label>
-            <label for="sheet-name">工作表名称</label>
-            <input id="sheet-name" name="sheet" type="text" placeholder="默认活动工作表" />
+            <div id="sheet-field">
+              <label for="sheet-name">工作表名称</label>
+              <input id="sheet-name" name="sheet" type="text" placeholder="默认活动工作表" />
+            </div>
             <div class="actions">
               <button id="preview-button" type="submit">预览变更</button>
               <button id="commit-button" type="button" disabled>确认同步</button>

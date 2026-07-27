@@ -75,3 +75,8 @@ button:hover:not(:disabled) { background: #19533d; }
   .detail-grid { grid-template-columns: 1fr; }
   .detail-grid dd { border-left: 0; border-top: 1px solid #e0e6e2; }
 }
+
+
+.topbar-actions { align-items: center; display: flex; gap: 10px; }
+.danger-button { background: #a9362c; border-color: #a9362c; }
+.danger-button:hover:not(:disabled) { background: #80271f; }

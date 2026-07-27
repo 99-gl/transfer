@@ -31,12 +31,19 @@ JSON 格式兼容原有示例：见 `data/violations_data_example.json`。
 
 活动工作表（或指定工作表）第 3 行起的前四列：`序号`、`违例概念`、`现象`、`识别方法`。序号、违例概念和识别方法可使用纵向合并单元格。
 
-## 运行
+## 环境与运行
 
-配置 `.env` 后，使用项目环境启动：
+项目默认由 `uv` 管理根目录下的 `.venv`。首次安装或更新依赖时执行：
 
 ```bash
-./.KG/bin/python -m uvicorn app.main:app --port 8000
+cp .env.example .env
+uv sync
+```
+
+`uv sync` 会创建（如不存在）并同步 `.venv`。启动服务：
+
+```bash
+uv run uvicorn app.main:app --port 8000
 ```
 
 打开 `http://localhost:8000`，接口文档位于 `http://localhost:8000/docs`。

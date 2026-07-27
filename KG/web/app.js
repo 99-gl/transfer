@@ -1,4 +1,7 @@
 const importForm = document.querySelector('#import-form');
+const importType = document.querySelector('#import-type');
+const dataFile = document.querySelector('#data-file');
+const sheetField = document.querySelector('#sheet-field');
 const previewButton = document.querySelector('#preview-button');
 const commitButton = document.querySelector('#commit-button');
 const importResult = document.querySelector('#import-result');
@@ -6,6 +9,7 @@ const searchForm = document.querySelector('#search-form');
 const searchResult = document.querySelector('#search-result');
 const detailResult = document.querySelector('#node-detail');
 const connectionState = document.querySelector('#connection-state');
+const clearGraphButton = document.querySelector('#clear-graph-button');
 
 function element(tag, className, text) {
   const node = document.createElement(tag);
@@ -18,14 +22,27 @@ function setMessage(target, message, isError = false) {
   target.replaceChildren(element('div', `message${isError ? ' error' : ''}`, message));
 }
 
+function updateImportType() {
+  const isJson = importType.value === 'json';
+  dataFile.accept = isJson ? '.json,application/json' : '.xlsx,.xlsm';
+  sheetField.hidden = isJson;
+  dataFile.value = '';
+  commitButton.disabled = true;
+  importResult.replaceChildren();
+}
+
 function formData() {
   const data = new FormData();
-  const file = document.querySelector('#excel-file').files[0];
+  const file = dataFile.files[0];
   const sheet = document.querySelector('#sheet-name').value.trim();
-  if (!file) throw new Error('请选择 Excel 文件。');
+  if (!file) throw new Error('请选择数据文件。');
   data.append('file', file);
-  if (sheet) data.append('sheet', sheet);
+  if (importType.value === 'excel' && sheet) data.append('sheet', sheet);
   return data;
+}
+
+function importUrl(action) {
+  return importType.value === 'json' ? `/api/imports/json/${action}` : `/api/imports/${action}`;
 }
 
 async function api(url, options = {}) {
@@ -57,13 +74,15 @@ function renderChanges(payload, suffix = '') {
   importResult.append(changes);
 }
 
+importType.addEventListener('change', updateImportType);
+
 importForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   previewButton.disabled = true;
   commitButton.disabled = true;
-  setMessage(importResult, '正在解析 Excel 并比对 Neo4j 数据...');
+  setMessage(importResult, '正在解析文件并比对 Neo4j 数据...');
   try {
-    const payload = await api('/api/imports/preview', { method: 'POST', body: formData() });
+    const payload = await api(importUrl('preview'), { method: 'POST', body: formData() });
     renderChanges(payload, '，确认后将同步到图谱。');
     commitButton.disabled = false;
   } catch (error) {
@@ -77,7 +96,7 @@ commitButton.addEventListener('click', async () => {
   commitButton.disabled = true;
   setMessage(importResult, '正在同步图谱...');
   try {
-    const payload = await api('/api/imports/commit', { method: 'POST', body: formData() });
+    const payload = await api(importUrl('commit'), { method: 'POST', body: formData() });
     renderChanges(payload, '，已完成同步。');
   } catch (error) {
     setMessage(importResult, error.message, true);
@@ -147,6 +166,25 @@ searchForm.addEventListener('submit', async (event) => {
     renderSearch(payload);
   } catch (error) {
     setMessage(searchResult, error.message, true);
+  }
+});
+
+clearGraphButton.addEventListener('click', async () => {
+  if (!window.confirm('这会永久删除当前 Neo4j 图谱中的全部节点和关系。是否继续？')) return;
+  clearGraphButton.disabled = true;
+  try {
+    const result = await api('/api/graph/clear', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ confirm: true }),
+    });
+    setMessage(importResult, `已清空图谱，删除  个节点。`);
+    searchResult.replaceChildren(element('div', 'empty-state', '图谱已清空。'));
+    detailResult.replaceChildren(element('div', 'empty-state', '图谱已清空。'));
+  } catch (error) {
+    setMessage(importResult, error.message, true);
+  } finally {
+    clearGraphButton.disabled = false;
   }
 });
 
