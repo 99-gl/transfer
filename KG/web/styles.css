@@ -6,7 +6,7 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { cursor: pointer; }
 button:disabled { cursor: not-allowed; opacity: .48; }
 
@@ -36,7 +36,7 @@ main { margin: 0 auto; max-width: 1240px; padding: 28px 24px 44px; }
 
 .form-stack { display: grid; gap: 10px; }
 label { color: #4a5956; font-size: 14px; }
-input { border: 1px solid #b9c4c0; border-radius: 4px; min-height: 40px; padding: 8px 10px; width: 100%; }
+input, select { border: 1px solid #b9c4c0; border-radius: 4px; min-height: 40px; padding: 8px 10px; width: 100%; }
 input:focus { border-color: #34795d; outline: 2px solid #c9e2d5; }
 .file-field { display: grid; gap: 7px; }
 .file-field input { background: #f7faf8; padding: 7px; }

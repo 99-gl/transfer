@@ -8,7 +8,7 @@
 - 上传 legacy `nodes` / `edges` JSON，预览并同步到同一图谱。
 - 每次提交都按稳定 UUID 创建、更新、删除记录，不执行全库清空。
 - 提交后自动为 Excel/JSON 管理的节点和关系生成 embedding。
-- 关键词查询、语义查询和节点详情接口。
+- 关键词查询、语义查询、RRF 混合查询和节点详情接口。
 
 两种格式都是全量同步：上传文件中不存在的旧导入数据会被删除。因此每次应上传完整的当前数据文件，不能仅上传增量行或局部 JSON。
 
@@ -21,6 +21,7 @@ POST /api/imports/json/preview
 POST /api/imports/json/commit
 POST /api/search
 POST /api/semantic-search
+POST /api/hybrid-search
 POST /api/embeddings/rebuild
 GET  /api/nodes/{uuid}
 ```

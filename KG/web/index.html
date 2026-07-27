@@ -57,6 +57,11 @@
             </div>
           </div>
           <form id="search-form" class="search-row">
+            <select id="search-mode" aria-label="查询模式">
+              <option value="keyword">关键词</option>
+              <option value="semantic">语义</option>
+              <option value="hybrid">混合</option>
+            </select>
             <input id="search-query" type="search" placeholder="节点名称、序号、现象或识别方法" required />
             <button type="submit">查询</button>
           </form>

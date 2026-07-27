@@ -7,6 +7,7 @@ const commitButton = document.querySelector('#commit-button');
 const importResult = document.querySelector('#import-result');
 const searchForm = document.querySelector('#search-form');
 const searchResult = document.querySelector('#search-result');
+const searchMode = document.querySelector('#search-mode');
 const detailResult = document.querySelector('#node-detail');
 const connectionState = document.querySelector('#connection-state');
 const clearGraphButton = document.querySelector('#clear-graph-button');
@@ -137,7 +138,7 @@ function renderSearch(payload) {
     return;
   }
   const selected = new Set(payload.matched_node_ids);
-  searchResult.append(element('div', 'message', `命中 ${selected.size} 个节点，返回 ${payload.edges.length} 条直接关联关系。`));
+  searchResult.append(element('div', 'message', `命中 ${selected.size} 个节点，返回 ${payload.edges.length} 条关系。`));
   const list = element('div', 'result-list');
   payload.nodes.forEach((node) => {
     const row = element('div', 'node-row');
@@ -156,12 +157,15 @@ function renderSearch(payload) {
 searchForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const query = document.querySelector('#search-query').value.trim();
+  const mode = searchMode.value;
+  const endpoint = mode === 'keyword' ? '/api/search' : mode === 'semantic' ? '/api/semantic-search' : '/api/hybrid-search';
+  const requestBody = mode === 'keyword' ? { query, include_neighbors: true } : { query, limit: 20 };
   setMessage(searchResult, '正在查询图谱...');
   try {
-    const payload = await api('/api/search', {
+    const payload = await api(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ query, include_neighbors: true }),
+      body: JSON.stringify(requestBody),
     });
     renderSearch(payload);
   } catch (error) {
@@ -178,7 +182,7 @@ clearGraphButton.addEventListener('click', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ confirm: true }),
     });
-    setMessage(importResult, `已清空图谱，删除  个节点。`);
+    setMessage(importResult, `已清空图谱，删除 ${result.deleted_nodes} 个节点。`);
     searchResult.replaceChildren(element('div', 'empty-state', '图谱已清空。'));
     detailResult.replaceChildren(element('div', 'empty-state', '图谱已清空。'));
   } catch (error) {

@@ -9,7 +9,7 @@ from fastapi.staticfiles import StaticFiles
 from neo4j import AsyncGraphDatabase
 
 from app.config import get_settings
-from app.routers import graph, imports, semantic
+from app.routers import graph, hybrid, imports, semantic
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 WEB_DIR = ROOT_DIR / 'web'
@@ -35,6 +35,7 @@ app = FastAPI(title='EDA Knowledge Graph Workbench', version='0.1.0', lifespan=l
 app.include_router(imports.router)
 app.include_router(graph.router)
 app.include_router(semantic.router)
+app.include_router(hybrid.router)
 app.mount('/assets', StaticFiles(directory=str(WEB_DIR)), name='assets')
 
 
