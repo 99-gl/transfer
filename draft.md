@@ -40,3 +40,6 @@ done
 ```
 
 优先选择公司/学校或云厂商账户提供的专属 Docker Hub 加速地址（通常更稳定、带宽也更可控）；以上公共地址仅适合临时测试。测试返回 `HTTP=200` 且耗时稳定的源，再放到 `/etc/docker/daemon.json` 的 `registry-mirrors` 第一项。
+
+
+wget -O /dev/null --progress=bar:force https://mirrors.huaweicloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
