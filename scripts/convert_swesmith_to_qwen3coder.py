@@ -1,4 +1,13 @@
-"""Convert SWE-Smith trajectories to Qwen3-Coder multi-turn SFT JSONL.
+r"""Convert SWE-Smith trajectories to Qwen3-Coder multi-turn SFT JSONL.
+
+Usage (Linux shell):
+    python sweTrain/scripts/convert_swesmith_to_qwen3coder.py \
+      /data/all_swesmith.jsonl \
+      /data/swesmith_qwen3coder.jsonl \
+      --rejects /data/swesmith_rejects.jsonl
+
+To replace an existing output or rejects file, add ``--overwrite``. The input
+and output paths must be different.
 
 The input may contain either of the SWE-Smith message encodings:
 * legacy: ``messages`` is a JSON string; assistant tool calls are XML and tool
