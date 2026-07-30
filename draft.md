@@ -47,19 +47,30 @@ wget -O /dev/null --progress=bar:force https://mirrors.huaweicloud.com/centos/7/
 
 jq -r '
   select(.error | contains("str_replace_editor(str_replace) requires")) |
-  .source | fromjson | .messages[] |
+  (.source | fromjson).messages[] |
   select(.role == "assistant") | .tool_calls[]? |
-  select(.function.name == "str_replace_editor" and .function.arguments.command == "str_replace") |
+  select(
+    .function.name == "str_replace_editor" and
+    .function.arguments.command == "str_replace" and
+    (
+      (.function.arguments.old_str | type) != "string" or
+      (.function.arguments.new_str | type) != "string"
+    )
+  ) |
   .function.arguments |
-  "keys=\(keys|join(",")) old_str_type=\(.old_str|type) new_str_type=\(.new_str|type)"
+  "keys=\(keys|join(",")) old=\(.old_str|type) new=\(.new_str|type) file_text=\(.file_text|type)"
 ' /data/swesmith_claude_code_rejects.jsonl | sort | uniq -c
 
 
 jq -r '
-  select(.line == 3839) |
-  .source | fromjson | .messages[] |
+  select(.error | contains("str_replace_editor(create) has")) |
+  (.source | fromjson).messages[] |
   select(.role == "assistant") | .tool_calls[]? |
-  select(.function.name == "str_replace_editor" and .function.arguments.command == "create") |
+  select(
+    .function.name == "str_replace_editor" and
+    .function.arguments.command == "create" and
+    (.function.arguments.file_text | type) != "string"
+  ) |
   .function.arguments |
-  "keys=\(keys|join(",")) file_text_type=\(.file_text|type)"
+  "keys=\(keys|join(",")) file_text=\(.file_text|type)"
 ' /data/swesmith_claude_code_rejects.jsonl
