@@ -43,3 +43,25 @@ done
 
 
 wget -O /dev/null --progress=bar:force https://mirrors.huaweicloud.com/centos/7/isos/x86_64/CentOS-7-x86_64-Everything-2009.iso
+
+
+jq -r '
+  select(.error | contains("str_replace_editor(str_replace) requires")) |
+  .source | fromjson |
+  .messages[] |
+  select(.role == "assistant") |
+  .tool_calls[]? |
+  select(.function.name == "str_replace_editor" and .function.arguments.command == "str_replace") |
+  .function.arguments
+' /data/swesmith_claude_code_rejects.jsonl | head -1
+
+
+jq -r '
+  select(.error | contains("str_replace_editor(create) has")) |
+  .source | fromjson |
+  .messages[] |
+  select(.role == "assistant") |
+  .tool_calls[]? |
+  select(.function.name == "str_replace_editor" and .function.arguments.command == "create") |
+  .function.arguments
+' /data/swesmith_claude_code_rejects.jsonl
