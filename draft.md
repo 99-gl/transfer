@@ -74,3 +74,57 @@ jq -r '
   .function.arguments |
   "keys=\(keys|join(",")) file_text=\(.file_text|type)"
 ' /data/swesmith_claude_code_rejects.jsonl
+
+
+
+
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11790:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11815:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11848:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11880:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11885:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11951:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11964:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-11999:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12039:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12050:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12143:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12155:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12193:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12209:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12262:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12273:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12276:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12304:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12308:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12325:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12406:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12708:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12713:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-12774:latest
+docker pull swebench/sweb.eval.x86_64.django_1776_django-9296:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10323:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10435:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10466:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-10673:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-11510:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7590:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7748:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7757:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-7985:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8035:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8056:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8265:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8269:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8475:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8548:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8551:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8638:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-8721:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9229:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9230:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9281:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9320:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9367:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9461:latest
+docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9698:latest
