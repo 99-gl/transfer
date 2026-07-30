@@ -1,20 +1,23 @@
-r"""Validate multi-turn tool-use data against a real Qwen3-Coder tokenizer and Slime.
+r"""Audit multi-turn tool-use data with a real Qwen3-Coder tokenizer.
 
 Usage (Linux shell):
-    PYTHONPATH=/path/to/slime python sweTrain/scripts/audit_qwen3coder_sft_data.py \
+    python sweTrain/scripts/audit_qwen3coder_sft_data.py \
       /data/swesmith_claude_code.jsonl \
       --model /data/models/Qwen3-Coder-30B-A3B-Instruct \
       --context-length 32768 \
       --report /data/sft_audit.json \
       --errors /data/sft_audit_errors.jsonl
 
-Run this against the complete converted dataset before SFT.  It does not
-modify the input.  It exits non-zero if a structural error, chat-template
-rendering error, loss-mask mismatch, or over-length sample is found.
+Run this against the complete converted dataset before SFT. It does not modify
+the input and needs only ``transformers`` plus the model tokenizer files. It
+exits non-zero if a structural error, chat-template rendering error, tokenizer
+round-trip mismatch, or over-length sample is found.
 
 The tokenizer must be the exact checkpoint that will be used for training.
-The script imports Slime's MultiTurnLossMaskGenerator, so set PYTHONPATH to
-the Slime checkout (or run from that checkout) before invoking it.
+
+This is deliberately independent of Slime. It checks that the data can be
+rendered by Qwen3-Coder's native ``apply_chat_template(messages, tools=...)``;
+it does not check Slime's training loss mask.
 """
 
 from __future__ import annotations
@@ -27,9 +30,6 @@ from pathlib import Path
 from typing import Any
 
 from transformers import AutoTokenizer
-
-from slime.utils.mask_utils import MultiTurnLossMaskGenerator
-
 
 EXPECTED_TOOLS = {
     "Bash": {"required": {"command"}, "allowed": {"command", "timeout", "description", "run_in_background"}},
@@ -48,7 +48,6 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("input", type=Path, help="Converted JSONL with top-level messages and tools fields.")
     parser.add_argument("--model", required=True, help="Local path or Hugging Face id of the training checkpoint.")
     parser.add_argument("--context-length", type=int, required=True, help="Maximum complete-trajectory token length allowed for SFT.")
-    parser.add_argument("--loss-mask-type", choices=("qwen3", "qwen3_5"), default="qwen3")
     parser.add_argument("--report", type=Path, help="Write the compact JSON summary to this path.")
     parser.add_argument("--errors", type=Path, help="Write one compact JSON diagnostic per invalid input row.")
     parser.add_argument("--max-errors", type=int, default=20, help="Maximum diagnostics printed and written (default: 20).")
@@ -165,8 +164,6 @@ def main() -> int:
         raise SystemExit(f"input file does not exist: {args.input}")
 
     tokenizer = AutoTokenizer.from_pretrained(args.model, trust_remote_code=True)
-    mask_generator = MultiTurnLossMaskGenerator(tokenizer, tokenizer_type=args.loss_mask_type)
-
     totals: Counter[str] = Counter()
     roles: Counter[str] = Counter()
     calls: Counter[str] = Counter()
@@ -196,16 +193,11 @@ def main() -> int:
                 totals["tool_results"] += tool_results
 
                 expected_ids = tokenizer.apply_chat_template(messages, tools=tools, tokenize=True, return_dict=False)
-                token_ids, loss_mask = mask_generator.get_loss_mask(messages, tools=tools)
-                if token_ids != expected_ids:
-                    raise ValidationError("Slime loss-mask token sequence differs from tokenizer.apply_chat_template output")
-                if len(loss_mask) != len(expected_ids):
-                    raise ValidationError("loss mask length differs from rendered token length")
-                supervised = sum(loss_mask)
-                if supervised == 0 and assistant_turns:
-                    raise ValidationError("assistant turns exist but the loss mask supervises zero tokens")
+                rendered_text = tokenizer.apply_chat_template(messages, tools=tools, tokenize=False)
+                round_trip_ids = tokenizer(rendered_text, add_special_tokens=False)["input_ids"]
+                if expected_ids != round_trip_ids:
+                    raise ValidationError("chat-template token IDs differ from tokenizing its rendered text")
                 token_lengths.append(len(expected_ids))
-                totals["supervised_tokens"] += supervised
                 totals["rendered_tokens"] += len(expected_ids)
                 if len(expected_ids) > args.context_length:
                     totals["over_context_rows"] += 1
@@ -219,7 +211,6 @@ def main() -> int:
     summary = {
         "input": str(args.input),
         "model": args.model,
-        "loss_mask_type": args.loss_mask_type,
         "context_length": args.context_length,
         "rows_seen": totals["rows_seen"],
         "valid_rows": totals["valid_rows"],
@@ -230,7 +221,6 @@ def main() -> int:
         "tool_results": totals["tool_results"],
         "assistant_turns": totals["assistant_turns"],
         "rendered_tokens": totals["rendered_tokens"],
-        "supervised_tokens": totals["supervised_tokens"],
         "token_length": {
             "min": min(token_lengths, default=0),
             "p50": percentile(token_lengths, 0.50),
