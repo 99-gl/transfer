@@ -47,21 +47,19 @@ wget -O /dev/null --progress=bar:force https://mirrors.huaweicloud.com/centos/7/
 
 jq -r '
   select(.error | contains("str_replace_editor(str_replace) requires")) |
-  .source | fromjson |
-  .messages[] |
-  select(.role == "assistant") |
-  .tool_calls[]? |
+  .source | fromjson | .messages[] |
+  select(.role == "assistant") | .tool_calls[]? |
   select(.function.name == "str_replace_editor" and .function.arguments.command == "str_replace") |
-  .function.arguments
-' /data/swesmith_claude_code_rejects.jsonl | head -1
+  .function.arguments |
+  "keys=\(keys|join(",")) old_str_type=\(.old_str|type) new_str_type=\(.new_str|type)"
+' /data/swesmith_claude_code_rejects.jsonl | sort | uniq -c
 
 
 jq -r '
-  select(.error | contains("str_replace_editor(create) has")) |
-  .source | fromjson |
-  .messages[] |
-  select(.role == "assistant") |
-  .tool_calls[]? |
+  select(.line == 3839) |
+  .source | fromjson | .messages[] |
+  select(.role == "assistant") | .tool_calls[]? |
   select(.function.name == "str_replace_editor" and .function.arguments.command == "create") |
-  .function.arguments
+  .function.arguments |
+  "keys=\(keys|join(",")) file_text_type=\(.file_text|type)"
 ' /data/swesmith_claude_code_rejects.jsonl
