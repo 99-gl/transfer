@@ -64,6 +64,9 @@ RAY_ADDRESS="${RAY_ADDRESS:-http://127.0.0.1:8265}"
 NVLINK_COUNT="$(nvidia-smi topo -m 2>/dev/null | grep -o 'NV[0-9][0-9]*' | wc -l || true)"
 if [[ "$NVLINK_COUNT" -gt 0 ]]; then HAS_NVLINK=1; else HAS_NVLINK=0; fi
 
+# Qwen3-Coder-30B-A3B uses rope_theta=10,000,000. The generic Qwen3-30B
+# model script defaults to 1,000,000, so set the Coder-specific value first.
+export MODEL_ARGS_ROTARY_BASE="${MODEL_ARGS_ROTARY_BASE:-10000000}"
 source "${SLIME_DIR}/scripts/models/qwen3-30B-A3B.sh"
 
 CKPT_ARGS=(
