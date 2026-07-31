@@ -4,14 +4,15 @@
 #   # Run inside the official Slime image. Mount /data from the host first.
 #   export MODEL_DIR=/data/models/Qwen3-Coder-30B-A3B-Instruct
 #   export REF_LOAD=/data/checkpoints/Qwen3-Coder-30B-A3B_torch_dist
-#   export LOAD=/data/checkpoints/Qwen3-Coder-30B-A3B_sft_init
 #   export SAVE=/data/checkpoints/Qwen3-Coder-30B-A3B_swesmith_sft
 #   export TRAIN_DATA=/data/swesmith_claude_code.jsonl
 #   bash /data/sweTrain/scripts/run_qwen3_coder_30b_a3b_sft_slime.sh
 #
 # The official image provides Slime at /root/slime and Megatron-LM at
-# /root/Megatron-LM. REF_LOAD and LOAD must already be checkpoints converted
-# from MODEL_DIR with Slime's model-conversion workflow.
+# /root/Megatron-LM. REF_LOAD must be a checkpoint converted from MODEL_DIR
+# with Slime's model-conversion workflow. For the first SFT run, leave LOAD
+# unset: Slime initializes training from REF_LOAD. Set LOAD only when resuming
+# from an existing SFT checkpoint.
 #
 # This launch configuration is for one machine with 8 GPUs.  For a multi-node
 # run, start Ray workers yourself and set ACTOR_NUM_NODES accordingly.
@@ -22,7 +23,6 @@ SLIME_DIR="/root/slime"
 MEGATRON_DIR="/root/Megatron-LM"
 : "${MODEL_DIR:?Set MODEL_DIR to Qwen3-Coder-30B-A3B-Instruct.}"
 : "${REF_LOAD:?Set REF_LOAD to the converted immutable reference checkpoint.}"
-: "${LOAD:?Set LOAD to an initial converted training checkpoint.}"
 : "${SAVE:?Set SAVE to the output checkpoint directory.}"
 : "${TRAIN_DATA:?Set TRAIN_DATA to the converted JSONL dataset.}"
 
@@ -39,7 +39,7 @@ LEARNING_RATE="${LEARNING_RATE:-5e-6}"
 SAVE_INTERVAL="${SAVE_INTERVAL:-200}"
 START_RAY="${START_RAY:-1}"
 
-for path in "$SLIME_DIR" "$MEGATRON_DIR" "$MODEL_DIR" "$REF_LOAD" "$LOAD" "$TRAIN_DATA"; do
+for path in "$SLIME_DIR" "$MEGATRON_DIR" "$MODEL_DIR" "$REF_LOAD" "$TRAIN_DATA"; do
     [[ -e "$path" ]] || { echo "Required path does not exist: $path" >&2; exit 2; }
 done
 [[ "$((CONTEXT_PARALLEL_SIZE * MAX_TOKENS_PER_GPU))" -ge "$MAX_SEQUENCE_LENGTH" ]] || {
@@ -69,10 +69,14 @@ source "${SLIME_DIR}/scripts/models/qwen3-30B-A3B.sh"
 CKPT_ARGS=(
     --hf-checkpoint "$MODEL_DIR"
     --ref-load "$REF_LOAD"
-    --load "$LOAD"
     --save "$SAVE"
     --save-interval "$SAVE_INTERVAL"
 )
+
+if [[ -n "${LOAD:-}" ]]; then
+    [[ -e "$LOAD" ]] || { echo "LOAD does not exist: $LOAD" >&2; exit 2; }
+    CKPT_ARGS+=(--load "$LOAD")
+fi
 
 SFT_ARGS=(
     --rollout-function-path slime.rollout.sft_rollout.generate_rollout
