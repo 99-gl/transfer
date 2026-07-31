@@ -7,12 +7,12 @@ Usage (Linux shell):
       --errors /data/qwen_audit_errors.jsonl \
       --errors /data/slime_audit_errors.jsonl
 
-The error files must be JSONL records containing ``row`` and/or
-``instance_id``.  The generic Qwen tokenizer audit and the Slime loss-mask
-audit both produce this format.  A sample is removed when either its physical
-JSONL line number (``row``) or non-empty ``instance_id`` appears in any error
-file.  This lets a later Slime audit be added without changing the initial
-filtering workflow.
+The error files must be JSONL records containing a positive ``row``. The
+generic Qwen tokenizer audit and the Slime loss-mask audit both produce this
+format. A sample is removed only when its physical JSONL line number matches a
+row in an error file. This is intentionally row-only: source ``instance_id``
+values identify tasks or trajectory variants and must not cause other samples
+to be removed.
 
 The input is never modified. The output path must be new unless --overwrite is
 provided.
@@ -43,9 +43,8 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def load_selectors(paths: list[Path]) -> tuple[set[int], set[str], Counter[str]]:
+def load_selectors(paths: list[Path]) -> tuple[set[int], Counter[str]]:
     rows: set[int] = set()
-    instance_ids: set[str] = set()
     stats: Counter[str] = Counter()
 
     for path in paths:
@@ -69,16 +68,10 @@ def load_selectors(paths: list[Path]) -> tuple[set[int], set[str], Counter[str]]
                     stats["row_selectors"] += 1
                     found_selector = True
 
-                instance_id = record.get("instance_id")
-                if isinstance(instance_id, str) and instance_id:
-                    instance_ids.add(instance_id)
-                    stats["instance_id_selectors"] += 1
-                    found_selector = True
-
                 if not found_selector:
-                    raise ValueError(f"error record in {path}:{line_number} has neither a positive row nor a non-empty instance_id")
+                    raise ValueError(f"error record in {path}:{line_number} has no positive row")
                 stats["error_records"] += 1
-    return rows, instance_ids, stats
+    return rows, stats
 
 
 def main() -> int:
@@ -91,7 +84,7 @@ def main() -> int:
         raise SystemExit(f"output already exists: {args.output}; add --overwrite to replace it")
 
     try:
-        rejected_rows, rejected_instance_ids, selector_stats = load_selectors(args.errors)
+        rejected_rows, selector_stats = load_selectors(args.errors)
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
 
@@ -110,15 +103,9 @@ def main() -> int:
                 raise SystemExit(f"input line {row_number} is not a JSON object")
 
             stats["input_samples"] += 1
-            instance_id = row.get("instance_id")
-            by_row = row_number in rejected_rows
-            by_instance_id = isinstance(instance_id, str) and instance_id in rejected_instance_ids
-            if by_row or by_instance_id:
+            if row_number in rejected_rows:
                 stats["removed_samples"] += 1
-                if by_row:
-                    stats["removed_by_row"] += 1
-                if by_instance_id:
-                    stats["removed_by_instance_id"] += 1
+                stats["removed_by_row"] += 1
                 continue
 
             destination.write(json.dumps(row, ensure_ascii=False, separators=(",", ":")) + "\n")
@@ -130,12 +117,10 @@ def main() -> int:
         "errors": [str(path) for path in args.errors],
         "error_records": stats["error_records"],
         "unique_rejected_rows": len(rejected_rows),
-        "unique_rejected_instance_ids": len(rejected_instance_ids),
         "input_samples": stats["input_samples"],
         "kept_samples": stats["kept_samples"],
         "removed_samples": stats["removed_samples"],
         "removed_by_row": stats["removed_by_row"],
-        "removed_by_instance_id": stats["removed_by_instance_id"],
     }
     print(json.dumps(summary, ensure_ascii=False, indent=2))
     return 0
