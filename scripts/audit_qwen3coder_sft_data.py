@@ -170,43 +170,54 @@ def main() -> int:
     token_lengths: list[int] = []
     diagnostics: list[dict[str, Any]] = []
 
-    with args.input.open("r", encoding="utf-8") as source:
-        for row_number, line in enumerate(source, 1):
-            if args.limit is not None and totals["rows_seen"] >= args.limit:
-                break
-            if not line.strip():
-                continue
-            totals["rows_seen"] += 1
-            instance_id = None
-            try:
-                row = json.loads(line)
-                if not isinstance(row, dict):
-                    raise ValidationError("top-level value must be an object")
-                instance_id = row.get("instance_id")
-                messages = row.get("messages")
-                tools = row.get("tools")
-                validate_schema(tools)
-                row_roles, row_calls, assistant_turns, tool_results = validate_messages(messages)
-                roles.update(row_roles)
-                calls.update(row_calls)
-                totals["assistant_turns"] += assistant_turns
-                totals["tool_results"] += tool_results
+    error_destination = None
+    if args.errors:
+        args.errors.parent.mkdir(parents=True, exist_ok=True)
+        error_destination = args.errors.open("w", encoding="utf-8")
+    try:
+        with args.input.open("r", encoding="utf-8") as source:
+            for row_number, line in enumerate(source, 1):
+                if args.limit is not None and totals["rows_seen"] >= args.limit:
+                    break
+                if not line.strip():
+                    continue
+                totals["rows_seen"] += 1
+                instance_id = None
+                try:
+                    row = json.loads(line)
+                    if not isinstance(row, dict):
+                        raise ValidationError("top-level value must be an object")
+                    instance_id = row.get("instance_id")
+                    messages = row.get("messages")
+                    tools = row.get("tools")
+                    validate_schema(tools)
+                    row_roles, row_calls, assistant_turns, tool_results = validate_messages(messages)
+                    roles.update(row_roles)
+                    calls.update(row_calls)
+                    totals["assistant_turns"] += assistant_turns
+                    totals["tool_results"] += tool_results
 
-                expected_ids = tokenizer.apply_chat_template(messages, tools=tools, tokenize=True, return_dict=False)
-                rendered_text = tokenizer.apply_chat_template(messages, tools=tools, tokenize=False)
-                round_trip_ids = tokenizer(rendered_text, add_special_tokens=False)["input_ids"]
-                if expected_ids != round_trip_ids:
-                    raise ValidationError("chat-template token IDs differ from tokenizing its rendered text")
-                token_lengths.append(len(expected_ids))
-                totals["rendered_tokens"] += len(expected_ids)
-                if len(expected_ids) > args.context_length:
-                    totals["over_context_rows"] += 1
-                    raise ValidationError(f"rendered length {len(expected_ids)} exceeds context length {args.context_length}")
-                totals["valid_rows"] += 1
-            except Exception as exc:  # Keep auditing later rows after a malformed trajectory.
-                totals["invalid_rows"] += 1
-                if len(diagnostics) < args.max_errors:
-                    diagnostics.append(json_error(row_number, instance_id, type(exc).__name__, str(exc)))
+                    expected_ids = tokenizer.apply_chat_template(messages, tools=tools, tokenize=True, return_dict=False)
+                    rendered_text = tokenizer.apply_chat_template(messages, tools=tools, tokenize=False)
+                    round_trip_ids = tokenizer(rendered_text, add_special_tokens=False)["input_ids"]
+                    if expected_ids != round_trip_ids:
+                        raise ValidationError("chat-template token IDs differ from tokenizing its rendered text")
+                    token_lengths.append(len(expected_ids))
+                    totals["rendered_tokens"] += len(expected_ids)
+                    if len(expected_ids) > args.context_length:
+                        totals["over_context_rows"] += 1
+                        raise ValidationError(f"rendered length {len(expected_ids)} exceeds context length {args.context_length}")
+                    totals["valid_rows"] += 1
+                except Exception as exc:  # Keep auditing later rows after a malformed trajectory.
+                    totals["invalid_rows"] += 1
+                    item = json_error(row_number, instance_id, type(exc).__name__, str(exc))
+                    if error_destination:
+                        error_destination.write(json.dumps(item, ensure_ascii=False) + "\n")
+                    if len(diagnostics) < args.max_errors:
+                        diagnostics.append(item)
+    finally:
+        if error_destination:
+            error_destination.close()
 
     summary = {
         "input": str(args.input),
@@ -235,12 +246,6 @@ def main() -> int:
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
         args.report.write_text(rendered_summary + "\n", encoding="utf-8")
-    if args.errors:
-        args.errors.parent.mkdir(parents=True, exist_ok=True)
-        with args.errors.open("w", encoding="utf-8") as destination:
-            for diagnostic in diagnostics:
-                destination.write(json.dumps(diagnostic, ensure_ascii=False) + "\n")
-
     if totals["invalid_rows"] or totals["over_context_rows"]:
         return 1
     return 0
