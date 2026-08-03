@@ -1,0 +1,2 @@
+# One run per line: INSTANCE_ID MODEL_NAME TOKEN IMAGE
+django__django-11099 qwen3-coder-30b-a3b-via-claude-code token-001 swebench/sweb.eval.x86_64.django_1776_django-11099:latest

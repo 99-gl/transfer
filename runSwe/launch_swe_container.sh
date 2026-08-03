@@ -35,15 +35,14 @@ mounts=(
 )
 
 docker run --rm -it \
-  --add-host=host.docker.internal:host-gateway \
+  --network agent-net \
   --entrypoint /bin/bash \
   "${mounts[@]}" \
   --env "INSTANCE_ID=$instance_id" \
   --env "MODEL_NAME=$model_name" \
-  --env ANTHROPIC_BASE_URL \
+  --env ANTHROPIC_BASE_URL=http://slime-anthropic-adapter:18001 \
   --env ANTHROPIC_AUTH_TOKEN \
-  --env ANTHROPIC_API_KEY \
-  --env ANTHROPIC_MODEL \
+  --env ANTHROPIC_MODEL=Qwen3-Coder-30B-A3B \
   "$image" \
   -lc '
     set -eu
