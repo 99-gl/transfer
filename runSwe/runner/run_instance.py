@@ -72,13 +72,14 @@ def tee_stream(source: TextIO, log: TextIO, console: TextIO) -> None:
 
 
 def run_claude(args: argparse.Namespace, stdout_path: Path, stderr_path: Path) -> int:
-    prompt = args.prompt_file.read_text(encoding="utf-8")
+    # Older task images may encode Python argv as ASCII; let Bash read UTF-8 prompt bytes.
     command = [
+        "/bin/bash",
+        "-lc",
+        'exec "$1" -p --permission-mode bypassPermissions "$(cat "$2")"',
+        "--",
         args.claude_command,
-        "-p",
-        "--permission-mode",
-        "bypassPermissions",
-        prompt,
+        str(args.prompt_file),
     ]
     try:
         with stdout_path.open("w", encoding="utf-8") as stdout_log, stderr_path.open(
