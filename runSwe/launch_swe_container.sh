@@ -34,7 +34,12 @@ mounts=(
   --volume "$output_dir:/output"
 )
 
-docker run --rm -it \
+docker_tty_args=()
+if [[ -t 0 && -t 1 ]]; then
+  docker_tty_args=(-it)
+fi
+
+docker run --rm "${docker_tty_args[@]}" \
   --network agent-net \
   --entrypoint /bin/bash \
   "${mounts[@]}" \
