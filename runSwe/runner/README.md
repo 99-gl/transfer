@@ -29,8 +29,9 @@ python /runner/run_instance.py \
   --output-dir /output
 ```
 
-Use `--claude-arg=VALUE` repeatedly for Claude Code options required by the
-container setup. The runner does not enable any permission-bypass option itself.
+The runner always invokes Claude Code with
+`--permission-mode bypassPermissions` so it can modify the prepared `/testbed`
+repository without interactive permission prompts.
 
 For example, the host can make these paths available to the task container:
 

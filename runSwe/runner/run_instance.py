@@ -52,12 +52,6 @@ def build_parser() -> argparse.ArgumentParser:
         default="claude",
         help="Claude Code executable (default: %(default)s).",
     )
-    parser.add_argument(
-        "--claude-arg",
-        action="append",
-        default=[],
-        help="Extra argument passed to Claude Code; repeat as needed.",
-    )
     return parser
 
 
@@ -75,7 +69,13 @@ def tee_stream(source: TextIO, log: TextIO, console: TextIO) -> None:
 
 def run_claude(args: argparse.Namespace, stdout_path: Path, stderr_path: Path) -> int:
     prompt = args.prompt_file.read_text(encoding="utf-8")
-    command = [args.claude_command, "-p", *args.claude_arg, prompt]
+    command = [
+        args.claude_command,
+        "-p",
+        "--permission-mode",
+        "bypassPermissions",
+        prompt,
+    ]
     try:
         with stdout_path.open("w", encoding="utf-8") as stdout_log, stderr_path.open(
             "w", encoding="utf-8"
