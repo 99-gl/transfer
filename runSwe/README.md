@@ -10,7 +10,7 @@ Create a config file with one task per line:
 django__django-11099 qwen3-coder-30b-a3b-via-claude-code token-001 swebench/sweb.eval.x86_64.django_1776_django-11099:latest
 ```
 
-Start with at most two concurrent tasks:
+Start with at most five concurrent tasks:
 
 ```bash
 bash launch_swe_batch.sh config.txt
