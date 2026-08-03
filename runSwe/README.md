@@ -23,3 +23,11 @@ MAX_JOBS=4 bash launch_swe_batch.sh config.txt
 ```
 
 Results are written to `runs/<INSTANCE_ID>/`.
+
+Merge the per-instance prediction shards before running the SWE-bench harness:
+
+```bash
+python merge_predictions.py --runs-dir runs --output predictions.jsonl
+```
+
+The command replaces an existing output file, but never an input shard.
