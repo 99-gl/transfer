@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Export SWE-bench Lite prompts to ``transfer/runSwe/prompts``.
+"""Export SWE-bench prompts to ``transfer/runSwe/prompts``.
 
 Usage:
-    python export_swe_bench_lite_prompts.py --instance-id django__django-11099
-    python export_swe_bench_lite_prompts.py --instance-id ID_ONE --instance-id ID_TWO
-    python export_swe_bench_lite_prompts.py --slice 0:10
+    python export_swe_bench_prompts.py --instance-id django__django-11099
+    python export_swe_bench_prompts.py --instance-id ID_ONE --instance-id ID_TWO
+    python export_swe_bench_prompts.py --slice 0:10
 
 Exactly one selection method is required. The dataset split is always ``test``.
 """
@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-DATASET_NAME = "princeton-nlp/SWE-bench_Lite"
+DATASET_NAME = "MariusHobbhahn/swe-bench-verified-mini"
 DATASET_SPLIT = "test"
 DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parent / "prompts"
 
@@ -46,7 +46,7 @@ def parse_slice(value: str) -> slice:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Export English coding-agent prompts for SWE-bench Lite instances."
+        description="Export English coding-agent prompts for SWE-bench instances."
     )
     selection = parser.add_mutually_exclusive_group(required=True)
     selection.add_argument(
@@ -82,7 +82,7 @@ def render_prompt(record: dict[str, Any]) -> str:
     hints_text = str(record.get("hints_text") or "").strip()
 
     sections = [
-        "# SWE-bench Lite Coding Task",
+        "# SWE-bench Coding Task",
         "",
         "You are a coding agent working in `/testbed`.",
         "",
