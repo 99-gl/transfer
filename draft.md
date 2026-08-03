@@ -128,3 +128,13 @@ docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9320:latest
 docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9367:latest
 docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9461:latest
 docker pull swebench/sweb.eval.x86_64.sphinx-doc_1776_sphinx-9698:latest
+
+
+cd /root/slime
+
+PYTHONPATH=/root/slime python tools/convert_torch_dist_to_hf_parallel.py \
+  --input-dir /data/checkpoints/Qwen3-Coder-30B-A3B_swesmith_sft/iter_000000XX \
+  --output-dir /data/models/Qwen3-Coder-30B-A3B-swesmith-sft-hf \
+  --origin-hf-dir /data/models/Qwen3-Coder-30B-A3B-Instruct \
+  --load-max-workers 8 \
+  --save-max-workers 16
