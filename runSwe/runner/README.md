@@ -32,6 +32,9 @@ python /runner/run_instance.py \
 The runner always invokes Claude Code with
 `--permission-mode bypassPermissions` so it can modify the prepared `/testbed`
 repository without interactive permission prompts.
+Claude output is always saved as UTF-8 logs. When an older task image provides
+an ASCII-only console, non-ASCII console output is escaped rather than stopping
+the runner's log-forwarding thread.
 
 For example, the host can make these paths available to the task container:
 

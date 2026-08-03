@@ -61,7 +61,11 @@ def tee_stream(source: TextIO, log: TextIO, console: TextIO) -> None:
         for chunk in iter(source.readline, ""):
             log.write(chunk)
             log.flush()
-            console.write(chunk)
+            try:
+                console.write(chunk)
+            except UnicodeEncodeError:
+                # Older SWE-bench images can expose an ASCII-only console.
+                console.write(chunk.encode("ascii", errors="backslashreplace").decode("ascii"))
             console.flush()
     finally:
         source.close()
