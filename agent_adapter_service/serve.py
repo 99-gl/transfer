@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Usage:
-#   python serve.py --model /path/to/model --sglang-url http://127.0.0.1:30000 --output-dir data
+#   uv run python serve.py --model /path/to/model --sglang-url http://127.0.0.1:30000 --output-dir data
 
 """Run the standalone adapter service."""
 

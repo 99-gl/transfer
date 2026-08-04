@@ -61,7 +61,7 @@ SGLangClient（sglang.py） ──► output_token_ids + logprobs
 因此，若模型部署时使用了 SGLang 的 `--tool-call-parser` 或 `--reasoning-parser`，启动 adapter 时也要传入**同一个模型对应的同名配置**：
 
 ```bash
-python serve.py \
+uv run python serve.py \
   --model /models/MODEL \
   --sglang-url http://127.0.0.1:30000 \
   --output-dir ./data \
@@ -120,9 +120,9 @@ JSONL 会存储 prompt、tool result 和模型输出，按敏感数据处理。`
 
 ```bash
 cd agent_adapter_service
-python -m pip install -r requirements.txt
+uv sync
 
-python serve.py \
+uv run python serve.py \
   --model /models/MODEL \
   --sglang-url http://127.0.0.1:30000 \
   --output-dir ./data \
@@ -141,5 +141,7 @@ python serve.py \
 ## 验证
 
 ```bash
-python -m unittest discover -s tests -v
+uv run python -m unittest discover -s tests -v
 ```
+
+`requirements.txt` 仅保留给不使用 uv 的兼容场景；标准安装入口是 `pyproject.toml` + `uv sync`。首次使用需要先安装 uv（见 <https://docs.astral.sh/uv/getting-started/installation/>）。

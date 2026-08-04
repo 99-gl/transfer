@@ -1,0 +1,18 @@
+[project]
+name = "agent-adapter-service"
+version = "0.1.0"
+description = "OpenAI and Anthropic protocol adapter for SGLang with per-trajectory JSONL capture"
+requires-python = ">=3.10"
+dependencies = [
+    "aiohttp>=3.9",
+    "sglang",
+    "transformers>=4.45",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.uv]
+package = false
