@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+data/
+tests/_test_trajectory_output/
