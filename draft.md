@@ -178,3 +178,19 @@ python -c "import torch; print(torch.cuda.device_count()); print([torch.cuda.get
 sed -i 's/cuda-python>=13\.0/cuda-python>=12,<13/' python/pyproject.toml
 sed -i 's/flashinfer_python\[cu13\]/flashinfer_python[cu12]/' python/pyproject.toml
 sed -i 's/nvidia-cutlass-dsl\[cu13\]/nvidia-cutlass-dsl/' python/pyproject.toml
+
+
+python -c "
+import importlib.metadata as m
+import torch, triton, sglang
+
+print('torch=', torch.__version__)
+print('cuda=', torch.version.cuda)
+print('triton=', triton.__version__)
+print('sglang=', sglang.__version__)
+
+for p in ['sglang-kernel', 'flashinfer-python', 'nvidia-cutlass-dsl', 'apache-tvm-ffi', 'sgl-deep-gemm', 'transformers']:
+    print(p, '=', m.version(p))
+"
+
+python -m pip check
