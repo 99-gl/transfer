@@ -173,3 +173,8 @@ g++ --version | head -1
 ninja --version
 python -c "import torch; print(torch.cuda.device_count()); print([torch.cuda.get_device_capability(i) for i in range(torch.cuda.device_count())])"
 ```
+
+
+sed -i 's/cuda-python>=13\.0/cuda-python>=12,<13/' python/pyproject.toml
+sed -i 's/flashinfer_python\[cu13\]/flashinfer_python[cu12]/' python/pyproject.toml
+sed -i 's/nvidia-cutlass-dsl\[cu13\]/nvidia-cutlass-dsl/' python/pyproject.toml
