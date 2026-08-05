@@ -194,3 +194,26 @@ for p in ['sglang-kernel', 'flashinfer-python', 'nvidia-cutlass-dsl', 'apache-tv
 "
 
 python -m pip check
+
+
+## swift-megatron
+
+```
+uv pip install --upgrade-strategy only-if-needed \
+  -c transfer/constraints-megatron-swift-py312-cu129.txt \
+  -r transfer/requirements-megatron-swift-py312-cu129.txt
+
+MAX_JOBS=8 uv pip install --no-build-isolation \
+  --config-settings="--build-option=--cpp_ext" \
+  --config-settings="--build-option=--cuda_ext" \
+  "git+https://github.com/NVIDIA/apex.git@master"
+
+MAX_JOBS=8 uv pip install --no-build-isolation "flash-attn==2.8.3"
+
+uv pip install --editable /path/to/intern-hw/ms-swift --no-deps
+```
+
+```
+python -c "import torch, apex, flash_attn, megatron.core, mcore_bridge, transformer_engine; print(torch.__version__, torch.version.cuda)"
+megatron sft --help
+```

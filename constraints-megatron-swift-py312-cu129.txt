@@ -1,0 +1,5 @@
+# Preserve the CUDA 12.9 PyTorch ABI already present in the uv environment.
+# Pass this file with: uv pip install -c <this-file> ...
+torch==2.11.0+cu129
+torchvision==0.26.0
+torchaudio==2.11.0

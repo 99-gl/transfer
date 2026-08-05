@@ -1,0 +1,67 @@
+# Megatron-SWIFT runtime dependencies for an existing Linux uv environment.
+#
+# Target ABI already installed in the environment:
+#   Python 3.12
+#   torch 2.11.0+cu129
+#   torchvision 0.26.0
+#   torchaudio 2.11.0
+#
+# Install this file together with constraints-megatron-swift-py312-cu129.txt.
+# Do not add torch, torchvision, or torchaudio here: they are supplied by the
+# existing CUDA 12.9 environment and are pinned by the constraint file.
+#
+# Apex and FlashAttention are intentionally installed in separate commands.
+# Both require the server's CUDA compiler and --no-build-isolation; see the
+# installation commands documented beside this file in the repository task.
+
+# ms-swift's normal SFT/data/template dependencies.
+accelerate
+addict
+aiohttp
+attrdict
+binpacking
+charset_normalizer
+cpm_kernels
+dacite
+datasets>=3.0,<4.8.5
+einops
+fastapi
+gradio>=3.40.0,<6.0
+importlib_metadata
+json_repair
+matplotlib
+modelscope>=1.23
+nltk
+numpy
+openai
+oss2
+pandas
+peft>=0.15,<0.20
+pillow
+PyYAML>=5.4
+requests
+rouge
+safetensors
+scipy
+sentencepiece
+simplejson>=3.3.0
+sortedcontainers>=1.5.9
+tensorboard
+tiktoken
+tqdm
+transformers>=4.51,<5.13.0
+transformers_stream_generator
+trl>=0.15,<1.0
+uvicorn
+zstandard
+
+# Megatron-SWIFT versions recommended by this repository's Quick Start.
+# mcore-bridge loads the Hugging Face Qwen3-Coder checkpoint directly.
+mcore-bridge==1.6.0
+megatron-core==0.18.0
+transformer-engine[pytorch]==2.16.0
+
+# Build helpers used by the native Apex and FlashAttention installations.
+ninja>=1.11
+packaging>=24
+pybind11>=2.13
