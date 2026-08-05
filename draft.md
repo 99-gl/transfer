@@ -138,3 +138,38 @@ PYTHONPATH=/root/slime python tools/convert_torch_dist_to_hf_parallel.py \
   --origin-hf-dir /data/models/Qwen3-Coder-30B-A3B-Instruct \
   --load-max-workers 8 \
   --save-max-workers 16
+
+
+## dsv4
+```
+python -c "
+import importlib.metadata as m
+import torch, triton, sglang
+
+print('torch=', torch.__version__)
+print('torch_cuda=', torch.version.cuda)
+print('triton=', triton.__version__)
+print('sglang=', sglang.__version__)
+
+for package in [
+    'sglang-kernel',
+    'flashinfer-python',
+    'nvidia-cutlass-dsl',
+    'apache-tvm-ffi',
+    'sgl-deep-gemm',
+    'transformers',
+]:
+    try:
+        print(package, '=', m.version(package))
+    except m.PackageNotFoundError:
+        print(package, '= MISSING')
+"
+```
+
+```
+nvcc --version
+gcc --version | head -1
+g++ --version | head -1
+ninja --version
+python -c "import torch; print(torch.cuda.device_count()); print([torch.cuda.get_device_capability(i) for i in range(torch.cuda.device_count())])"
+```
