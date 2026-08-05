@@ -114,6 +114,58 @@ class AdapterServerTests(unittest.IsolatedAsyncioTestCase):
         record = json.loads(self.adapter.recorder.path_for_trajectory(trajectory_id).read_text(encoding="utf-8"))
         self.assertEqual(record["trajectory_id"], trajectory_id)
 
+    async def test_anthropic_middle_system_message_is_folded(self):
+        response = await self.client.post(
+            "/v1/messages",
+            headers={"Authorization": "Bearer system-fold"},
+            json={
+                "model": "test",
+                "max_tokens": 9,
+                "messages": [
+                    {"role": "user", "content": "hello"},
+                    {"role": "system", "content": "remember this"},
+                    {"role": "user", "content": "continue"},
+                ],
+            },
+        )
+        self.assertEqual(response.status, 200)
+        self.assertTrue(any("<system-reminder>" in message["content"] for message in self.adapter.tokenizer.messages))
+        self.assertEqual(self.adapter.tokenizer.messages[-1], {"role": "user", "content": "continue"})
+
+    async def test_anthropic_stream_uses_delta_events(self):
+        response = await self.client.post(
+            "/v1/messages",
+            headers={"Authorization": "Bearer stream-session"},
+            json={"model": "test", "stream": True, "max_tokens": 9, "messages": [{"role": "user", "content": "hello"}]},
+        )
+        raw = await response.text()
+        self.assertEqual(response.status, 200)
+        self.assertIn("event: message_start", raw)
+        self.assertIn("event: content_block_delta", raw)
+        self.assertIn('"type": "text_delta"', raw)
+        self.assertIn("event: message_stop", raw)
+
+    async def test_anthropic_tool_arguments_are_returned_as_json_object(self):
+        self.adapter.parser_config = OutputParserConfig(tool_call_parser="model-tool-parser")
+        with patch(
+            "adapter_service.server.parse_model_output",
+            return_value=ParsedOutput("", "", [{"name": "lookup", "input": {"query": "adapter"}}]),
+        ):
+            response = await self.client.post(
+                "/v1/messages",
+                headers={"Authorization": "Bearer tool-session"},
+                json={
+                    "model": "test",
+                    "max_tokens": 9,
+                    "tools": [{"name": "lookup", "input_schema": {"type": "object"}}],
+                    "messages": [{"role": "user", "content": "find it"}],
+                },
+            )
+        payload = await response.json()
+        self.assertEqual(response.status, 200)
+        tool_block = next(block for block in payload["content"] if block["type"] == "tool_use")
+        self.assertEqual(tool_block["input"], {"query": "adapter"})
+
     def test_xml_fallback_parses_tool_call_without_sglang_parser(self):
         parsed = parse_model_output(
             "before <tool_call><function=lookup><parameter=q>adapter</parameter></function></tool_call> after",

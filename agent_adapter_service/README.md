@@ -71,6 +71,8 @@ uv run python serve.py \
 
 `MODEL_TOOL_CALL_PARSER` 与 `MODEL_REASONING_PARSER` 都是 `/models/MODEL` 的配置，不代表两类模型：前者描述这个模型的工具调用格式，后者描述这个模型的 reasoning 格式。两者都必须与启动同一台 SGLang server 时使用的 `--tool-call-parser` 和 `--reasoning-parser` 完全一致。
 
+为兼容已有 slime 启动方式，未传 CLI 参数时会读取 `SGLANG_TOOL_CALL_PARSER` 与 `SGLANG_REASONING_PARSER` 环境变量；CLI 参数优先级更高。
+
 若未传 `--tool-call-parser`，adapter 会尝试 Anthropic 风格 XML tool call 作为有限 fallback；其他模型私有格式不会猜测解析，以免把普通文本误当工具调用。若配置 parser 但本地环境没有 `sglang` Python 包，adapter 会明确报错，而不会悄悄返回错误格式。
 
 `requirements.txt` 包含 `sglang`，因为 parser 在 adapter 进程内执行，而不仅在远端 server 上执行。
@@ -145,3 +147,5 @@ uv run python -m unittest discover -s tests -v
 ```
 
 `requirements.txt` 仅保留给不使用 uv 的兼容场景；标准安装入口是 `pyproject.toml` + `uv sync`。首次使用需要先安装 uv（见 <https://docs.astral.sh/uv/getting-started/installation/>）。
+
+项目显式声明了 adapter/parser 和客户端兼容链路需要的 `aiohttp`、`sglang`、`torch`、`transformers`、`tokenizers`、`safetensors`、`jinja2`、`pydantic`、`httpx[http2]`、`openai` 与 `anthropic`。`uv sync` 会安装 torch；若 SGLang 模型服务与 adapter 共用环境，需按该机器的 CUDA 版本选择相应 PyTorch 构建。

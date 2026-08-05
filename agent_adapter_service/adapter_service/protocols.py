@@ -7,6 +7,7 @@ service talks to SGLang. This module contains no network or persistence code.
 from __future__ import annotations
 
 import hashlib
+import copy
 import json
 import secrets
 import time
@@ -31,12 +32,14 @@ def normalize_openai(request: web.Request, body: dict[str, Any]) -> NormalizedRe
 
 
 def normalize_anthropic(request: web.Request, body: dict[str, Any]) -> NormalizedRequest:
+    prepared = copy.deepcopy(body)
+    _fold_mid_list_system(prepared)
     return _normalized_request(
         protocol="anthropic",
         identity=_anthropic_identity(request),
         body=body,
-        messages=_anthropic_messages(body.get("messages"), body.get("system")),
-        tools=_anthropic_tools(body.get("tools")),
+        messages=_anthropic_messages(prepared.get("messages"), prepared.get("system")),
+        tools=_anthropic_tools(prepared.get("tools")),
         max_token_keys=("max_tokens",),
         stop_keys=("stop_sequences",),
         stream=body.get("stream") is True or "text/event-stream" in request.headers.get("Accept", ""),
@@ -111,10 +114,33 @@ def anthropic_response(spec: NormalizedRequest, generation: Generation, parsed: 
 async def anthropic_stream(request: web.Request, response: dict[str, Any]) -> web.StreamResponse:
     stream = web.StreamResponse(headers={"Content-Type": "text/event-stream", "Cache-Control": "no-cache"})
     await stream.prepare(request)
-    start = {"type": "message_start", "message": {**response, "content": []}}
+    start = {
+        "type": "message_start",
+        "message": {
+            "id": response["id"],
+            "type": "message",
+            "role": "assistant",
+            "model": response["model"],
+            "content": [],
+            "stop_reason": None,
+            "stop_sequence": None,
+            "usage": {"input_tokens": response["usage"]["input_tokens"], "output_tokens": 0},
+        },
+    }
     await _anthropic_event(stream, "message_start", start)
     for index, block in enumerate(response["content"]):
-        await _anthropic_event(stream, "content_block_start", {"type": "content_block_start", "index": index, "content_block": block})
+        block_type = block["type"]
+        if block_type == "thinking":
+            content_block = {"type": "thinking", "thinking": ""}
+            delta = {"type": "thinking_delta", "thinking": block["thinking"]}
+        elif block_type == "text":
+            content_block = {"type": "text", "text": ""}
+            delta = {"type": "text_delta", "text": block["text"]}
+        else:
+            content_block = {"type": "tool_use", "id": block["id"], "name": block["name"], "input": {}}
+            delta = {"type": "input_json_delta", "partial_json": json.dumps(block["input"], ensure_ascii=False)}
+        await _anthropic_event(stream, "content_block_start", {"type": "content_block_start", "index": index, "content_block": content_block})
+        await _anthropic_event(stream, "content_block_delta", {"type": "content_block_delta", "index": index, "delta": delta})
         await _anthropic_event(stream, "content_block_stop", {"type": "content_block_stop", "index": index})
     await _anthropic_event(
         stream,
@@ -280,6 +306,56 @@ def _anthropic_messages(messages: Any, system: Any) -> list[dict[str, Any]]:
                 assistant["tool_calls"] = tool_calls
             normalized.append(assistant)
     return normalized
+
+
+_MID_SYSTEM_PREFIX = "<system-reminder>\n"
+_MID_SYSTEM_SUFFIX = "\n</system-reminder>\n"
+
+
+def _fold_mid_list_system(body: dict[str, Any]) -> None:
+    """Move non-leading system messages into adjacent user content.
+
+    Claude Code can insert system reminders in the middle of a conversation,
+    while many model chat templates only accept a leading system message.
+    """
+    messages = body.get("messages")
+    if not isinstance(messages, list) or not messages:
+        return
+    system_indexes = [
+        index for index, message in enumerate(messages)
+        if isinstance(message, dict) and message.get("role") == "system" and index > 0
+    ]
+    if not system_indexes:
+        return
+
+    def as_blocks(message: dict[str, Any]) -> list[dict[str, Any]]:
+        content = message.get("content")
+        if isinstance(content, list):
+            return content
+        message["content"] = [{"type": "text", "text": content if isinstance(content, str) else ""}]
+        return message["content"]
+
+    tombstone = object()
+    for index in system_indexes:
+        system_message = messages[index]
+        reminder = {"type": "text", "text": _MID_SYSTEM_PREFIX + _content_text(system_message.get("content")) + _MID_SYSTEM_SUFFIX}
+        target = None
+        for candidate_index in range(index - 1, -1, -1):
+            if isinstance(messages[candidate_index], dict) and messages[candidate_index].get("role") == "user":
+                target = messages[candidate_index]
+                as_blocks(target).append(reminder)
+                break
+        if target is None:
+            for candidate_index in range(index + 1, len(messages)):
+                if isinstance(messages[candidate_index], dict) and messages[candidate_index].get("role") == "user":
+                    target = messages[candidate_index]
+                    as_blocks(target).insert(0, reminder)
+                    break
+        if target is None:
+            messages[index] = {"role": "user", "content": [reminder]}
+        else:
+            messages[index] = tombstone
+    body["messages"] = [message for message in messages if message is not tombstone]
 
 
 def _canonical_tool_call(name: str, arguments: Any) -> dict[str, Any]:

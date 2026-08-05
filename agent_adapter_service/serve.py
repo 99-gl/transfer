@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import os
 
 from aiohttp import web
 from transformers import AutoTokenizer
@@ -23,10 +24,12 @@ def main() -> None:
     parser.add_argument("--output-dir", required=True, help="Directory that will contain trajectories/<trajectory-id>.jsonl files")
     parser.add_argument(
         "--tool-call-parser",
+        default=os.environ.get("SGLANG_TOOL_CALL_PARSER") or None,
         help="SGLang tool-call parser for this model; must match the model server's --tool-call-parser setting",
     )
     parser.add_argument(
         "--reasoning-parser",
+        default=os.environ.get("SGLANG_REASONING_PARSER") or None,
         help="SGLang reasoning parser for this model; must match the model server's --reasoning-parser setting",
     )
     parser.add_argument("--host", default="0.0.0.0", help="Bind address")
@@ -44,6 +47,15 @@ def main() -> None:
             tool_call_parser=args.tool_call_parser,
             reasoning_parser=args.reasoning_parser,
         ),
+    )
+    logging.info(
+        "adapter=%s:%d upstream=%s tool_call_parser=%s reasoning_parser=%s output_dir=%s",
+        args.host,
+        args.port,
+        args.sglang_url,
+        args.tool_call_parser,
+        args.reasoning_parser,
+        args.output_dir,
     )
     web.run_app(server.app, host=args.host, port=args.port, handler_cancellation=True)
 
