@@ -195,6 +195,36 @@ for p in ['sglang-kernel', 'flashinfer-python', 'nvidia-cutlass-dsl', 'apache-tv
 
 python -m pip check
 
+### key
+cd "$PATCH_ROOT"
+
+mkdir -p secrets
+umask 077
+openssl rand -hex 32 > secrets/sglang_api_key
+chmod 600 secrets/sglang_api_key
+
+
+### start_basic
+```启动
+CUDA_VISIBLE_DEVICES=0,1,2,3 \
+SGLANG_ROOT="$SGLANG_ROOT" \
+MODEL_PATH=/models/converted/DeepSeek-V4-Flash-0731-MoE-MXFP4-BF16 \
+API_KEY_FILE="$PATCH_ROOT/secrets/sglang_api_key" \
+bash "$PATCH_ROOT/scripts/launch_dsv4_flash_0731_tp4.sh"
+```
+
+### test
+cd "$PATCH_ROOT"
+
+python scripts/smoke_test_api.py \
+  --base-url http://127.0.0.1:30000 \
+  --api-key-file secrets/sglang_api_key \
+  --suite full
+
+### start DSpark
+cd "$PATCH_ROOT"
+bash scripts/launch_dsv4_flash_0731_tp4_dspark.sh
+
 
 ## swift-megatron
 
