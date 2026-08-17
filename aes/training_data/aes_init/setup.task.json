@@ -1,0 +1,1 @@
+{"task_id":"aes_init_setup_worst_path","checkpoint":"aes_init.enc","stage":"aes_init","analysis":"setup","report":"setup.rpt","question":"Find the worst setup path startpoint, endpoint, slack, and path group.","golden":{"startpoint":"_19477_/Q","endpoint":"_19702_/D","slack_ns":-0.076,"path_group":"aes_clk"}}

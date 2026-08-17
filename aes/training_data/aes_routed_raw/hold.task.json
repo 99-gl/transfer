@@ -1,0 +1,1 @@
+{"task_id":"aes_routed_raw_hold_worst_path","checkpoint":"aes_routed_raw.enc","stage":"aes_routed_raw","analysis":"hold","report":"hold.rpt","question":"Find the worst hold path startpoint, endpoint, slack, and path group.","golden":{"startpoint":"key[72]","endpoint":"_19519_/D","slack_ns":-0.001,"path_group":"aes_clk"}}
