@@ -10,6 +10,10 @@
 
 `initial_state/design.enc`
 
+01 任务输出的最差 Hold 路径信息：
+
+`inputs/worst_hold_path.json`
+
 当前违例信息：
 
 `inputs/fanout_violation.json`

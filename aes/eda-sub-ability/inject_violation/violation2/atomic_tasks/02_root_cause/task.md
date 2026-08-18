@@ -6,6 +6,10 @@
 
 ## 输入数据
 
+01 任务输出的最差 Hold 路径信息位于：
+
+`inputs/worst_hold_path.json`
+
 当前违例事实位于：
 
 `inputs/fanout_violation.json`

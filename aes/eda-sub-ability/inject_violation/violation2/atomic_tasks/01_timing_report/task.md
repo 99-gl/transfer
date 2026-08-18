@@ -1,8 +1,8 @@
-# Task 002_1：最大扇出违例报告
+# Task 002_1：最差路径获取
 
 ## 任务目标
 
-基于 Cadence Innovus 19.10 对当前提供的注入后设计执行最大扇出检查，并识别 `done` 网上的真实 max-fanout 违例。
+基于 Cadence Innovus 19.10 对当前提供的初始设计执行 Hold 时序分析，并识别最差 Hold 路径。
 
 ## 输入数据
 
@@ -14,7 +14,18 @@
 
 ## 任务要求
 
-基于 Cadence Innovus 19.10 对当前设计执行 `reportFanoutViolation`，并将报告生成到 `reports/`。从报告中提取违例网、驱动 pin、最大允许扇出、实际扇出和扇出裕量。分析过程中不得修改设计或时序约束。
+基于 Cadence Innovus 19.10 对当前设计执行 PostRoute Hold 时序分析，并将报告生成到：
+
+`reports/hold`
+
+从生成的报告中提取最差路径的：
+
+- Beginpoint；
+- Endpoint；
+- Slack，单位为 ns；
+- Path Group。
+
+分析过程中不得修改设计或时序约束。
 
 ## 结果要求
 
@@ -23,15 +34,13 @@
 格式如下：
 ```json
 {
-  "check_type": "max_fanout",
-  "net": "",
-  "driver": "",
-  "max_fanout": 0,
-  "actual_fanout": 0,
-  "fanout_slack": 0
+  "beginpoint": "",
+  "endpoint": "",
+  "slack_ns": 0.0,
+  "path_group": ""
 }
 ```
 
 ## 验证方式
 
-验证器会将所有字段与本场景注入的 `done` 网 max-fanout 违例进行比较。
+只有当 `answer.json` 中的 Beginpoint、Endpoint、Slack 和 Path Group 与实际最差 Hold 路径一致时才算通过。

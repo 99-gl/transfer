@@ -1,4 +1,4 @@
 {
   "root_cause": "fanout",
-  "evidence": "done has 25 loads against a max-fanout limit of 16; fanout slack is -9."
+  "evidence": "done 网由 _19478_/Q 驱动，实际连接 25 个负载，超过最大扇出 16，报告扇出裕量为 -9。"
 }
