@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "tool": {
+    "name": "Cadence Innovus",
+    "version": "19.10-p002_1"
+  },
+  "dataset": "dataset_repair_v1",
+  "sample": "state_0001",
+  "mode": "explicit",
+  "source": "remediation_round3:dataset_repair_v1/state_0001",
+  "strategy": "fanout_resize_legalize",
+  "status": "PASS",
+  "valid_19_10": true,
+  "timing_ps": {
+    "before": {
+      "setup": {
+        "wns": -27.099999999999998,
+        "tns": -27.099999999999998,
+        "violating_paths": 1,
+        "endpoint_count": 1
+      },
+      "hold": {
+        "wns": 0.4,
+        "tns": 0,
+        "violating_paths": 0,
+        "endpoint_count": 0
+      }
+    },
+    "after": {
+      "setup": {
+        "wns": 55.7,
+        "tns": 0,
+        "endpoint_count": 0
+      },
+      "hold": {
+        "wns": 0.4,
+        "tns": 0,
+        "endpoint_count": 0
+      }
+    }
+  },
+  "checks": {
+    "reports_complete": true,
+    "failure_created": true,
+    "timing_fixed": true,
+    "drv_clean": true,
+    "drc_clean": true,
+    "connectivity_clean": true,
+    "placement_clean": true,
+    "physical_clean": true,
+    "max_transition_violations": 0,
+    "max_capacitance_violations": 0,
+    "max_fanout_violations": 135
+  },
+  "identity_sha256": {
+    "repair_tcl": "34568b475316a33522b141fe5d7a4019371bf2cf8fa5770ad7387079f121243b",
+    "before_failure_signature": "cfaf60c88d043740f0e41f477875c8040f11ffbbece758a7d0367f34457de10c",
+    "before_setup_endpoint_set": "6f65e2ef3a33b9a682c2af8002f92b583fbbaff4bc8e159921cbefc9b23474b0",
+    "before_hold_endpoint_set": "8f9607cc60d69af4fa0e5f50c6f2d3858fa6c0491f20ee22dca60ab0ab89c527"
+  },
+  "assets": {
+    "perturb_tcl": "perturb.tcl",
+    "repair_tcl": "repair.tcl",
+    "before_snapshot": "before/snapshot/before.enc",
+    "before_reports": "before/reports",
+    "after_snapshot": "after/snapshot/after.enc",
+    "after_reports": "after/reports",
+    "replay_status": "replay/replay_status.env",
+    "replay_log": "replay/replay.log"
+  },
+  "provenance": {
+    "trajectory_results": "review_20260810/trajectory_results.json",
+    "clean_v2_evidence": "review_20260810/raw/clean_v2/slot0/run1/results/dataset_repair_v1/state_0001",
+    "original_perturb": "actions/dataset_repair_v1/state_0001/perturb.tcl",
+    "original_repair": "actions/dataset_repair_v1/state_0001/repair.tcl",
+    "original_before_snapshot": "snapshots/dataset_repair_v1/state_0001/before.enc",
+    "original_after_snapshot": "snapshots/dataset_repair_v1/state_0001/after.enc",
+    "original_replay_log": "review_20260810/raw/clean_v2/slot0/run1/logs/dataset_repair_v1__state_0001.log"
+  }
+}

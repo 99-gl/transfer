@@ -1,0 +1,40 @@
+**WARN: (TCLCMD-1131):	'The software has performed a full/partial timing reset. All existing timing path and timing point collection references have been invalidated and may no longer be referenced.'
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1518.3)
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1609.03 CPU=0:00:04.3 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1609.03 CPU=0:00:04.8 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1541.0M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1541.0M)
+Starting SI iteration 2
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1450.14)
+Glitch Analysis: View functional_typical -- Total Number of Nets Skipped = 15. 
+Glitch Analysis: View functional_typical -- Total Number of Nets Analyzed = 16332. 
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  1.4 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1570.77 CPU=0:00:00.3 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1570.77 CPU=0:00:00.4 REAL=0:00:00.0)
+*info: 25 clock nets excluded
+*info: 2 special nets excluded.
+*info: 229 no-driver nets excluded.
+*info: transition time violations report
+# Net / InstPin                               MaxTranTime      TranTime         TranSlack        CellPort             Remark    
+#
+
+*info: there is 0 max_tran violation in the design.

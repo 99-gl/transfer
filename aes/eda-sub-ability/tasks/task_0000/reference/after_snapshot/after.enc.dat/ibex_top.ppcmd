@@ -1,0 +1,44 @@
+# PPCMD 1 
+# sroute -connect corePin -nets {VDD VSS} -corePinTarget ring -allowJogging 1 -allowLayerChange 1 -layerChangeRange {metal1 metal10}
+# 2 
+# 16 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addRing -nets {VDD VSS} -type core_rings -follow core -layer {top metal9 bottom metal9 left metal10 right metal10} -width {top 0.80 bottom 0.80 left 0.80 right 0.80} -spacing {top 0.80 bottom 0.80 left 0.80 right 0.80} -offset {top 2.00 bottom 2.00 left 2.00 right 2.00}
+# 1 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1600 9 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 227430 12160 227430 439760 
+# END_RING_PT_INFO_LIST 
+# VSS 1600 10 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 12140 225960 442720 225960 
+# END_RING_PT_INFO_LIST 
+# VDD 1600 9 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 227430 15360 227430 436560 
+# END_RING_PT_INFO_LIST 
+# VDD 1600 10 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 15340 225960 439520 225960 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+

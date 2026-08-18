@@ -1,0 +1,1312 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2019 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v19.10-p002_1, built Fri Apr 19 15:18:11 PDT 2019
+Options:	-no_gui -files /home/host/ibex_i19_reaudit_20260811/assets/dataset_innovus_19_10/review_20260810/tools/replay_from_before_19_10.tcl 
+Date:		Tue Aug 11 10:05:17 2026
+Host:		qingteng (x86_64 w/Linux 4.14.174) (4cores*4cpus*Intel(R) Xeon(R) Processor @ 2.90GHz 22528KB)
+OS:		CentOS Linux release 7.9.2009 (Core)
+
+License:
+		invs	Innovus Implementation System	19.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+**ERROR: (IMPOAX-142):	Could not open shared library libinnovusoax22.so : liboaDesign.so: cannot open shared object file: No such file or directory
+
+**ERROR: (IMPOAX-142):	Could not open shared library libcdsSkillPcell.so : /opt/cadence/INNOVUS/tools.lnx86/lib/64bit/libcdsSkillPcell.so: undefined symbol: _ZTIN12OpenAccess_413oaFSComponentE
+
+**ERROR: (IMPOAX-142):	OA features will be disabled in this session.
+
+Create and set the environment variable TMPDIR to /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/tmp/innovus_temp_24357_qingteng_host_Qbfm03.
+
+Change the soft stacksize limit to 0.2%RAM (15 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+Sourcing file "/home/host/ibex_i19_reaudit_20260811/assets/dataset_innovus_19_10/review_20260810/tools/replay_from_before_19_10.tcl" ...
+#% Begin load design ... (date=08/11 10:05:26, mem=463.1M)
+Set Default Input Pin Transition as 0.1 ps.
+Loading design 'ibex_top' saved by 'Innovus' '19.10-p002_1' on 'Mon Aug 10 20:28:23 2026'.
+**ERROR: (IMPOAX-820):	The OA features are disabled in the current session of Innovus because the oax shared library could not be loaded properly. This could be because your installation was not properly configured. To enable OA features, exit the current session and re-launch Innovus either after fixing your installation by running the Configure Installation phase, or after setting the OA_HOME variable to point to a proper OA installation. Check the "OpenAccess Installation and Configuration Guide" manual for more information.
+
+**ERROR: (IMPOAX-850):	oaxCreateCdsLibArray command cannot be run as OA features are disabled in this session.
+% Begin Load MMMC data ... (date=08/11 10:05:27, mem=464.5M)
+% End Load MMMC data ... (date=08/11 10:05:27, total cpu=0:00:00.0, real=0:00:00.0, peak res=464.8M, current mem=464.8M)
+
+Loading LEF file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/libs/lef/NangateOpenCellLibrary.tech.lef ...
+
+Loading LEF file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/libs/lef/NangateOpenCellLibrary.macro.mod.lef ...
+Set DBUPerIGU to M2 pitch 380.
+
+viaInitial starts at Tue Aug 11 10:05:27 2026
+viaInitial ends at Tue Aug 11 10:05:27 2026
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Loading view definition file from /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/viewDefinition.tcl
+Reading nangate45_typical timing library '/home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib' ...
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X4' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X1' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X2' is not defined in the library. (File /home/host/ibex_i19_replay_20260810/input/ibex_top_small_postroute.enc.dat/libs/mmmc/NangateOpenCellLibrary_typical.lib)
+Message <TECHLIB-436> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 135 cells in library 'NangateOpenCellLibrary' 
+*** End library_loading (cpu=0.01min, real=0.00min, mem=29.9M, fe_cpu=0.26min, fe_real=0.17min, fe_mem=603.7M) ***
+% Begin Load netlist data ... (date=08/11 10:05:27, mem=482.2M)
+*** Begin netlist parsing (mem=603.7M) ***
+Created 135 new cells from 1 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+Reading verilogBinary netlist '/home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/vbin/ibex_top.v.bin'
+Reading binary database version 2 in 1-threaded mode
+
+*** Memory Usage v#1 (Current mem = 617.703M, initial mem = 262.344M) ***
+*** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=617.7M) ***
+% End Load netlist data ... (date=08/11 10:05:27, total cpu=0:00:00.0, real=0:00:00.0, peak res=492.1M, current mem=492.1M)
+Set top cell to ibex_top.
+Hooked 135 DB cells to tlib cells.
+Starting recursive module instantiation check.
+No recursion found.
+Building hierarchical netlist for Cell ibex_top ...
+*** Netlist is unique.
+** info: there are 136 modules.
+** info: there are 14235 stdCell insts.
+
+*** Memory Usage v#1 (Current mem = 653.117M, initial mem = 262.344M) ***
+*info: set bottom ioPad orient R0
+Generated pitch 1.68 in metal10 is different from 1.6 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal8 is different from 0.8 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal7 is different from 0.8 defined in technology file in preferred direction.
+Set Default Net Delay as 1000 ps.
+Set Default Net Load as 0.5 pF. 
+Set Default Input Pin Transition as 0.1 ps.
+Loading preference file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/gui.pref.tcl ...
+##  Process: 45            (User Set)               
+##     Node: (not set)                           
+
+##  Check design process and node:  
+##  Design tech node is not set.
+
+Applying the recommended capacitance filtering threshold values for 45nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+*Info: initialize multi-corner CTS.
+Reading timing constraints file '/home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/mmmc/modes/functional/functional.sdc' ...
+Current (total cpu=0:00:16.0, real=0:00:11.0, peak res=665.5M, current mem=665.5M)
+ibex_top
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=707.6M, current mem=707.6M)
+Current (total cpu=0:00:16.1, real=0:00:11.0, peak res=707.6M, current mem=707.6M)
+Reading latency file '/home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/mmmc/views/functional_typical/latency.sdc' ...
+Total number of combinational cells: 100
+Total number of sequential cells: 29
+Total number of tristate cells: 6
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+Total number of usable buffers: 9
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+Total number of usable inverters: 6
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells:
+Total number of identified usable delay cells: 0
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+Reading floorplan file - /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.fp.gz (mem = 858.8M).
+% Begin Load floorplan data ... (date=08/11 10:05:28, mem=710.5M)
+*info: reset 16817 existing net BottomPreferredLayer and AvoidDetour
+net ignore based on current view = 0
+Deleting old partition specification.
+Set FPlanBox to (0 0 454860 451920)
+Generated pitch 1.68 in metal10 is different from 1.6 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal8 is different from 0.8 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal7 is different from 0.8 defined in technology file in preferred direction.
+ ... processed partition successfully.
+Reading binary special route file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.fp.spr.gz (Created by Innovus v19.10-p002_1 on Mon Aug 10 20:28:22 2026, version: 1)
+There are 25 nets with weight being set
+There are 25 nets with bottomPreferredRoutingLayer being set
+There are 25 nets with avoidDetour being set
+Extracting standard cell pins and blockage ...... 
+Pin and blockage extraction finished
+Delete all existing relative floorplan constraints.
+% End Load floorplan data ... (date=08/11 10:05:28, total cpu=0:00:00.1, real=0:00:00.0, peak res=715.4M, current mem=714.9M)
+Reading congestion map file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.route.congmap.gz ...
+% Begin Load SymbolTable ... (date=08/11 10:05:28, mem=715.2M)
+Suppress "**WARN ..." messages.
+Un-suppress "**WARN ..." messages.
+% End Load SymbolTable ... (date=08/11 10:05:28, total cpu=0:00:00.0, real=0:00:00.0, peak res=717.7M, current mem=717.6M)
+Loading place ...
+% Begin Load placement data ... (date=08/11 10:05:28, mem=717.6M)
+Reading placement file - /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.place.gz.
+** Reading stdCellPlacement_binary (Created by Innovus v19.10-p002_1 on Mon Aug 10 20:28:22 2026, version# 2) ...
+Read Views for adaptive view pruning ...
+Read 0 views from Binary DB for adaptive view pruning
+*** Checked 2 GNC rules.
+*** applyConnectGlobalNets disabled.
+*** Completed restorePlace (cpu=0:00:00.1 real=0:00:00.0 mem=857.8M) ***
+Total net length = 1.727e+05 (8.386e+04 8.884e+04) (ext = 2.619e+04)
+% End Load placement data ... (date=08/11 10:05:28, total cpu=0:00:00.1, real=0:00:00.0, peak res=724.9M, current mem=724.1M)
+Reading PG file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.pg.gz
+*** Completed restorePGFile (cpu=0:00:00.0 real=0:00:00.0 mem=853.8M) ***
+% Begin Load routing data ... (date=08/11 10:05:28, mem=724.7M)
+Reading routing file - /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.route.gz.
+Reading Innovus routing data (Created by Innovus v19.10-p002_1 on Mon Aug 10 20:28:22 2026 Format: 19.1) ...
+*** Total 16590 nets are successfully restored.
+*** Completed restoreRoute (cpu=0:00:00.1 real=0:00:01.0 mem=872.8M) ***
+% End Load routing data ... (date=08/11 10:05:29, total cpu=0:00:00.1, real=0:00:01.0, peak res=745.5M, current mem=744.7M)
+TAT_INFO: restoreCongMap REAL = 0 : CPU = 0 : MEM = 0.
+Reading property file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.prop
+*** Completed restoreProperty (cpu=0:00:00.0 real=0:00:00.0 mem=878.8M) ***
+Set Default Input Pin Transition as 0.1 ps.
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+**WARN: (IMPEXT-2773):	The via resistance between layers M0 and M1 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M1 and M2 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M2 and M3 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M3 and M4 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M4 and M5 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M5 and M6 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M6 and M7 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M7 and M8 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M8 and M9 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2773):	The via resistance between layers M9 and M10 could not be determined from the LEF technology file because the via resistance specification is missing. A default of 4 Ohms will be used as via resistance between these layers.
+Type 'man IMPEXT-2773' for more detail.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M1 is not defined in the cap table. Therefore, the LEF value 0.38 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M2 is not defined in the cap table. Therefore, the LEF value 0.25 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M3 is not defined in the cap table. Therefore, the LEF value 0.25 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M4 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M5 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M6 is not defined in the cap table. Therefore, the LEF value 0.21 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M7 is not defined in the cap table. Therefore, the LEF value 0.075 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M8 is not defined in the cap table. Therefore, the LEF value 0.075 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M9 is not defined in the cap table. Therefore, the LEF value 0.03 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+**WARN: (IMPEXT-2766):	The sheet resistance for layer M10 is not defined in the cap table. Therefore, the LEF value 0.03 will be used instead. To avoid this message, update the relevant cap table to include the sheet resistance for the specified layer and read it back in.
+Summary of Active RC-Corners : 
+ 
+ Analysis View: functional_typical
+    RC-Corner Name        : nangate45_rc_typical
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 25 Celsius
+    RC-Corner Cap Table   : ''
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from Cap Table]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from Cap Table]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+Initializing multi-corner resistance tables ...
+Start generating vias ...
+#Skip building auto via since it is not turned on.
+Via generation completed.
+% Begin Load power constraints ... (date=08/11 10:05:29, mem=761.3M)
+source /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top_power_constraints.tcl
+'set_default_switching_activity' finished successfully.
+% End Load power constraints ... (date=08/11 10:05:29, total cpu=0:00:00.0, real=0:00:00.0, peak res=761.8M, current mem=761.8M)
+% Begin load AAE data ... (date=08/11 10:05:29, mem=761.8M)
+AAE DB initialization (MEM=908.695 CPU=0:00:00.2 REAL=0:00:00.0) 
+% End load AAE data ... (date=08/11 10:05:29, total cpu=0:00:00.4, real=0:00:00.0, peak res=768.7M, current mem=768.7M)
+Restoring CCOpt config...
+  Extracting original clock gating for core_clock...
+    clock_tree core_clock contains 1942 sinks and 1 clock gates.
+    Extraction for core_clock complete.
+  Extracting original clock gating for core_clock done.
+  The skew group core_clock/functional was created. It contains 1942 sinks and 1 sources.
+  Added 1 ignore pin (of 1 specified) to skew group 1. Skew group now contains 1 ignore pin.
+  The skew group core_clock/functional was created. It contains 1942 sinks and 1 sources.
+**WARN: (IMPCCOPT-2332):	The property adjacent_rows_legal is deprecated. It still works, but it may be removed in a future release.
+Restoring CCOpt config done.
+Total number of combinational cells: 100
+Total number of sequential cells: 29
+Total number of tristate cells: 6
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+Total number of usable buffers: 9
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+Total number of usable inverters: 6
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells:
+Total number of identified usable delay cells: 0
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+**WARN: (IMPCTE-107):	The following globals have been obsoleted since version 19.10-p002_1. They will be removed in the next release. 
+timing_enable_default_delay_arc
+#% End load design ... (date=08/11 10:05:29, total cpu=0:00:02.6, real=0:00:03.0, peak res=776.2M, current mem=774.8M)
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPEXT-2766         10  The sheet resistance for layer %s is not...
+WARNING   IMPEXT-2773         10  The via resistance between layers %s and...
+WARNING   IMPCCOPT-2332        1  The property %s is deprecated. It still ...
+ERROR     IMPOAX-820           1  The OA features are disabled in the curr...
+ERROR     IMPOAX-850           1  %s command cannot be run as OA features ...
+WARNING   IMPCTE-107           1  The following globals have been obsolete...
+WARNING   IMPTCM-77            1  Option "%s" for command %s is obsolete a...
+WARNING   TECHLIB-436         20  Attribute '%s' on '%s' pin '%s' of cell ...
+*** Message Summary: 43 warning(s), 2 error(s)
+
+**WARN: (IMPEXT-3518):	The lower process node is set (using command 'setDesignMode') but the technology file for TQuantus extraction not specified. Therefore, going for postRoute (effortLevel low) extraction instead of recommended extractor 'TQuantus' for lower nodes. Use command 'set_analysis_view/update_rc_corner' to specify the technology file for TQuantus extraction to take place.
+Extraction called for design 'ibex_top' of instances=32822 and nets=16817 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design ibex_top.
+RC Extraction called in multi-corner(1) mode.
+**WARN: (IMPEXT-6197):	The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+Type 'man IMPEXT-6197' for more detail.
+**WARN: (IMPEXT-3032):	Because the cap table file was not provided, it will be created internally with the following process info:
+* Layer Id             : 1 - M1
+      Thickness        : 0.13
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 2 - M2
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 3 - M3
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 4 - M4
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 5 - M5
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 6 - M6
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 7 - M7
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 8 - M8
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 9 - M9
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+* Layer Id             : 10 - M10
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+extractDetailRC Option : -outfile /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/tmp/innovus_temp_24357_qingteng_host_Qbfm03/ibex_top_24357_jn8KFd.rcdb.d  -basic
+RC Mode: PostRoute -effortLevel low [Basic CapTable, LEF Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 911.7M)
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via1_4' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+Extracted 10.0012% (CPU Time= 0:00:00.2  MEM= 971.7M)
+Extracted 20.0011% (CPU Time= 0:00:00.3  MEM= 978.7M)
+Extracted 30.0011% (CPU Time= 0:00:00.4  MEM= 981.7M)
+Extracted 40.001% (CPU Time= 0:00:00.5  MEM= 983.7M)
+Extracted 50.0009% (CPU Time= 0:00:00.6  MEM= 985.7M)
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via2_5' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+Extracted 60.0009% (CPU Time= 0:00:00.6  MEM= 986.7M)
+Extracted 70.0008% (CPU Time= 0:00:00.7  MEM= 987.7M)
+Extracted 80.0007% (CPU Time= 0:00:00.8  MEM= 989.7M)
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via3_2' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+Extracted 90.0007% (CPU Time= 0:00:00.9  MEM= 991.7M)
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via4_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via5_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via6_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via7_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via8_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+**WARN: (IMPEXT-2882):	Unable to find the resistance for via 'via9_0' in Cap table or LEF or OA files. The default value of 4.0 ohms is being assigned. To avoid this, check the Cap table and LEF and OA files, provide the resistance and read the files again.
+Extracted 100% (CPU Time= 0:00:01.3  MEM= 997.7M)
+Number of Extracted Resistors     : 269047
+Number of Extracted Ground Cap.   : 283302
+Number of Extracted Coupling Cap. : 557544
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 981.7M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:01.8  Real Time: 0:00:02.0  MEM: 985.695M)
+Starting SI iteration 1 using Infinite Timing Windows
+Multithreaded Timing Analysis is initialized with 4 threads
+
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1116.41)
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1415.23 CPU=0:00:04.3 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1415.23 CPU=0:00:04.9 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1242.2M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1242.2M)
+Starting SI iteration 2
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1247.37)
+Glitch Analysis: View functional_typical -- Total Number of Nets Skipped = 15. 
+Glitch Analysis: View functional_typical -- Total Number of Nets Analyzed = 16332. 
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  1.9 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1367.99 CPU=0:00:00.3 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1367.99 CPU=0:00:00.4 REAL=0:00:00.0)
+**WARN: (TCLCMD-1131):	'The software has performed a full/partial timing reset. All existing timing path and timing point collection references have been invalidated and may no longer be referenced.'
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1221.01)
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1397.67 CPU=0:00:04.2 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1397.67 CPU=0:00:04.6 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1324.7M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1324.7M)
+Starting SI iteration 2
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1260.79)
+Glitch Analysis: View functional_typical -- Total Number of Nets Skipped = 15. 
+Glitch Analysis: View functional_typical -- Total Number of Nets Analyzed = 16332. 
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  12.8 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1362.41 CPU=0:00:00.5 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1362.41 CPU=0:00:00.5 REAL=0:00:01.0)
+**WARN: (TCLCMD-1469):	No timing paths found matching the specified criteria. Empty collection returned.
+Deleted 16235 physical insts (cell - / prefix FILLER).
+Did not delete 2352 physical insts as they did not match the given prefix <FILLER>.
+**WARN: (IMPOPT-6115):	ECO batchmode has been activated. Set setEcoMode -batchMode to false when done with ECO operations.
+Type 'man IMPOPT-6115' for more detail.
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+**WARN: (TCLCMD-1131):	'The software has performed a full/partial timing reset. All existing timing path and timing point collection references have been invalidated and may no longer be referenced.'
+Resize _17917_ (OAI21_X1) to OAI21_X2.
+*** Starting refinePlace (0:00:33.9 mem=1339.1M) ***
+Total net bbox length = 1.727e+05 (8.386e+04 8.884e+04) (ext = 1.890e+04)
+Move report: Detail placement moves 0 insts, mean move: 0.00 um, max move: 0.00 um
+	Runtime: CPU: 0:00:00.3 REAL: 0:00:00.0 MEM: 1339.1MB
+Summary Report:
+Instances move: 0 (out of 14210 movable)
+Instances flipped: 0
+Mean displacement: 0.00 um
+Max displacement: 0.00 um 
+Total net bbox length = 1.727e+05 (8.386e+04 8.884e+04) (ext = 1.890e+04)
+Runtime: CPU: 0:00:00.3 REAL: 0:00:00.0 MEM: 1339.1MB
+*** Finished refinePlace (0:00:34.2 mem=1339.1M) ***
+#% Begin globalDetailRoute (date=08/11 10:05:37, mem=1060.6M)
+
+globalDetailRoute
+
+#WARNING (NRIF-78) The option routeWithEco combined with routeWithTimingDriven is not recommended due to possible high memory usage, increased run-time, and increased routing pattern pertubations. Please use with caution.
+#setNanoRouteMode -drouteEndIteration 20
+#setNanoRouteMode -droutePostRouteSpreadWire "auto"
+#setNanoRouteMode -routeBottomRoutingLayer 2
+#setNanoRouteMode -routeStrictlyHonorNonDefaultRule "false"
+#setNanoRouteMode -routeTopRoutingLayer 10
+#setNanoRouteMode -routeWithEco true
+#setNanoRouteMode -routeWithSiDriven true
+#setNanoRouteMode -routeWithTimingDriven true
+#Start globalDetailRoute on Tue Aug 11 10:05:38 2026
+#
+Initializing multi-corner resistance tables ...
+#num needed restored net=0
+#need_extraction net=0 (total=16817)
+#Processed 16237 dirty instances, 0 dirty terms, 0 dirty fterms, 0 dirty pgterms, 0 misc dirty regions, 0 same cell-size swaps
+#(1 inst marked dirty, reset pre-exisiting dirty flag on 1 inst, 6 nets marked need extraction)
+#NanoRoute Version 19.10-p002_1 NR190418-1643/19_10-UB
+#Skip comparing routing design signature in db-snapshot flow
+#Using multithreading with 4 threads.
+#Start routing data preparation on Tue Aug 11 10:05:38 2026
+#
+#Minimum voltage of a net in the design = 0.000.
+#Maximum voltage of a net in the design = 1.100.
+#Voltage range [0.000 - 1.100] has 16810 nets.
+#Voltage range [1.100 - 1.100] has 1 net.
+#Voltage range [0.000 - 0.000] has 6 nets.
+#Restoring pin access data from file /home/host/ibex_i19_final_80_snapshots/results/dataset_repair_v1/state_0001/before.enc.dat/ibex_top.apa ...
+#Done restoring pin access data
+# metal1       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.13500
+# metal2       V   Track-Pitch = 0.19000    Line-2-Via Pitch = 0.14000
+# metal3       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.14000
+# metal4       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal5       H   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal6       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal7       H   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal8       V   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal9       H   Track-Pitch = 1.60000    Line-2-Via Pitch = 1.60000
+# metal10      V   Track-Pitch = 1.68000    Line-2-Via Pitch = 1.60000
+#Regenerating Ggrids automatically.
+#Auto generating G-grids with size=15 tracks, using layer metal3's pitch = 0.14000.
+#Using automatically generated G-grids.
+#Done routing data preparation.
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1075.18 (MB), peak = 1145.58 (MB)
+#Merging special wires: starts on Tue Aug 11 10:05:38 2026 with memory = 1075.52 (MB), peak = 1145.58 (MB)
+#
+#Merging special wires: cpu:00:00:00, real:00:00:00, mem:1.1 GB, peak:1.1 GB --1.32 [4]--
+#WARNING (NRDB-1005) Cannot establish connection to PIN B2 at ( 94.40000 12.16000 ) on metal1 for NET FE_OFN131_u_ibex_core_if_stage_i_gen_prefetch_buffer_prefetch_buffer_i_valid_req_q. The NET is considered partially routed. Visually verify wiring at the specified location as the wire/via origin may not touch the PIN. This NET will be rerouted with same or different wiring.
+#WARNING (NRDB-1005) Cannot establish connection to PIN ZN at ( 94.43500 12.28000 ) on metal1 for NET instr_addr_o[30]. The NET is considered partially routed. Visually verify wiring at the specified location as the wire/via origin may not touch the PIN. This NET will be rerouted with same or different wiring.
+#WARNING (NRDB-1005) Cannot establish connection to PIN B1 at ( 94.34000 12.09000 ) on metal1 for NET _10621_. The NET is considered partially routed. Visually verify wiring at the specified location as the wire/via origin may not touch the PIN. This NET will be rerouted with same or different wiring.
+#WARNING (NRDB-1005) Cannot establish connection to PIN A at ( 95.06500 12.09000 ) on metal1 for NET _10615_. The NET is considered partially routed. Visually verify wiring at the specified location as the wire/via origin may not touch the PIN. This NET will be rerouted with same or different wiring.
+#
+#Connectivity extraction summary:
+#4 routed nets are extracted.
+#    4 (0.02%) extracted nets are partially routed.
+#14547 routed net(s) are imported.
+#2266 nets are fixed|skipped|trivial (not extracted).
+#Total number of nets = 16817.
+#
+#
+#Finished routing data preparation on Tue Aug 11 10:05:38 2026
+#
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 11.02 (MB)
+#Total memory = 1075.62 (MB)
+#Peak memory = 1145.58 (MB)
+#
+#
+#Start global routing on Tue Aug 11 10:05:38 2026
+#
+#
+#Start global routing initialization on Tue Aug 11 10:05:38 2026
+#
+#Number of eco nets is 4
+#
+#Start global routing data preparation on Tue Aug 11 10:05:38 2026
+#
+#Start routing resource analysis on Tue Aug 11 10:05:38 2026
+#
+#Routing resource analysis is done on Tue Aug 11 10:05:38 2026
+#
+#  Resource Analysis:
+#
+#               Routing  #Avail      #Track     #Total     %Gcell
+#  Layer      Direction   Track     Blocked      Gcell    Blocked
+#  --------------------------------------------------------------
+#  metal1         H        1614           0       11664    59.72%
+#  metal2         V        1197           0       11664     0.00%
+#  metal3         H        1614           0       11664     0.00%
+#  metal4         V         811           0       11664     0.00%
+#  metal5         H         806           0       11664     0.00%
+#  metal6         V         811           0       11664     0.00%
+#  metal7         H         268           0       11664     1.05%
+#  metal8         V         270           0       11664     1.48%
+#  metal9         H         102           4       11664     8.85%
+#  metal10        V         105           4       11664     3.58%
+#  --------------------------------------------------------------
+#  Total                   7598       0.74%      116640     7.47%
+#
+#  30 nets (0.18%) with 1 preferred extra spacing.
+#
+#
+#
+#Global routing data preparation is done on Tue Aug 11 10:05:38 2026
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1081.27 (MB), peak = 1145.58 (MB)
+#
+#
+#Global routing initialization is done on Tue Aug 11 10:05:39 2026
+#
+#cpu time = 00:00:01, elapsed time = 00:00:00, memory = 1081.46 (MB), peak = 1145.58 (MB)
+#
+#start global routing iteration 1...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1082.39 (MB), peak = 1145.58 (MB)
+#
+#start global routing iteration 2...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1082.39 (MB), peak = 1145.58 (MB)
+#
+#
+#Total number of trivial nets (e.g. < 2 pins) = 2266 (skipped).
+#Total number of routable nets = 14551.
+#Total number of nets in the design = 16817.
+#
+#4 routable nets have only global wires.
+#14547 routable nets have only detail routed wires.
+#30 detail routed (routable) nets have been constrained (e.g. have preferred extra spacing, require shielding etc.)
+#
+#Routed nets constraints summary:
+#-----------------------------
+#        Rules   Unconstrained  
+#-----------------------------
+#      Default               4  
+#-----------------------------
+#        Total               4  
+#-----------------------------
+#
+#Routing constraints summary of the whole design:
+#------------------------------------------------
+#        Rules   Pref Extra Space   Unconstrained  
+#------------------------------------------------
+#      Default                 30           14521  
+#------------------------------------------------
+#        Total                 30           14521  
+#------------------------------------------------
+#
+#
+#  Congestion Analysis: (blocked Gcells are excluded)
+#
+#                 OverCon          
+#                  #Gcell    %Gcell
+#     Layer           (1)   OverCon
+#  --------------------------------
+#  metal2        0(0.00%)   (0.00%)
+#  metal3        0(0.00%)   (0.00%)
+#  metal4        0(0.00%)   (0.00%)
+#  metal5        0(0.00%)   (0.00%)
+#  metal6        0(0.00%)   (0.00%)
+#  metal7        0(0.00%)   (0.00%)
+#  metal8        0(0.00%)   (0.00%)
+#  metal9        0(0.00%)   (0.00%)
+#  metal10       0(0.00%)   (0.00%)
+#  --------------------------------
+#     Total      0(0.00%)   (0.00%)
+#
+#  The worst congested Gcell overcon (routing demand over resource in number of tracks) = 1
+#  Overflow after GR: 0.00% H + 0.00% V
+#
+#Complete Global Routing.
+#Total number of nets with non-default rule or having extra spacing = 30
+#Total wire length = 217856 um.
+#Total half perimeter of net bounding box = 184472 um.
+#Total wire length on LAYER metal1 = 0 um.
+#Total wire length on LAYER metal2 = 61139 um.
+#Total wire length on LAYER metal3 = 78511 um.
+#Total wire length on LAYER metal4 = 39274 um.
+#Total wire length on LAYER metal5 = 22588 um.
+#Total wire length on LAYER metal6 = 16022 um.
+#Total wire length on LAYER metal7 = 152 um.
+#Total wire length on LAYER metal8 = 102 um.
+#Total wire length on LAYER metal9 = 13 um.
+#Total wire length on LAYER metal10 = 55 um.
+#Total number of vias = 108756
+#Up-Via Summary (total 108756):
+#           
+#-----------------------
+# metal1          53719
+# metal2          39728
+# metal3          11634
+# metal4           2494
+# metal5           1111
+# metal6             36
+# metal7             20
+# metal8              9
+# metal9              5
+#-----------------------
+#                108756 
+#
+#Max overcon = 0 track.
+#Total overcon = 0.00%.
+#Worst layer Gcell overcon rate = 0.00%.
+#
+#Global routing statistics:
+#Cpu time = 00:00:01
+#Elapsed time = 00:00:00
+#Increased memory = 9.71 (MB)
+#Total memory = 1085.53 (MB)
+#Peak memory = 1145.58 (MB)
+#
+#Finished global routing on Tue Aug 11 10:05:39 2026
+#
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 1082.28 (MB), peak = 1145.58 (MB)
+#Start Track Assignment.
+#Done with 1 horizontal wires in 1 hboxes and 0 vertical wires in 1 hboxes.
+#Done with 0 horizontal wires in 1 hboxes and 0 vertical wires in 1 hboxes.
+#Complete Track Assignment.
+#Total number of nets with non-default rule or having extra spacing = 30
+#Total wire length = 217857 um.
+#Total half perimeter of net bounding box = 184472 um.
+#Total wire length on LAYER metal1 = 0 um.
+#Total wire length on LAYER metal2 = 61139 um.
+#Total wire length on LAYER metal3 = 78512 um.
+#Total wire length on LAYER metal4 = 39274 um.
+#Total wire length on LAYER metal5 = 22588 um.
+#Total wire length on LAYER metal6 = 16022 um.
+#Total wire length on LAYER metal7 = 152 um.
+#Total wire length on LAYER metal8 = 102 um.
+#Total wire length on LAYER metal9 = 13 um.
+#Total wire length on LAYER metal10 = 55 um.
+#Total number of vias = 108756
+#Up-Via Summary (total 108756):
+#           
+#-----------------------
+# metal1          53719
+# metal2          39728
+# metal3          11634
+# metal4           2494
+# metal5           1111
+# metal6             36
+# metal7             20
+# metal8              9
+# metal9              5
+#-----------------------
+#                108756 
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 1109.08 (MB), peak = 1145.58 (MB)
+#
+#number of short segments in preferred routing layers
+#	
+#	
+#
+#Routing data preparation, pin analysis, global routing and track assignment statistics:
+#Cpu time = 00:00:02
+#Elapsed time = 00:00:01
+#Increased memory = 44.80 (MB)
+#Total memory = 1109.08 (MB)
+#Peak memory = 1145.58 (MB)
+#Using multithreading with 4 threads.
+#
+#Start Detail Routing..
+#start initial detail routing ...
+# ECO: 83.6% of the total area was rechecked for DRC, and 0.3% required routing.
+#   number of violations = 0
+#1 out of 16587 instances (0.0%) need to be verified(marked ipoed), dirty area = 0.0%.
+#8.4% of the total area is being checked for drcs
+#8.4% of the total area was checked
+#   number of violations = 0
+#cpu time = 00:00:11, elapsed time = 00:00:03, memory = 1219.81 (MB), peak = 1219.88 (MB)
+#Complete Detail Routing.
+#Total number of nets with non-default rule or having extra spacing = 30
+#Total wire length = 217856 um.
+#Total half perimeter of net bounding box = 184472 um.
+#Total wire length on LAYER metal1 = 0 um.
+#Total wire length on LAYER metal2 = 61139 um.
+#Total wire length on LAYER metal3 = 78511 um.
+#Total wire length on LAYER metal4 = 39274 um.
+#Total wire length on LAYER metal5 = 22588 um.
+#Total wire length on LAYER metal6 = 16022 um.
+#Total wire length on LAYER metal7 = 152 um.
+#Total wire length on LAYER metal8 = 102 um.
+#Total wire length on LAYER metal9 = 13 um.
+#Total wire length on LAYER metal10 = 55 um.
+#Total number of vias = 108757
+#Up-Via Summary (total 108757):
+#           
+#-----------------------
+# metal1          53720
+# metal2          39728
+# metal3          11634
+# metal4           2494
+# metal5           1111
+# metal6             36
+# metal7             20
+# metal8              9
+# metal9              5
+#-----------------------
+#                108757 
+#
+#Total number of DRC violations = 0
+#Cpu time = 00:00:12
+#Elapsed time = 00:00:03
+#Increased memory = -2.75 (MB)
+#Total memory = 1106.39 (MB)
+#Peak memory = 1219.88 (MB)
+#detailRoute Statistics:
+#Cpu time = 00:00:12
+#Elapsed time = 00:00:03
+#Increased memory = -2.75 (MB)
+#Total memory = 1106.39 (MB)
+#Peak memory = 1219.88 (MB)
+#Skip updating routing design signature in db-snapshot flow
+#
+#globalDetailRoute statistics:
+#Cpu time = 00:00:15
+#Elapsed time = 00:00:05
+#Increased memory = 35.09 (MB)
+#Total memory = 1095.67 (MB)
+#Peak memory = 1219.88 (MB)
+#Number of warnings = 5
+#Total number of warnings = 5
+#Number of fails = 0
+#Total number of fails = 0
+#Complete globalDetailRoute on Tue Aug 11 10:05:43 2026
+#
+#% End globalDetailRoute (date=08/11 10:05:43, total cpu=0:00:14.9, real=0:00:05.0, peak res=1219.9M, current mem=1080.1M)
+**WARN: (IMPEXT-3518):	The lower process node is set (using command 'setDesignMode') but the technology file for TQuantus extraction not specified. Therefore, going for postRoute (effortLevel low) extraction instead of recommended extractor 'TQuantus' for lower nodes. Use command 'set_analysis_view/update_rc_corner' to specify the technology file for TQuantus extraction to take place.
+Extraction called for design 'ibex_top' of instances=16587 and nets=16817 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design ibex_top.
+RC Extraction called in multi-corner(1) mode.
+**WARN: (IMPEXT-6197):	The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+Type 'man IMPEXT-6197' for more detail.
+**WARN: (IMPEXT-3032):	Because the cap table file was not provided, it will be created internally with the following process info:
+* Layer Id             : 1 - M1
+      Thickness        : 0.13
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 2 - M2
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 3 - M3
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 4 - M4
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 5 - M5
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 6 - M6
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 7 - M7
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 8 - M8
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 9 - M9
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+* Layer Id             : 10 - M10
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+extractDetailRC Option : -outfile /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/tmp/innovus_temp_24357_qingteng_host_Qbfm03/ibex_top_24357_jn8KFd.rcdb.d -maxResLength 200  -basic
+RC Mode: PostRoute -effortLevel low [Basic CapTable, LEF Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1341.4M)
+Extracted 10.0008% (CPU Time= 0:00:00.2  MEM= 1385.4M)
+Extracted 20.001% (CPU Time= 0:00:00.3  MEM= 1385.4M)
+Extracted 30.0012% (CPU Time= 0:00:00.4  MEM= 1385.4M)
+Extracted 40.0007% (CPU Time= 0:00:00.5  MEM= 1385.4M)
+Extracted 50.0009% (CPU Time= 0:00:00.6  MEM= 1385.4M)
+Extracted 60.0011% (CPU Time= 0:00:00.6  MEM= 1385.4M)
+Extracted 70.0007% (CPU Time= 0:00:00.8  MEM= 1385.4M)
+Extracted 80.0009% (CPU Time= 0:00:00.9  MEM= 1385.4M)
+Extracted 90.0011% (CPU Time= 0:00:01.0  MEM= 1385.4M)
+Extracted 100% (CPU Time= 0:00:01.4  MEM= 1389.4M)
+Number of Extracted Resistors     : 269054
+Number of Extracted Ground Cap.   : 283309
+Number of Extracted Coupling Cap. : 557556
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1373.4M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.0  Real Time: 0:00:02.0  MEM: 1381.352M)
+*** Starting refinePlace (0:00:51.3 mem=1382.1M) ***
+Move report: Detail placement moves 0 insts, mean move: 0.00 um, max move: 0.00 um
+	Runtime: CPU: 0:00:00.3 REAL: 0:00:00.0 MEM: 1382.1MB
+Summary Report:
+Instances move: 0 (out of 14210 movable)
+Instances flipped: 0
+Mean displacement: 0.00 um
+Max displacement: 0.00 um 
+Runtime: CPU: 0:00:00.4 REAL: 0:00:00.0 MEM: 1382.1MB
+*** Finished refinePlace (0:00:51.6 mem=1382.1M) ***
+**WARN: (IMPSP-5217):	addFiller command is running on a postRoute database. It is recommended to be followed by ecoRoute -target command to make the DRC clean.
+Type 'man IMPSP-5217' for more detail.
+For 16234 new insts, *** Applied 2 GNC rules (cpu = 0:00:00.0)
+*INFO: Adding fillers to top-module.
+*INFO:   Added 634 filler insts (cell FILLCELL_X32 / prefix FILLER).
+*INFO:   Added 271 filler insts (cell FILLCELL_X16 / prefix FILLER).
+*INFO:   Added 1366 filler insts (cell FILLCELL_X8 / prefix FILLER).
+*INFO:   Added 3188 filler insts (cell FILLCELL_X4 / prefix FILLER).
+*INFO:   Added 5143 filler insts (cell FILLCELL_X2 / prefix FILLER).
+*INFO:   Added 5660 filler insts (cell FILLCELL_X1 / prefix FILLER).
+*INFO: Total 16262 filler insts added - prefix FILLER (CPU: 0:00:01.5).
+For 28 new insts, *** Applied 2 GNC rules (cpu = 0:00:00.0)
+#% Begin globalDetailRoute (date=08/11 10:05:46, mem=1080.1M)
+
+globalDetailRoute
+
+#WARNING (NRIF-78) The option routeWithEco combined with routeWithTimingDriven is not recommended due to possible high memory usage, increased run-time, and increased routing pattern pertubations. Please use with caution.
+#setNanoRouteMode -drouteEndIteration 20
+#setNanoRouteMode -droutePostRouteSpreadWire "auto"
+#setNanoRouteMode -routeBottomRoutingLayer 2
+#setNanoRouteMode -routeStrictlyHonorNonDefaultRule "false"
+#setNanoRouteMode -routeTopRoutingLayer 10
+#setNanoRouteMode -routeWithEco true
+#setNanoRouteMode -routeWithSiDriven true
+#setNanoRouteMode -routeWithTimingDriven true
+#Start globalDetailRoute on Tue Aug 11 10:05:46 2026
+#
+Initializing multi-corner resistance tables ...
+#num needed restored net=0
+#need_extraction net=0 (total=16817)
+#Processed 16262 dirty instances, 0 dirty terms, 0 dirty fterms, 0 dirty pgterms, 0 misc dirty regions, 0 same cell-size swaps
+#(16262 insts marked dirty, reset pre-exisiting dirty flag on 28 insts, 2 nets marked need extraction)
+#NanoRoute Version 19.10-p002_1 NR190418-1643/19_10-UB
+#Skip comparing routing design signature in db-snapshot flow
+#Using multithreading with 4 threads.
+#Start routing data preparation on Tue Aug 11 10:05:47 2026
+#
+#Minimum voltage of a net in the design = 0.000.
+#Maximum voltage of a net in the design = 1.100.
+#Voltage range [0.000 - 1.100] has 16810 nets.
+#Voltage range [1.100 - 1.100] has 1 net.
+#Voltage range [0.000 - 0.000] has 6 nets.
+# metal1       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.13500
+# metal2       V   Track-Pitch = 0.19000    Line-2-Via Pitch = 0.14000
+# metal3       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.14000
+# metal4       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal5       H   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal6       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal7       H   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal8       V   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal9       H   Track-Pitch = 1.60000    Line-2-Via Pitch = 1.60000
+# metal10      V   Track-Pitch = 1.68000    Line-2-Via Pitch = 1.60000
+#Regenerating Ggrids automatically.
+#Auto generating G-grids with size=15 tracks, using layer metal3's pitch = 0.14000.
+#Using automatically generated G-grids.
+#Done routing data preparation.
+#cpu time = 00:00:01, elapsed time = 00:00:00, memory = 1113.09 (MB), peak = 1219.88 (MB)
+#Merging special wires: starts on Tue Aug 11 10:05:47 2026 with memory = 1113.43 (MB), peak = 1219.88 (MB)
+#
+#Merging special wires: cpu:00:00:00, real:00:00:00, mem:1.1 GB, peak:1.2 GB --1.29 [4]--
+#
+#Finished routing data preparation on Tue Aug 11 10:05:47 2026
+#
+#Cpu time = 00:00:01
+#Elapsed time = 00:00:01
+#Increased memory = 4.72 (MB)
+#Total memory = 1113.53 (MB)
+#Peak memory = 1219.88 (MB)
+#
+#
+#Start global routing on Tue Aug 11 10:05:47 2026
+#
+#
+#Start global routing initialization on Tue Aug 11 10:05:47 2026
+#
+#WARNING (NRGR-22) Design is already detail routed.
+#Routing data preparation, pin analysis, global routing and track assignment statistics:
+#Cpu time = 00:00:01
+#Elapsed time = 00:00:01
+#Increased memory = 5.02 (MB)
+#Total memory = 1113.82 (MB)
+#Peak memory = 1219.88 (MB)
+#Using multithreading with 4 threads.
+#
+#Start Detail Routing..
+#start initial detail routing ...
+# ECO: 84.0% of the total area was rechecked for DRC, and 0.0% required routing.
+#   number of violations = 0
+#16262 out of 32849 instances (49.5%) need to be verified(marked ipoed), dirty area = 37.3%.
+#8.5% of the total area is being checked for drcs
+#8.5% of the total area was checked
+#   number of violations = 0
+#cpu time = 00:00:13, elapsed time = 00:00:03, memory = 1247.47 (MB), peak = 1247.53 (MB)
+#Complete Detail Routing.
+#Total number of nets with non-default rule or having extra spacing = 30
+#Total wire length = 217856 um.
+#Total half perimeter of net bounding box = 184472 um.
+#Total wire length on LAYER metal1 = 0 um.
+#Total wire length on LAYER metal2 = 61139 um.
+#Total wire length on LAYER metal3 = 78511 um.
+#Total wire length on LAYER metal4 = 39274 um.
+#Total wire length on LAYER metal5 = 22588 um.
+#Total wire length on LAYER metal6 = 16022 um.
+#Total wire length on LAYER metal7 = 152 um.
+#Total wire length on LAYER metal8 = 102 um.
+#Total wire length on LAYER metal9 = 13 um.
+#Total wire length on LAYER metal10 = 55 um.
+#Total number of vias = 108757
+#Up-Via Summary (total 108757):
+#           
+#-----------------------
+# metal1          53720
+# metal2          39728
+# metal3          11634
+# metal4           2494
+# metal5           1111
+# metal6             36
+# metal7             20
+# metal8              9
+# metal9              5
+#-----------------------
+#                108757 
+#
+#Total number of DRC violations = 0
+#Cpu time = 00:00:13
+#Elapsed time = 00:00:04
+#Increased memory = 19.55 (MB)
+#Total memory = 1133.38 (MB)
+#Peak memory = 1247.53 (MB)
+#detailRoute Statistics:
+#Cpu time = 00:00:13
+#Elapsed time = 00:00:04
+#Increased memory = 19.55 (MB)
+#Total memory = 1133.38 (MB)
+#Peak memory = 1247.53 (MB)
+#Skip updating routing design signature in db-snapshot flow
+#
+#globalDetailRoute statistics:
+#Cpu time = 00:00:16
+#Elapsed time = 00:00:05
+#Increased memory = 28.55 (MB)
+#Total memory = 1108.66 (MB)
+#Peak memory = 1247.53 (MB)
+#Number of warnings = 2
+#Total number of warnings = 7
+#Number of fails = 0
+#Total number of fails = 0
+#Complete globalDetailRoute on Tue Aug 11 10:05:51 2026
+#
+#% End globalDetailRoute (date=08/11 10:05:51, total cpu=0:00:15.9, real=0:00:06.0, peak res=1247.5M, current mem=1091.5M)
+**WARN: (IMPEXT-3518):	The lower process node is set (using command 'setDesignMode') but the technology file for TQuantus extraction not specified. Therefore, going for postRoute (effortLevel low) extraction instead of recommended extractor 'TQuantus' for lower nodes. Use command 'set_analysis_view/update_rc_corner' to specify the technology file for TQuantus extraction to take place.
+Extraction called for design 'ibex_top' of instances=32849 and nets=16817 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design ibex_top.
+RC Extraction called in multi-corner(1) mode.
+**WARN: (IMPEXT-6197):	The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+Type 'man IMPEXT-6197' for more detail.
+**WARN: (IMPEXT-3032):	Because the cap table file was not provided, it will be created internally with the following process info:
+* Layer Id             : 1 - M1
+      Thickness        : 0.13
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 2 - M2
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 3 - M3
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 4 - M4
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 5 - M5
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 6 - M6
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 7 - M7
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 8 - M8
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 9 - M9
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+* Layer Id             : 10 - M10
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+extractDetailRC Option : -outfile /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/tmp/innovus_temp_24357_qingteng_host_Qbfm03/ibex_top_24357_jn8KFd.rcdb.d -maxResLength 200  -basic
+RC Mode: PostRoute -effortLevel low [Basic CapTable, LEF Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1364.4M)
+Extracted 10.0008% (CPU Time= 0:00:00.2  MEM= 1408.4M)
+Extracted 20.001% (CPU Time= 0:00:00.3  MEM= 1408.4M)
+Extracted 30.0012% (CPU Time= 0:00:00.4  MEM= 1408.4M)
+Extracted 40.0007% (CPU Time= 0:00:00.5  MEM= 1408.4M)
+Extracted 50.0009% (CPU Time= 0:00:00.6  MEM= 1408.4M)
+Extracted 60.0011% (CPU Time= 0:00:00.7  MEM= 1408.4M)
+Extracted 70.0007% (CPU Time= 0:00:00.8  MEM= 1408.4M)
+Extracted 80.0009% (CPU Time= 0:00:00.9  MEM= 1408.4M)
+Extracted 90.0011% (CPU Time= 0:00:01.1  MEM= 1408.4M)
+Extracted 100% (CPU Time= 0:00:01.5  MEM= 1412.4M)
+Number of Extracted Resistors     : 269054
+Number of Extracted Ground Cap.   : 283309
+Number of Extracted Coupling Cap. : 557556
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1384.4M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.1  Real Time: 0:00:02.0  MEM: 1396.422M)
+**WARN: (IMPEXT-3518):	The lower process node is set (using command 'setDesignMode') but the technology file for TQuantus extraction not specified. Therefore, going for postRoute (effortLevel low) extraction instead of recommended extractor 'TQuantus' for lower nodes. Use command 'set_analysis_view/update_rc_corner' to specify the technology file for TQuantus extraction to take place.
+Extraction called for design 'ibex_top' of instances=32849 and nets=16817 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design ibex_top.
+RC Extraction called in multi-corner(1) mode.
+**WARN: (IMPEXT-6197):	The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+Type 'man IMPEXT-6197' for more detail.
+**WARN: (IMPEXT-3032):	Because the cap table file was not provided, it will be created internally with the following process info:
+* Layer Id             : 1 - M1
+      Thickness        : 0.13
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 2 - M2
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 3 - M3
+      Thickness        : 0.14
+      Min Width        : 0.07
+      Layer Dielectric : 4.1
+* Layer Id             : 4 - M4
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 5 - M5
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 6 - M6
+      Thickness        : 0.28
+      Min Width        : 0.14
+      Layer Dielectric : 4.1
+* Layer Id             : 7 - M7
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 8 - M8
+      Thickness        : 0.8
+      Min Width        : 0.4
+      Layer Dielectric : 4.1
+* Layer Id             : 9 - M9
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+* Layer Id             : 10 - M10
+      Thickness        : 2
+      Min Width        : 0.8
+      Layer Dielectric : 4.1
+extractDetailRC Option : -outfile /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/tmp/innovus_temp_24357_qingteng_host_Qbfm03/ibex_top_24357_jn8KFd.rcdb.d -maxResLength 200  -basic
+RC Mode: PostRoute -effortLevel low [Basic CapTable, LEF Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1396.4M)
+Extracted 10.0008% (CPU Time= 0:00:00.2  MEM= 1420.4M)
+Extracted 20.001% (CPU Time= 0:00:00.4  MEM= 1420.4M)
+Extracted 30.0012% (CPU Time= 0:00:00.5  MEM= 1420.4M)
+Extracted 40.0007% (CPU Time= 0:00:00.6  MEM= 1420.4M)
+Extracted 50.0009% (CPU Time= 0:00:00.7  MEM= 1420.4M)
+Extracted 60.0011% (CPU Time= 0:00:00.7  MEM= 1420.4M)
+Extracted 70.0007% (CPU Time= 0:00:00.9  MEM= 1420.4M)
+Extracted 80.0009% (CPU Time= 0:00:01.0  MEM= 1420.4M)
+Extracted 90.0011% (CPU Time= 0:00:01.2  MEM= 1420.4M)
+Extracted 100% (CPU Time= 0:00:01.8  MEM= 1420.4M)
+Number of Extracted Resistors     : 269054
+Number of Extracted Ground Cap.   : 283309
+Number of Extracted Coupling Cap. : 557556
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1396.4M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.5  Real Time: 0:00:02.0  MEM: 1396.422M)
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1418.19)
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1603.39 CPU=0:00:04.8 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1603.39 CPU=0:00:05.4 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1594.4M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1594.4M)
+Starting SI iteration 2
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1448.51)
+Glitch Analysis: View functional_typical -- Total Number of Nets Skipped = 15. 
+Glitch Analysis: View functional_typical -- Total Number of Nets Analyzed = 16332. 
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  1.4 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1569.13 CPU=0:00:00.3 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1569.13 CPU=0:00:00.3 REAL=0:00:00.0)
+**WARN: (TCLCMD-1469):	No timing paths found matching the specified criteria. Empty collection returned.
+**WARN: (TCLCMD-1131):	'The software has performed a full/partial timing reset. All existing timing path and timing point collection references have been invalidated and may no longer be referenced.'
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: ibex_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1521.52)
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1593.17 CPU=0:00:04.2 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1593.17 CPU=0:00:04.7 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1555.2M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1555.2M)
+Starting SI iteration 2
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (4 T). (MEM=1445.29)
+Glitch Analysis: View functional_typical -- Total Number of Nets Skipped = 15. 
+Glitch Analysis: View functional_typical -- Total Number of Nets Analyzed = 16332. 
+Total number of fetched objects 16332
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 16817,  12.8 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1565.91 CPU=0:00:00.5 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1565.91 CPU=0:00:00.6 REAL=0:00:00.0)
+**WARN: (TCLCMD-1469):	No timing paths found matching the specified criteria. Empty collection returned.
+#-limit 1000000                          # int, default=1000000, user setting
+#-report /home/host/ibex_i19_reaudit_20260811/clean_v2_run1/results/dataset_repair_v1/state_0001/after/drc.rpt # string, default="", user setting
+ *** Starting Verify DRC (MEM: 1532.8) ***
+
+  VERIFY DRC ...... Starting Verification
+  VERIFY DRC ...... Initializing
+  VERIFY DRC ...... Deleting Existing Violations
+  VERIFY DRC ...... Creating Sub-Areas
+  VERIFY DRC ...... Using new threading
+ VERIFY DRC ...... Sub-Area: {153.360 0.000 227.430 75.600} 3 of 9  Thread : 3
+ VERIFY DRC ...... Sub-Area: {0.000 151.200 76.680 225.960} 7 of 9  Thread : 0
+ VERIFY DRC ...... Sub-Area: {153.360 151.200 227.430 225.960} 9 of 9  Thread : 2
+ VERIFY DRC ...... Sub-Area: {0.000 0.000 76.680 75.600} 1 of 9  Thread : 1
+ VERIFY DRC ...... Sub-Area: {153.360 75.600 227.430 151.200} 6 of 9  Thread : 2
+ VERIFY DRC ...... Sub-Area: {0.000 75.600 76.680 151.200} 4 of 9  Thread : 1
+ VERIFY DRC ...... Sub-Area: {76.680 151.200 153.360 225.960} 8 of 9  Thread : 2
+ VERIFY DRC ...... Sub-Area: {76.680 0.000 153.360 75.600} 2 of 9  Thread : 1
+ VERIFY DRC ...... Thread : 2 finished.
+ VERIFY DRC ...... Thread : 3 finished.
+ VERIFY DRC ...... Sub-Area: {76.680 75.600 153.360 151.200} 5 of 9  Thread : 1
+ VERIFY DRC ...... Thread : 1 finished.
+
+  Verification Complete : 0 Viols.
+
+ *** End Verify DRC (CPU: 0:00:02.9  ELAPSED TIME: 2.00  MEM: 133.0M) ***
+
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Tue Aug 11 10:06:07 2026
+
+Design Name: ibex_top
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (227.4300, 225.9600)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+Use 4 pthreads
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Tue Aug 11 10:06:07 2026
+Time Elapsed: 0:00:00.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:00.8  MEM: 0.000M)
+
+Begin checking placement ... (start mem=1583.8M, init mem=1584.5M)
+*info: Placed = 32849          (Fixed = 2377)
+*info: Unplaced = 0           
+Placement Density:100.00%(42035/42035)
+Placement Density (including fixed std cells):100.00%(42660/42660)
+Finished checkPlace (total: cpu=0:00:00.2, real=0:00:00.0; vio checks: cpu=0:00:00.1, real=0:00:00.0; mem=1583.8M)
+IBEX_I19_REAUDIT_PASS dataset=dataset_repair_v1 sample=state_0001 failure_created=1 timing_fixed=1
+
+*** Memory Usage v#1 (Current mem = 1514.770M, initial mem = 262.344M) ***
+*** Message Summary: 73 warning(s), 5 error(s)
+
+--- Ending "Innovus" (totcpu=0:01:41, real=0:00:50.0, mem=1514.8M) ---
+

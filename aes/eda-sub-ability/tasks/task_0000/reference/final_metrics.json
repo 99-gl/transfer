@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "task_id": "task_0001",
+  "timing_ps": {
+    "setup_wns": 55.7,
+    "setup_tns": 0,
+    "hold_wns": 0.4,
+    "hold_tns": 0
+  },
+  "violations": {
+    "max_transition": 0,
+    "max_capacitance": 0,
+    "max_fanout": 135,
+    "drc": 0,
+    "connectivity": 0,
+    "placement": 0
+  },
+  "validation": {
+    "reports_complete": true,
+    "failure_created": true,
+    "timing_fixed": true,
+    "physical_clean": true,
+    "fresh_load_replay": true,
+    "status": "PASS"
+  }
+}

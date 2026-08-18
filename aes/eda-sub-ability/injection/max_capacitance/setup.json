@@ -1,0 +1,1 @@
+{"scenario":"max_capacitance","analysis":"setup","worst_path":"_19477_/CK -> _19318_/D","beginpoint":"_19477_/CK","endpoint":"_19318_/D","slack_ns":0.390,"path_group":"aes_clk"}

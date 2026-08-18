@@ -1,0 +1,281 @@
+*info: 25 clock nets excluded
+*info: 2 special nets excluded.
+*info: 229 no-driver nets excluded.
+*info: fanout load violations report
+# Net / InstPin                         MaxFanLoad  FanLoad         FanLoadSlk       CellPort             Remark    
+#
+CTS_21
+    CTS_ccl_a_buf_00022/Z                   32.000      100.000         -68.000          BUF_X4/Z                     C 
+CTS_9
+    CTS_ccl_a_buf_00042/Z                   32.000      100.000         -68.000          BUF_X4/Z                     C 
+CTS_18
+    CTS_ccl_a_buf_00060/Z                   32.000      100.000         -68.000          BUF_X4/Z                     C 
+CTS_1
+    CTS_ccl_a_buf_00026/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_2
+    CTS_ccl_a_buf_00028/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_4
+    CTS_ccl_a_buf_00032/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_12
+    CTS_ccl_a_buf_00048/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_13
+    CTS_ccl_a_buf_00050/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_17
+    CTS_ccl_a_buf_00058/Z                   32.000      99.000          -67.000          BUF_X4/Z                     C 
+CTS_16
+    CTS_ccl_a_buf_00056/Z                   32.000      98.000          -66.000          BUF_X4/Z                     C 
+CTS_6
+    CTS_ccl_a_buf_00036/Z                   32.000      97.000          -65.000          BUF_X4/Z                     C 
+CTS_8
+    CTS_ccl_a_buf_00040/Z                   32.000      97.000          -65.000          BUF_X4/Z                     C 
+CTS_10
+    CTS_ccl_a_buf_00044/Z                   32.000      97.000          -65.000          BUF_X4/Z                     C 
+CTS_11
+    CTS_ccl_a_buf_00046/Z                   32.000      97.000          -65.000          BUF_X4/Z                     C 
+CTS_15
+    CTS_ccl_a_buf_00054/Z                   32.000      97.000          -65.000          BUF_X4/Z                     C 
+CTS_3
+    CTS_ccl_a_buf_00030/Z                   32.000      96.000          -64.000          BUF_X4/Z                     C 
+CTS_7
+    CTS_ccl_a_buf_00038/Z                   32.000      95.000          -63.000          BUF_X4/Z                     C 
+CTS_14
+    CTS_ccl_a_buf_00052/Z                   32.000      95.000          -63.000          BUF_X4/Z                     C 
+CTS_22
+    CTS_ccl_a_buf_00024/Z                   32.000      90.000          -58.000          BUF_X4/Z                     C 
+CTS_5
+    CTS_ccl_a_buf_00034/Z                   32.000      87.000          -55.000          BUF_X4/Z                     C 
+FE_OFN13_rst_ni
+    FE_OFC13_rst_ni/Z                       32.000      75.000          -43.000          BUF_X4/Z                     R 
+FE_OFN14_rst_ni
+    FE_OFC14_rst_ni/Z                       32.000      75.000          -43.000          BUF_X4/Z                     R 
+FE_OFN22_rst_ni
+    FE_OFC22_rst_ni/ZN                      32.000      74.000          -42.000          INV_X4/ZN                    R 
+FE_OFN147_07381
+    FE_OFC147_07381/Z                       32.000      72.000          -40.000          BUF_X4/Z                     R 
+FE_OFN27_rst_ni
+    FE_OFC27_rst_ni/ZN                      32.000      71.000          -39.000          INV_X4/ZN                    R 
+FE_OFN26_rst_ni
+    FE_OFC26_rst_ni/ZN                      32.000      68.000          -36.000          INV_X4/ZN                    R 
+FE_OFN223_11146
+    FE_OFC223_11146/Z                       32.000      67.000          -35.000          CLKBUF_X3/Z                  R 
+FE_OFN233_04420
+    FE_OFC233_04420/Z                       32.000      67.000          -35.000          BUF_X4/Z                     R 
+FE_OFN148_07393
+    FE_OFC148_07393/Z                       32.000      66.000          -34.000          CLKBUF_X3/Z                  R 
+FE_OFN276_11677
+    FE_OFC276_11677/Z                       32.000      66.000          -34.000          CLKBUF_X3/Z                  R 
+FE_OFN212_10294
+    FE_OFC212_10294/Z                       32.000      64.000          -32.000          CLKBUF_X3/Z                  R 
+FE_OFN23_rst_ni
+    FE_OFC23_rst_ni/ZN                      32.000      62.000          -30.000          INV_X4/ZN                    R 
+FE_OFN213_10366
+    FE_OFC213_10366/Z                       32.000      60.000          -28.000          CLKBUF_X3/Z                  R 
+FE_OFN242_07387
+    FE_OFC242_07387/Z                       32.000      60.000          -28.000          CLKBUF_X3/Z                  R 
+FE_OFN320_10873
+    FE_OFC320_10873/Z                       32.000      60.000          -28.000          CLKBUF_X3/Z                  R 
+FE_OFN10_rst_ni
+    FE_OFC10_rst_ni/Z                       32.000      59.000          -27.000          CLKBUF_X3/Z                  R 
+FE_OFN44_05389
+    FE_OFC44_05389/Z                        32.000      58.000          -26.000          CLKBUF_X3/Z                  R 
+FE_OFN234_04429
+    FE_OFC234_04429/Z                       32.000      58.000          -26.000          CLKBUF_X3/Z                  R 
+FE_OFN243_07601
+    FE_OFC243_07601/Z                       32.000      58.000          -26.000          CLKBUF_X3/Z                  R 
+FE_OFN32_rst_ni
+    FE_OFC32_rst_ni/ZN                      32.000      57.000          -25.000          INV_X4/ZN                    R 
+FE_OFN182_07643
+    FE_OFC182_07643/Z                       32.000      57.000          -25.000          CLKBUF_X3/Z                  R 
+FE_OFN25_rst_ni
+    FE_OFC25_rst_ni/ZN                      32.000      56.000          -24.000          INV_X4/ZN                    R 
+FE_OFN17_rst_ni
+    FE_OFC17_rst_ni/ZN                      32.000      55.000          -23.000          INV_X4/ZN                    R 
+FE_OFN15_rst_ni
+    FE_OFC15_rst_ni/ZN                      32.000      54.000          -22.000          INV_X4/ZN                    R 
+FE_OFN16_rst_ni
+    FE_OFC16_rst_ni/ZN                      32.000      54.000          -22.000          INV_X4/ZN                    R 
+FE_OFN35_rst_ni
+    FE_OFC35_rst_ni/ZN                      32.000      54.000          -22.000          INV_X4/ZN                    R 
+FE_OFN82_11834
+    FE_OFC82_11834/Z                        32.000      54.000          -22.000          CLKBUF_X3/Z                  R 
+FE_OFN270_10832
+    FE_OFC270_10832/Z                       32.000      54.000          -22.000          CLKBUF_X3/Z                  R 
+FE_OFN19_rst_ni
+    FE_OFC19_rst_ni/ZN                      32.000      53.000          -21.000          INV_X4/ZN                    R 
+FE_OFN28_rst_ni
+    FE_OFC28_rst_ni/ZN                      32.000      53.000          -21.000          INV_X4/ZN                    R 
+FE_OFN29_rst_ni
+    FE_OFC29_rst_ni/ZN                      32.000      52.000          -20.000          INV_X4/ZN                    R 
+FE_OFN34_rst_ni
+    FE_OFC34_rst_ni/ZN                      32.000      50.000          -18.000          INV_X4/ZN                    R 
+FE_OFN88_12041
+    FE_OFC88_12041/Z                        32.000      50.000          -18.000          CLKBUF_X3/Z                  R 
+FE_OFN89_12044
+    FE_OFC89_12044/Z                        32.000      50.000          -18.000          CLKBUF_X3/Z                  R 
+FE_OFN131_u_ibex_core_if_stage_i_gen_prefetch_buffer_prefetch_buffer_i_valid_req_q
+    FE_OFC131_u_ibex_core_if_stage_i_gen_prefetch_buffer_prefetch_buffer_i_valid_req_q/Z 32.000      50.000          -18.000          CLKBUF_X3/Z                  R 
+FE_OFN134_04624
+    FE_OFC134_04624/Z                       32.000      50.000          -18.000          CLKBUF_X3/Z                  R 
+FE_OFN401_06613
+    FE_OFC401_06613/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN410_06857
+    FE_OFC410_06857/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN416_06996
+    FE_OFC416_06996/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN417_07019
+    FE_OFC417_07019/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN419_07066
+    FE_OFC419_07066/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN421_07143
+    FE_OFC421_07143/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN429_07328
+    FE_OFC429_07328/Z                       32.000      49.000          -17.000          CLKBUF_X3/Z                  R 
+FE_OFN0_rst_ni
+    FE_OFC0_rst_ni/Z                        32.000      48.000          -16.000          CLKBUF_X3/Z                  R 
+FE_OFN9_rst_ni
+    FE_OFC9_rst_ni/Z                        32.000      48.000          -16.000          CLKBUF_X3/Z                  R 
+FE_OFN33_rst_ni
+    FE_OFC33_rst_ni/ZN                      32.000      48.000          -16.000          INV_X4/ZN                    R 
+FE_OFN284_05668
+    FE_OFC284_05668/Z                       32.000      48.000          -16.000          CLKBUF_X3/Z                  R 
+FE_OFN405_06708
+    FE_OFC405_06708/Z                       32.000      48.000          -16.000          CLKBUF_X3/Z                  R 
+FE_OFN418_07042
+    FE_OFC418_07042/Z                       32.000      48.000          -16.000          CLKBUF_X3/Z                  R 
+FE_OFN6_rst_ni
+    FE_OFC6_rst_ni/Z                        32.000      46.000          -14.000          CLKBUF_X3/Z                  R 
+FE_OFN18_rst_ni
+    FE_OFC18_rst_ni/ZN                      32.000      46.000          -14.000          INV_X4/ZN                    R 
+FE_OFN31_rst_ni
+    FE_OFC31_rst_ni/ZN                      32.000      46.000          -14.000          INV_X4/ZN                    R 
+FE_OFN413_06926
+    FE_OFC413_06926/Z                       32.000      46.000          -14.000          CLKBUF_X3/Z                  R 
+FE_OFN24_rst_ni
+    FE_OFC24_rst_ni/ZN                      32.000      45.000          -13.000          INV_X4/ZN                    R 
+rst_ni
+    rst_ni                                  32.000      45.000          -13.000                                       R 
+_12014_
+    _19464_/ZN                              32.000      43.000          -11.000          OR3_X2/ZN                    R 
+_08532_
+    _15744_/ZN                              32.000      43.000          -11.000          AND2_X2/ZN                   R 
+FE_OFN5_rst_ni
+    FE_OFC5_rst_ni/Z                        32.000      43.000          -11.000          BUF_X2/Z                     R 
+FE_OFN20_rst_ni
+    FE_OFC20_rst_ni/ZN                      32.000      43.000          -11.000          INV_X4/ZN                    R 
+FE_OFN412_06903
+    FE_OFC412_06903/Z                       32.000      43.000          -11.000          CLKBUF_X3/Z                  R 
+FE_OFN12_rst_ni
+    FE_OFC12_rst_ni/Z                       32.000      42.000          -10.000          CLKBUF_X3/Z                  R 
+FE_OFN36_rst_ni
+    FE_OFC36_rst_ni/ZN                      32.000      42.000          -10.000          INV_X2/ZN                    R 
+FE_OFN205_07789
+    FE_OFC205_07789/Z                       32.000      42.000          -10.000          BUF_X2/Z                     R 
+_07476_
+    _14688_/ZN                              32.000      41.000          -9.000           INV_X4/ZN                    R 
+FE_OFN30_rst_ni
+    FE_OFC30_rst_ni/ZN                      32.000      41.000          -9.000           INV_X2/ZN                    R 
+FE_OFN87_12036
+    FE_OFC87_12036/Z                        32.000      41.000          -9.000           BUF_X2/Z                     R 
+FE_OFN181_07643
+    FE_OFC181_07643/Z                       32.000      41.000          -9.000           CLKBUF_X3/Z                  R 
+FE_OFN7_rst_ni
+    FE_OFC7_rst_ni/Z                        32.000      40.000          -8.000           BUF_X2/Z                     R 
+FE_OFN79_10725
+    FE_OFC79_10725/Z                        32.000      40.000          -8.000           CLKBUF_X3/Z                  R 
+FE_OFN86_12032
+    FE_OFC86_12032/Z                        32.000      39.000          -7.000           BUF_X2/Z                     R 
+FE_OFN277_11856
+    FE_OFC277_11856/Z                       32.000      39.000          -7.000           BUF_X2/Z                     R 
+_05604_
+    _24351_/ZN                              32.000      38.000          -6.000           NAND2_X2/ZN                  R 
+FE_OFN50_07435
+    FE_OFC50_07435/Z                        32.000      38.000          -6.000           BUF_X2/Z                     R 
+_10244_
+    _17496_/ZN                              32.000      37.000          -5.000           NAND2_X2/ZN                  R 
+FE_OFN404_06685
+    FE_OFC404_06685/Z                       32.000      37.000          -5.000           BUF_X2/Z                     R 
+FE_OFN433_12070
+    FE_OFC433_12070/Z                       32.000      37.000          -5.000           BUF_X2/Z                     R 
+FE_OFN11_rst_ni
+    FE_OFC11_rst_ni/Z                       32.000      36.000          -4.000           BUF_X2/Z                     R 
+FE_OFN77_10296
+    FE_OFC77_10296/Z                        32.000      36.000          -4.000           BUF_X2/Z                     R 
+FE_OFN269_10728
+    FE_OFC269_10728/Z                       32.000      36.000          -4.000           BUF_X2/Z                     R 
+FE_OFN403_06662
+    FE_OFC403_06662/Z                       32.000      36.000          -4.000           BUF_X2/Z                     R 
+FE_OFN424_07212
+    FE_OFC424_07212/Z                       32.000      36.000          -4.000           BUF_X2/Z                     R 
+_05389_
+    _24041_/Z                               32.000      35.000          -3.000           MUX2_X2/Z                    R 
+FE_OFN65_10132
+    FE_OFC65_10132/Z                        32.000      35.000          -3.000           BUF_X2/Z                     R 
+FE_OFN138_05624
+    FE_OFC138_05624/Z                       32.000      35.000          -3.000           BUF_X2/Z                     R 
+FE_OFN406_06732
+    FE_OFC406_06732/Z                       32.000      35.000          -3.000           BUF_X2/Z                     R 
+crash_dump_o[97]
+    FE_OFC93_crash_dump_o_97/Z              32.000      35.000          -3.000           BUF_X2/Z                     R 
+_11976_
+    _19426_/ZN                              32.000      34.000          -2.000           AND2_X2/ZN                   R 
+_10843_
+    _18184_/ZN                              32.000      34.000          -2.000           OR3_X2/ZN                    R 
+_10240_
+    _17492_/ZN                              32.000      34.000          -2.000           OR2_X2/ZN                    R 
+FE_OFN83_11840
+    FE_OFC83_11840/Z                        32.000      34.000          -2.000           BUF_X2/Z                     R 
+FE_OFN133_04610
+    FE_OFC133_04610/Z                       32.000      34.000          -2.000           BUF_X2/Z                     R 
+FE_OFN239_05520
+    FE_OFC239_05520/Z                       32.000      34.000          -2.000           BUF_X2/Z                     R 
+FE_OFN344_02095
+    FE_OFC344_02095/Z                       32.000      34.000          -2.000           BUF_X2/Z                     R 
+_07720_
+    _14932_/ZN                              32.000      33.000          -1.000           INV_X2/ZN                    R 
+_07455_
+    _14667_/ZN                              32.000      33.000          -1.000           AND2_X2/ZN                   R 
+_07281_
+    _27149_/ZN                              32.000      33.000          -1.000           OR4_X2/ZN                    R 
+_06973_
+    _26457_/ZN                              32.000      33.000          -1.000           OR4_X2/ZN                    R 
+_06778_
+    _26038_/ZN                              32.000      33.000          -1.000           OR4_X2/ZN                    R 
+_06755_
+    _25983_/ZN                              32.000      33.000          -1.000           OR4_X2/ZN                    R 
+_06566_
+    _25537_/Z                               32.000      33.000          -1.000           MUX2_X2/Z                    R 
+_06525_
+    _25463_/Z                               32.000      33.000          -1.000           MUX2_X2/Z                    R 
+_04614_
+    _22930_/ZN                              32.000      33.000          -1.000           AND2_X2/ZN                   R 
+FE_OFN41_05181
+    FE_OFC41_05181/Z                        32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN64_10128
+    FE_OFC64_10128/Z                        32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN71_10174
+    FE_OFC71_10174/Z                        32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN81_10894
+    FE_OFC81_10894/Z                        32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN129_u_ibex_core_id_stage_i_controller_i_instr_is_compressed_i
+    FE_OFC129_u_ibex_core_id_stage_i_controller_i_instr_is_compressed_i/Z 32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN178_07624
+    FE_OFC178_07624/Z                       32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN183_07647
+    FE_OFC183_07647/Z                       32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN195_07709
+    FE_OFC195_07709/Z                       32.000      33.000          -1.000           CLKBUF_X3/Z                  R 
+FE_OFN197_07734
+    FE_OFC197_07734/Z                       32.000      33.000          -1.000           CLKBUF_X3/Z                  R 
+FE_OFN199_07745
+    FE_OFC199_07745/Z                       32.000      33.000          -1.000           CLKBUF_X3/Z                  R 
+FE_OFN245_07721
+    FE_OFC245_07721/Z                       32.000      33.000          -1.000           CLKBUF_X3/Z                  R 
+FE_OFN283_05523
+    FE_OFC283_05523/Z                       32.000      33.000          -1.000           BUF_X2/Z                     R 
+FE_OFN346_02191
+    FE_OFC346_02191/Z                       32.000      33.000          -1.000           BUF_X2/Z                     R 
+
+*info: there are 135 max fanout load violations in the design.
+*info: 115 violations are real (remark R).
+*info: 20 violations may not be fixable:
+*info:     20 violations on clock net (remark C).

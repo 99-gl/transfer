@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "task_id": "task_0001",
+  "script": "verify.tcl",
+  "source_checkpoint": "initial_state/design.enc",
+  "submission": "repair.tcl",
+  "output": {
+    "result": "result.json",
+    "reports": [
+      "initial_drv.tran.rpt",
+      "initial_drv.cap.rpt",
+      "initial_drv.fanout.rpt",
+      "initial_drc.rpt",
+      "initial_connectivity.rpt",
+      "initial_placement.rpt",
+      "setup.rpt",
+      "hold.rpt",
+      "drv.tran.rpt",
+      "drv.cap.rpt",
+      "drv.fanout.rpt",
+      "drc.rpt",
+      "connectivity.rpt",
+      "placement.rpt"
+    ]
+  },
+  "exit_codes": {
+    "0": "verification completed; inspect result.status for PASS or FAIL",
+    "2": "checkpoint, submission, tool execution, or result extraction error"
+  },
+  "fresh_process": true,
+  "tool": {
+    "name": "Cadence Innovus",
+    "version": "19.10"
+  },
+  "acceptance": {
+    "timing_ps": {
+      "setup_wns_min": 0,
+      "setup_tns_min": 0,
+      "hold_wns_min": 0,
+      "hold_tns_min": 0
+    },
+    "violations": {
+      "max_transition_max": 0,
+      "max_capacitance_max": 0,
+      "max_fanout_max": 135,
+      "max_fanout_delta_from_initial_max": 0,
+      "drc_max": 0,
+      "connectivity_max": 0,
+      "placement_max": 0
+    }
+  }
+}

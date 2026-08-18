@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "task_id": "task_0001",
+  "source": {
+    "dataset": "dataset_repair_v1",
+    "sample_id": "state_0001",
+    "path": "dataset_innovus_19_10/by_sample/dataset_repair_v1/state_0001",
+    "source_index": 1,
+    "source_schema_version": 1,
+    "mode": "explicit",
+    "category": "legacy",
+    "strategy": "fanout_resize_legalize",
+    "provenance": "remediation_round3:dataset_repair_v1/state_0001"
+  },
+  "tool": {
+    "name": "Cadence Innovus",
+    "version": "19.10"
+  },
+  "visibility": {
+    "model": [
+      "task.json",
+      "task.md",
+      "initial_state"
+    ],
+    "verifier": [
+      "verifier"
+    ],
+    "hidden_reference": [
+      "reference"
+    ]
+  },
+  "assets": {
+    "initial_checkpoint": "initial_state/design.enc",
+    "initial_reports": "initial_state/reports",
+    "verifier_script": "verifier/verify.tcl",
+    "verifier_config": "verifier/config.json",
+    "perturbation": "reference/perturb.tcl",
+    "golden_repair": "reference/repair.tcl",
+    "golden_trajectory": "reference/trajectory.json",
+    "golden_metrics": "reference/final_metrics.json",
+    "golden_checkpoint": "reference/after_snapshot/after.enc",
+    "golden_reports": "reference/final_reports",
+    "replay_log": "reference/replay/replay.log",
+    "replay_status": "reference/replay/replay_status.env",
+    "source_metadata": "reference/source_metadata.json"
+  },
+  "source_sha256": {
+    "perturb_tcl": "c75d935b41454ec43ff7ce12e85efec9569769feeeb9cf3c6632ae363294dd7c",
+    "repair_tcl": "34568b475316a33522b141fe5d7a4019371bf2cf8fa5770ad7387079f121243b",
+    "source_metadata": "47220436981a86a9c050b68e6830048220dbec84d7fa3eff7162813cea36a094",
+    "before_checkpoint_wrapper": "c7722e9863136e798bab1eb42af1c3c83d594fb35c2ab947438e2fc5f8a88bf1",
+    "before_checkpoint_data_tree": "793862526d3c36b37032408b2a3cfa1afe0ad9ad295f92ae37ddfd149ce9d86a",
+    "after_checkpoint_wrapper": "4cbff5b4e00d276916b6653cd8ba56f59b054b87d2f1c741fd1911be3290fbd9",
+    "after_checkpoint_data_tree": "256c7afb2ee054b5d6360dadadc02ca4ad1671b37e2ba21ec7dd17f3c4cbfdb8"
+  },
+  "packaged_sha256": {
+    "initial_checkpoint_wrapper": "b65270894d72cd10c03b3b76539e4ca64c12c3c1da7c2d3187387bd46bd3e0bc",
+    "initial_checkpoint_data_tree": "793862526d3c36b37032408b2a3cfa1afe0ad9ad295f92ae37ddfd149ce9d86a",
+    "golden_checkpoint_wrapper": "4cbff5b4e00d276916b6653cd8ba56f59b054b87d2f1c741fd1911be3290fbd9",
+    "golden_checkpoint_data_tree": "256c7afb2ee054b5d6360dadadc02ca4ad1671b37e2ba21ec7dd17f3c4cbfdb8"
+  },
+  "source_validation": {
+    "status": "PASS",
+    "valid_innovus_19_10": true,
+    "fresh_load_replay": true
+  },
+  "packaged_validation": {
+    "status": "PASS",
+    "tool": "Cadence Innovus 19.10",
+    "submission": "reference/repair.tcl",
+    "verifier": "verifier/verify.tcl",
+    "checks": [
+      "timing",
+      "drv",
+      "drc",
+      "connectivity",
+      "placement"
+    ]
+  }
+}

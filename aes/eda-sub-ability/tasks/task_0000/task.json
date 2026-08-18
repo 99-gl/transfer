@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task_id": "task_0001",
+  "design": "ibex_top",
+  "task_type": "setup_repair",
+  "input": {
+    "checkpoint": "initial_state/design.enc",
+    "reports": "initial_state/reports"
+  },
+  "initial_metrics": {
+    "timing_ps": {
+      "setup_wns": -27.1,
+      "setup_tns": -27.1,
+      "hold_wns": 0.4,
+      "hold_tns": 0
+    },
+    "violations": {
+      "max_transition": 0,
+      "max_capacitance": 1,
+      "max_fanout": 135,
+      "drc": 0,
+      "connectivity": 0,
+      "placement": 0
+    }
+  },
+  "objective": {
+    "timing_ps": {
+      "setup_wns": {
+        "min": 0
+      },
+      "setup_tns": {
+        "min": 0
+      },
+      "hold_wns": {
+        "min": 0
+      },
+      "hold_tns": {
+        "min": 0
+      }
+    },
+    "violations": {
+      "max_transition": {
+        "max": 0
+      },
+      "max_capacitance": {
+        "max": 0
+      },
+      "max_fanout": {
+        "max": 135,
+        "max_delta_from_initial": 0
+      },
+      "drc": {
+        "max": 0
+      },
+      "connectivity": {
+        "max": 0
+      },
+      "placement": {
+        "max": 0
+      }
+    }
+  },
+  "submission": {
+    "type": "innovus_tcl",
+    "path": "repair.tcl"
+  },
+  "environment": {
+    "tool": "Cadence Innovus",
+    "version": "19.10"
+  }
+}
