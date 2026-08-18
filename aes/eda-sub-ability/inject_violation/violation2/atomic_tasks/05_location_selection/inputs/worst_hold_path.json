@@ -1,0 +1,8 @@
+{
+  "check_type": "max_fanout",
+  "net": "done",
+  "driver": "_19478_/Q",
+  "max_fanout": 16,
+  "actual_fanout": 25,
+  "fanout_slack": -9
+}

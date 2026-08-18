@@ -1,0 +1,7 @@
+{
+  "hold_timing": "unchanged",
+  "setup_timing": "unchanged",
+  "area": "increase",
+  "power": "decrease",
+  "congestion": "unchanged"
+}

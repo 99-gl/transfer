@@ -1,0 +1,82 @@
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: aes_cipher_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1067.87)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+AAE_INFO: 1 threads acquired from CTE.
+Total number of fetched objects 12619
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12627,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1107.16 CPU=0:00:02.7 REAL=0:00:03.0)
+End delay calculation (fullDC). (MEM=1107.16 CPU=0:00:03.3 REAL=0:00:03.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1099.2M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1099.2M)
+Starting SI iteration 2
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1072.28)
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Analyzed = 12619. 
+Total number of fetched objects 12619
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12627,  0.1 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1078.43 CPU=0:00:00.1 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1078.43 CPU=0:00:00.2 REAL=0:00:01.0)
+*info: 20 clock nets excluded
+*info: 2 special nets excluded.
+*info: 33 no-driver nets excluded.
+*info: fanout load violations report
+# Net / InstPin                         MaxFanLoad  FanLoad         FanLoadSlk       CellPort             Remark    
+#
+CTS_3
+    CTS_ccl_a_buf_00055/Z                   16.000      37.000          -21.000          CLKBUF_X3/Z                  C 
+CTS_10
+    CTS_ccl_a_buf_00049/Z                   16.000      35.000          -19.000          CLKBUF_X3/Z                  C 
+CTS_4
+    CTS_ccl_a_buf_00057/Z                   16.000      35.000          -19.000          CLKBUF_X3/Z                  C 
+CTS_5
+    CTS_ccl_a_buf_00067/Z                   16.000      35.000          -19.000          CLKBUF_X3/Z                  C 
+CTS_11
+    CTS_ccl_a_buf_00063/Z                   16.000      35.000          -19.000          CLKBUF_X3/Z                  C 
+CTS_13
+    CTS_ccl_a_buf_00071/Z                   16.000      35.000          -19.000          CLKBUF_X3/Z                  C 
+CTS_9
+    CTS_ccl_a_buf_00047/Z                   16.000      34.000          -18.000          CLKBUF_X3/Z                  C 
+CTS_2
+    CTS_ccl_a_buf_00053/Z                   16.000      34.000          -18.000          CLKBUF_X3/Z                  C 
+CTS_18
+    CTS_ccl_a_buf_00059/Z                   16.000      34.000          -18.000          CLKBUF_X3/Z                  C 
+CTS_19
+    CTS_ccl_a_buf_00061/Z                   16.000      33.000          -17.000          CLKBUF_X3/Z                  C 
+CTS_1
+    CTS_ccl_a_buf_00051/Z                   16.000      32.000          -16.000          CLKBUF_X3/Z                  C 
+CTS_12
+    CTS_ccl_a_buf_00065/Z                   16.000      32.000          -16.000          CLKBUF_X3/Z                  C 
+CTS_15
+    CTS_ccl_a_buf_00075/Z                   16.000      32.000          -16.000          CLKBUF_X3/Z                  C 
+CTS_16
+    CTS_ccl_a_buf_00077/Z                   16.000      32.000          -16.000          CLKBUF_X2/Z                  C 
+CTS_7
+    CTS_ccl_a_buf_00079/Z                   16.000      31.000          -15.000          CLKBUF_X3/Z                  C 
+CTS_14
+    CTS_ccl_a_buf_00073/Z                   16.000      31.000          -15.000          CLKBUF_X3/Z                  C 
+CTS_6
+    CTS_ccl_a_buf_00069/Z                   16.000      25.000          -9.000           CLKBUF_X2/Z                  C 
+done
+    _19478_/Q                               16.000      25.000          -9.000           DFF_X1/Q                     R 
+
+*info: there are 18 max fanout load violations in the design.
+*info: 1 violation is real (remark R).
+*info: 17 violations may not be fixable:
+*info:     17 violations on clock net (remark C).

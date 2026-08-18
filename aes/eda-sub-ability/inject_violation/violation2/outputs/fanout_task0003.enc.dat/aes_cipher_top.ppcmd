@@ -1,0 +1,61 @@
+# PPCMD 1 
+# sroute -connect corePin -nets {VDD VSS}
+# 4 
+# 16 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addStripe -nets {VDD VSS} -direction vertical -layer metal8 -width 0.8 -spacing 0.8 -set_to_set_distance 30.0 -start_from left -start_offset 15.0 -stacked_via_bottom_layer metal1 -stacked_via_top_layer metal8
+# 3 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 12140 12160 341940 340160 0 
+# 15340 15360 338740 336960 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1600 8 0 53340 335540 60000 0 0 
+# VDD 1600 8 0 50140 335540 60000 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+
+# PPCMD 3 
+# setAddStripeMode -stacked_via_bottom_layer metal1 -stacked_via_top_layer metal8
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 3 
+
+# PPCMD 4 
+# addRing -type core_rings -nets {VDD VSS} -layer {
+# 0 
+# 0 
+# 0 
+# 0 
+# 0 
+# 1 
+# BOX_LIST 
+# 0 0 0 0 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 4 
+

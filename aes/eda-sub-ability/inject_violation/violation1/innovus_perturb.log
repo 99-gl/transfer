@@ -1,0 +1,879 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2019 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v19.10-p002_1, built Fri Apr 19 15:18:11 PDT 2019
+Options:	-no_gui -files inject_violation/task1/perturb.tcl 
+Date:		Tue Aug 18 04:19:39 2026
+Host:		qingteng (x86_64 w/Linux 4.14.174) (4cores*4cpus*Intel(R) Xeon(R) Processor @ 2.90GHz 22528KB)
+OS:		CentOS Linux release 7.9.2009 (Core)
+
+License:
+		invs	Innovus Implementation System	19.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Create and set the environment variable TMPDIR to /tmp/innovus_temp_9234_qingteng_root_aQkQUz.
+
+Change the soft stacksize limit to 0.2%RAM (15 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+Sourcing file "inject_violation/task1/perturb.tcl" ...
+#% Begin load design ... (date=08/18 04:19:48, mem=506.5M)
+Set Default Input Pin Transition as 0.1 ps.
+Loading design 'aes_cipher_top' saved by 'Innovus' '19.10-p002_1' on 'Fri Aug 14 20:29:52 2026'.
+% Begin Load MMMC data ... (date=08/18 04:19:48, mem=507.4M)
+% End Load MMMC data ... (date=08/18 04:19:48, total cpu=0:00:00.0, real=0:00:00.0, peak res=507.8M, current mem=507.8M)
+
+Loading LEF file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/libs/lef/NangateOpenCellLibrary.tech.lef ...
+
+Loading LEF file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/libs/lef/NangateOpenCellLibrary.macro.mod.lef ...
+Set DBUPerIGU to M2 pitch 380.
+
+viaInitial starts at Tue Aug 18 04:19:48 2026
+viaInitial ends at Tue Aug 18 04:19:48 2026
+
+##  Check design process and node:  
+##  Both design process and tech node are not set.
+
+Loading view definition file from /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/viewDefinition.tcl
+Reading LIBSET_TYP timing library '/home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib' ...
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND2_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND3_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AND4_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI21_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI22_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI211_X4' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X1' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+**WARN: (TECHLIB-436):	Attribute 'max_fanout' on 'output/inout' pin 'ZN' of cell 'AOI221_X2' is not defined in the library. (File /home/host/project/aes_data/third_party/nangate45_enablement/NanGate45/lib/NangateOpenCellLibrary_typical.lib)
+Message <TECHLIB-436> has exceeded the message display limit of '20'. Use 'set_message -no_limit -id list_of_msgIDs' to reset the message limit.
+Read 135 cells in library 'NangateOpenCellLibrary' 
+*** End library_loading (cpu=0.01min, real=0.02min, mem=28.9M, fe_cpu=0.25min, fe_real=0.17min, fe_mem=599.7M) ***
+% Begin Load netlist data ... (date=08/18 04:19:49, mem=524.7M)
+*** Begin netlist parsing (mem=599.7M) ***
+**WARN: (IMPVL-159):	Pin 'Z' of cell 'LOGIC1_X1' is defined in LEF but not in the timing library.
+**WARN: (IMPVL-159):	Pin 'Z' of cell 'LOGIC0_X1' is defined in LEF but not in the timing library.
+Created 135 new cells from 1 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+Reading verilogBinary netlist '/home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/vbin/aes_cipher_top.v.bin'
+Reading binary database version 2 in 1-threaded mode
+
+*** Memory Usage v#1 (Current mem = 613.727M, initial mem = 262.344M) ***
+*** End netlist parsing (cpu=0:00:00.0, real=0:00:00.0, mem=613.7M) ***
+% End Load netlist data ... (date=08/18 04:19:49, total cpu=0:00:00.0, real=0:00:00.0, peak res=533.5M, current mem=533.5M)
+Set top cell to aes_cipher_top.
+**WARN: (IMPTS-124):	Timing library description of pin 'Z' is missing from cell 'LOGIC1_X1' in timing library 'NangateOpenCellLibrary'.
+**WARN: (IMPTS-124):	Timing library description of pin 'Z' is missing from cell 'LOGIC0_X1' in timing library 'NangateOpenCellLibrary'.
+Hooked 135 DB cells to tlib cells.
+Starting recursive module instantiation check.
+No recursion found.
+Building hierarchical netlist for Cell aes_cipher_top ...
+*** Netlist is unique.
+** info: there are 136 modules.
+** info: there are 11773 stdCell insts.
+
+*** Memory Usage v#1 (Current mem = 645.641M, initial mem = 262.344M) ***
+*info: set bottom ioPad orient R0
+Generated pitch 1.68 in metal10 is different from 1.6 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal8 is different from 0.8 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal7 is different from 0.8 defined in technology file in preferred direction.
+Set Default Net Delay as 1000 ps.
+Set Default Net Load as 0.5 pF. 
+Set Default Input Pin Transition as 0.1 ps.
+Loading preference file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/gui.pref.tcl ...
+##  Process: 45            (User Set)               
+##     Node: (not set)                           
+
+##  Check design process and node:  
+##  Design tech node is not set.
+
+Applying the recommended capacitance filtering threshold values for 45nm process node: total_c_th=0, relative_c_th=1 and coupling_c_th=0.1.
+	These values will be used by all post-route extraction engines, including TQuantus, IQuantus and Quantus QRC extraction.
+	Capacitance filtering mode(-capFilterMode option of the setExtractRCMode) is 'relAndCoup' for all engines.
+	The accuracy mode for postRoute effortLevel low extraction will be set to 'high'.
+	Default value for EffortLevel(-effortLevel option of the setExtractRCMode) in postRoute extraction mode will be 'medium' if Quantus QRC technology file is specified else 'low'.
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+*Info: initialize multi-corner CTS.
+Reading timing constraints file '/home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/mmmc/modes/FUNC/FUNC.sdc' ...
+Current (total cpu=0:00:15.5, real=0:00:10.0, peak res=703.6M, current mem=703.6M)
+aes_cipher_top
+INFO (CTE): Constraints read successfully.
+Ending "Constraint file reading stats" (total cpu=0:00:00.1, real=0:00:00.0, peak res=723.0M, current mem=723.0M)
+Current (total cpu=0:00:15.6, real=0:00:10.0, peak res=723.0M, current mem=723.0M)
+Reading latency file '/home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/mmmc/views/VIEW_TYP/latency.sdc' ...
+Total number of combinational cells: 100
+Total number of sequential cells: 29
+Total number of tristate cells: 6
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+Total number of usable buffers: 9
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+Total number of usable inverters: 6
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells:
+Total number of identified usable delay cells: 0
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+Reading floorplan file - /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.fp.gz (mem = 845.1M).
+% Begin Load floorplan data ... (date=08/18 04:19:49, mem=745.7M)
+*info: reset 12627 existing net BottomPreferredLayer and AvoidDetour
+net ignore based on current view = 0
+Deleting old partition specification.
+Set FPlanBox to (0 0 355680 353920)
+Generated pitch 1.68 in metal10 is different from 1.6 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal8 is different from 0.8 defined in technology file in preferred direction.
+Generated pitch 0.84 in metal7 is different from 0.8 defined in technology file in preferred direction.
+ ... processed partition successfully.
+Reading binary special route file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.fp.spr.gz (Created by Innovus v19.10-p002_1 on Fri Aug 14 20:29:51 2026, version: 1)
+There are 20 nets with weight being set
+There are 20 nets with bottomPreferredRoutingLayer being set
+There are 20 nets with avoidDetour being set
+Extracting standard cell pins and blockage ...... 
+Pin and blockage extraction finished
+Delete all existing relative floorplan constraints.
+% End Load floorplan data ... (date=08/18 04:19:50, total cpu=0:00:00.1, real=0:00:01.0, peak res=749.3M, current mem=749.3M)
+Reading congestion map file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.route.congmap.gz ...
+% Begin Load SymbolTable ... (date=08/18 04:19:50, mem=749.6M)
+% End Load SymbolTable ... (date=08/18 04:19:51, total cpu=0:00:00.1, real=0:00:01.0, peak res=750.5M, current mem=750.5M)
+Loading place ...
+% Begin Load placement data ... (date=08/18 04:19:51, mem=750.5M)
+Reading placement file - /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.place.gz.
+** Reading stdCellPlacement_binary (Created by Innovus v19.10-p002_1 on Fri Aug 14 20:29:51 2026, version# 2) ...
+Read Views for adaptive view pruning ...
+Read 0 views from Binary DB for adaptive view pruning
+*** Checked 2 GNC rules.
+*** applyConnectGlobalNets disabled.
+*** Completed restorePlace (cpu=0:00:00.0 real=0:00:00.0 mem=843.2M) ***
+Total net length = 1.487e+05 (7.671e+04 7.198e+04) (ext = 9.167e+03)
+% End Load placement data ... (date=08/18 04:19:51, total cpu=0:00:00.0, real=0:00:00.0, peak res=752.7M, current mem=752.5M)
+Reading PG file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.pg.gz
+*** Completed restorePGFile (cpu=0:00:00.0 real=0:00:01.0 mem=839.2M) ***
+% Begin Load routing data ... (date=08/18 04:19:52, mem=752.8M)
+Reading routing file - /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.route.gz.
+Reading Innovus routing data (Created by Innovus v19.10-p002_1 on Fri Aug 14 20:29:51 2026 Format: 19.1) ...
+*** Total 12596 nets are successfully restored.
+*** Completed restoreRoute (cpu=0:00:00.1 real=0:00:00.0 mem=853.2M) ***
+% End Load routing data ... (date=08/18 04:19:52, total cpu=0:00:00.2, real=0:00:00.0, peak res=770.9M, current mem=770.0M)
+Suppress "**WARN ..." messages.
+Un-suppress "**WARN ..." messages.
+TAT_INFO: restoreCongMap REAL = 3 : CPU = 0 : MEM = 0.
+Reading property file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.prop
+*** Completed restoreProperty (cpu=0:00:00.0 real=0:00:00.0 mem=859.2M) ***
+Set Default Input Pin Transition as 0.1 ps.
+Extraction setup Started 
+Initializing multi-corner RC extraction with 1 active RC Corners ...
+Reading Capacitance Table File /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/libs/mmmc/NangateOpenCellLibrary.captable ...
+Cap table was created using Encounter 08.10-p004_1.
+Process name: master_techFreePDK45.
+Importing multi-corner RC tables ... 
+Summary of Active RC-Corners : 
+ 
+ Analysis View: VIEW_TYP
+    RC-Corner Name        : RC_TYP
+    RC-Corner Index       : 0
+    RC-Corner Temperature : 25 Celsius
+    RC-Corner Cap Table   : '/home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/libs/mmmc/NangateOpenCellLibrary.captable'
+    RC-Corner PreRoute Res Factor         : 1
+    RC-Corner PreRoute Cap Factor         : 1
+    RC-Corner PostRoute Res Factor        : 1 {1 1 1}
+    RC-Corner PostRoute Cap Factor        : 1 {1 1 1}
+    RC-Corner PostRoute XCap Factor       : 1 {1 1 1}
+    RC-Corner PreRoute Clock Res Factor   : 1	[Derived from postRoute_res (effortLevel low)]
+    RC-Corner PreRoute Clock Cap Factor   : 1	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Cap Factor  : 1 {1 1 1} 	[Derived from postRoute_cap (effortLevel low)]
+    RC-Corner PostRoute Clock Res Factor  : 1 {1 1 1} 	[Derived from postRoute_res (effortLevel low)]
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Start generating vias ...
+#Skip building auto via since it is not turned on.
+Via generation completed.
+% Begin Load power constraints ... (date=08/18 04:19:53, mem=798.8M)
+source /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top_power_constraints.tcl
+'set_default_switching_activity' finished successfully.
+% End Load power constraints ... (date=08/18 04:19:53, total cpu=0:00:00.0, real=0:00:00.0, peak res=799.3M, current mem=799.3M)
+% Begin load AAE data ... (date=08/18 04:19:53, mem=799.3M)
+AAE DB initialization (MEM=899.094 CPU=0:00:00.2 REAL=0:00:01.0) 
+% End load AAE data ... (date=08/18 04:19:54, total cpu=0:00:00.4, real=0:00:01.0, peak res=806.1M, current mem=806.1M)
+Restoring CCOpt config...
+  Extracting original clock gating for aes_clk...
+    clock_tree aes_clk contains 562 sinks and 0 clock gates.
+    Extraction for aes_clk complete.
+  Extracting original clock gating for aes_clk done.
+  The skew group aes_clk/FUNC was created. It contains 562 sinks and 1 sources.
+  The skew group aes_clk/FUNC was created. It contains 562 sinks and 1 sources.
+**WARN: (IMPCCOPT-2332):	The property adjacent_rows_legal is deprecated. It still works, but it may be removed in a future release.
+Restoring CCOpt config done.
+Total number of combinational cells: 100
+Total number of sequential cells: 29
+Total number of tristate cells: 6
+Total number of level shifter cells: 0
+Total number of power gating cells: 0
+Total number of isolation cells: 0
+Total number of power switch cells: 0
+Total number of pulse generator cells: 0
+Total number of always on buffers: 0
+Total number of retention cells: 0
+List of usable buffers: BUF_X1 BUF_X2 BUF_X4 BUF_X8 BUF_X16 BUF_X32 CLKBUF_X1 CLKBUF_X2 CLKBUF_X3
+Total number of usable buffers: 9
+List of unusable buffers:
+Total number of unusable buffers: 0
+List of usable inverters: INV_X1 INV_X2 INV_X4 INV_X8 INV_X16 INV_X32
+Total number of usable inverters: 6
+List of unusable inverters:
+Total number of unusable inverters: 0
+List of identified usable delay cells:
+Total number of identified usable delay cells: 0
+List of identified unusable delay cells:
+Total number of identified unusable delay cells: 0
+No delay cells were detected in the set of buffers. Buffers will be used to fix hold violations.
+**WARN: (IMPCTE-107):	The following globals have been obsoleted since version 19.10-p002_1. They will be removed in the next release. 
+timing_enable_default_delay_arc
+#% End load design ... (date=08/18 04:19:54, total cpu=0:00:02.6, real=0:00:06.0, peak res=811.2M, current mem=810.6M)
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPTS-124            2  Timing library description of pin '%s' i...
+WARNING   IMPVL-159            2  Pin '%s' of cell '%s' is defined in LEF ...
+WARNING   IMPCCOPT-2332        1  The property %s is deprecated. It still ...
+WARNING   IMPCTE-107           1  The following globals have been obsolete...
+WARNING   IMPTCM-77            1  Option "%s" for command %s is obsolete a...
+WARNING   TECHLIB-436         20  Attribute '%s' on '%s' pin '%s' of cell ...
+*** Message Summary: 27 warning(s), 0 error(s)
+
+**WARN: (IMPOPT-6115):	ECO batchmode has been activated. Set setEcoMode -batchMode to false when done with ECO operations.
+Type 'man IMPOPT-6115' for more detail.
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: aes_cipher_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: No SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+Delete FE_PHC917_00140 (CLKBUF_X1).
+Delete FE_PHC1249_00140 (BUF_X1).
+#% Begin globalDetailRoute (date=08/18 04:19:54, mem=896.3M)
+
+globalDetailRoute
+
+#WARNING (NRIF-78) The option routeWithEco combined with routeWithTimingDriven is not recommended due to possible high memory usage, increased run-time, and increased routing pattern pertubations. Please use with caution.
+#setNanoRouteMode -droutePostRouteSpreadWire "auto"
+#setNanoRouteMode -routeStrictlyHonorNonDefaultRule "false"
+#setNanoRouteMode -routeWithEco true
+#setNanoRouteMode -routeWithSiDriven false
+#setNanoRouteMode -routeWithTimingDriven true
+#Start globalDetailRoute on Tue Aug 18 04:19:54 2026
+#
+#WARNING (NRDB-733) PIN Y in CELL_VIEW LOGIC1_X1 does not have physical port.
+#WARNING (NRDB-733) PIN Y in CELL_VIEW LOGIC0_X1 does not have physical port.
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+#num needed restored net=0
+#need_extraction net=0 (total=12625)
+#Processed 2 dirty instances, 2 dirty terms, 0 dirty fterms, 0 dirty pgterms, 0 misc dirty regions, 0 same cell-size swaps
+#(0 insts marked dirty, reset pre-exisiting dirty flag on 0 insts, 0 nets marked need extraction)
+#NanoRoute Version 19.10-p002_1 NR190418-1643/19_10-UB
+#Skip comparing routing design signature in db-snapshot flow
+#Start routing data preparation on Tue Aug 18 04:19:55 2026
+#
+#Minimum voltage of a net in the design = 0.000.
+#Maximum voltage of a net in the design = 1.100.
+#Voltage range [0.000 - 1.100] has 12623 nets.
+#Voltage range [1.100 - 1.100] has 1 net.
+#Voltage range [0.000 - 0.000] has 1 net.
+#Restoring pin access data from file /home/host/project/aes_data/inject_violation/clean_baseline/aes_route.enc.dat/aes_cipher_top.apa ...
+#Done restoring pin access data
+# metal1       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.13500
+# metal2       V   Track-Pitch = 0.19000    Line-2-Via Pitch = 0.14000
+# metal3       H   Track-Pitch = 0.14000    Line-2-Via Pitch = 0.14000
+# metal4       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal5       H   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal6       V   Track-Pitch = 0.28000    Line-2-Via Pitch = 0.28000
+# metal7       H   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal8       V   Track-Pitch = 0.84000    Line-2-Via Pitch = 0.80000
+# metal9       H   Track-Pitch = 1.60000    Line-2-Via Pitch = 1.60000
+# metal10      V   Track-Pitch = 1.68000    Line-2-Via Pitch = 1.60000
+#Regenerating Ggrids automatically.
+#Auto generating G-grids with size=15 tracks, using layer metal3's pitch = 0.14000.
+#Using automatically generated G-grids.
+#Done routing data preparation.
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 935.31 (MB), peak = 935.72 (MB)
+#Merging special wires: starts on Tue Aug 18 04:19:55 2026 with memory = 935.98 (MB), peak = 935.98 (MB)
+#
+#Merging special wires: cpu:00:00:00, real:00:00:00, mem:936.1 MB, peak:936.1 MB
+#
+#Finished routing data preparation on Tue Aug 18 04:19:55 2026
+#
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 10.29 (MB)
+#Total memory = 936.09 (MB)
+#Peak memory = 936.22 (MB)
+#
+#
+#Start global routing on Tue Aug 18 04:19:55 2026
+#
+#
+#Start global routing initialization on Tue Aug 18 04:19:55 2026
+#
+#Number of eco nets is 1
+#
+#Start global routing data preparation on Tue Aug 18 04:19:55 2026
+#
+#Start routing resource analysis on Tue Aug 18 04:19:55 2026
+#
+#Routing resource analysis is done on Tue Aug 18 04:19:55 2026
+#
+#  Resource Analysis:
+#
+#               Routing  #Avail      #Track     #Total     %Gcell
+#  Layer      Direction   Track     Blocked      Gcell    Blocked
+#  --------------------------------------------------------------
+#  metal1         H        1264           0        7140    64.17%
+#  metal2         V         936           0        7140     0.00%
+#  metal3         H        1264           0        7140     0.00%
+#  metal4         V         634           0        7140     0.00%
+#  metal5         H         631           0        7140     0.00%
+#  metal6         V         634           0        7140     0.00%
+#  metal7         H         200          10        7140     9.52%
+#  metal8         V         178          33        7140     9.55%
+#  metal9         H          83           1        7140     1.89%
+#  metal10        V          85           0        7140     0.00%
+#  --------------------------------------------------------------
+#  Total                   5910       2.11%       71400     8.51%
+#
+#  20 nets (0.16%) with 1 preferred extra spacing.
+#
+#
+#
+#Global routing data preparation is done on Tue Aug 18 04:19:55 2026
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 938.21 (MB), peak = 938.21 (MB)
+#
+#
+#Global routing initialization is done on Tue Aug 18 04:19:55 2026
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 938.40 (MB), peak = 938.40 (MB)
+#
+#start global routing iteration 1...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 942.25 (MB), peak = 942.25 (MB)
+#
+#start global routing iteration 2...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 942.25 (MB), peak = 942.25 (MB)
+#
+#
+#Total number of trivial nets (e.g. < 2 pins) = 590 (skipped).
+#Total number of routable nets = 12035.
+#Total number of nets in the design = 12625.
+#
+#1 routable net has only global wires.
+#12034 routable nets have only detail routed wires.
+#20 detail routed (routable) nets have been constrained (e.g. have preferred extra spacing, require shielding etc.)
+#
+#Routed net constraints summary:
+#-----------------------------
+#        Rules   Unconstrained  
+#-----------------------------
+#      Default               1  
+#-----------------------------
+#        Total               1  
+#-----------------------------
+#
+#Routing constraints summary of the whole design:
+#------------------------------------------------
+#        Rules   Pref Extra Space   Unconstrained  
+#------------------------------------------------
+#      Default                 20           12015  
+#------------------------------------------------
+#        Total                 20           12015  
+#------------------------------------------------
+#
+#
+#  Congestion Analysis: (blocked Gcells are excluded)
+#
+#                 OverCon          
+#                  #Gcell    %Gcell
+#     Layer           (1)   OverCon
+#  --------------------------------
+#  metal1        0(0.00%)   (0.00%)
+#  metal2        0(0.00%)   (0.00%)
+#  metal3        0(0.00%)   (0.00%)
+#  metal4        0(0.00%)   (0.00%)
+#  metal5        0(0.00%)   (0.00%)
+#  metal6        0(0.00%)   (0.00%)
+#  metal7        0(0.00%)   (0.00%)
+#  metal8        0(0.00%)   (0.00%)
+#  metal9        0(0.00%)   (0.00%)
+#  metal10       0(0.00%)   (0.00%)
+#  --------------------------------
+#     Total      0(0.00%)   (0.00%)
+#
+#  The worst congested Gcell overcon (routing demand over resource in number of tracks) = 1
+#  Overflow after GR: 0.00% H + 0.00% V
+#
+#Complete Global Routing.
+#Total number of nets with non-default rule or having extra spacing = 20
+#Total wire length = 179326 um.
+#Total half perimeter of net bounding box = 158400 um.
+#Total wire length on LAYER metal1 = 5491 um.
+#Total wire length on LAYER metal2 = 47212 um.
+#Total wire length on LAYER metal3 = 57743 um.
+#Total wire length on LAYER metal4 = 24470 um.
+#Total wire length on LAYER metal5 = 23811 um.
+#Total wire length on LAYER metal6 = 15780 um.
+#Total wire length on LAYER metal7 = 1509 um.
+#Total wire length on LAYER metal8 = 1663 um.
+#Total wire length on LAYER metal9 = 1647 um.
+#Total wire length on LAYER metal10 = 0 um.
+#Total number of vias = 91174
+#Up-Via Summary (total 91174):
+#           
+#-----------------------
+# metal1          42199
+# metal2          32434
+# metal3          10518
+# metal4           3588
+# metal5           1886
+# metal6            284
+# metal7            171
+# metal8             94
+#-----------------------
+#                 91174 
+#
+#Max overcon = 0 track.
+#Total overcon = 0.00%.
+#Worst layer Gcell overcon rate = 0.00%.
+#
+#Global routing statistics:
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 7.08 (MB)
+#Total memory = 943.30 (MB)
+#Peak memory = 943.30 (MB)
+#
+#Finished global routing on Tue Aug 18 04:19:55 2026
+#
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 941.80 (MB), peak = 943.37 (MB)
+#Start Track Assignment.
+#Done with 0 horizontal wires in 1 hboxes and 0 vertical wires in 1 hboxes.
+#Done with 0 horizontal wires in 1 hboxes and 0 vertical wires in 1 hboxes.
+#Complete Track Assignment.
+#Total number of nets with non-default rule or having extra spacing = 20
+#Total wire length = 179328 um.
+#Total half perimeter of net bounding box = 158400 um.
+#Total wire length on LAYER metal1 = 5491 um.
+#Total wire length on LAYER metal2 = 47215 um.
+#Total wire length on LAYER metal3 = 57743 um.
+#Total wire length on LAYER metal4 = 24470 um.
+#Total wire length on LAYER metal5 = 23811 um.
+#Total wire length on LAYER metal6 = 15780 um.
+#Total wire length on LAYER metal7 = 1509 um.
+#Total wire length on LAYER metal8 = 1663 um.
+#Total wire length on LAYER metal9 = 1647 um.
+#Total wire length on LAYER metal10 = 0 um.
+#Total number of vias = 91174
+#Up-Via Summary (total 91174):
+#           
+#-----------------------
+# metal1          42199
+# metal2          32434
+# metal3          10518
+# metal4           3588
+# metal5           1886
+# metal6            284
+# metal7            171
+# metal8             94
+#-----------------------
+#                 91174 
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 942.91 (MB), peak = 943.37 (MB)
+#
+#number of short segments in preferred routing layers
+#	
+#	
+#
+#Routing data preparation, pin analysis, global routing and track assignment statistics:
+#Cpu time = 00:00:01
+#Elapsed time = 00:00:01
+#Increased memory = 17.62 (MB)
+#Total memory = 943.10 (MB)
+#Peak memory = 943.37 (MB)
+#
+#Start Detail Routing..
+#start initial detail routing ...
+# ECO: 1.5% of the total area was rechecked for DRC, and 0.5% required routing.
+#   number of violations = 0
+#0 out of 12779 instances (0.0%) need to be verified(marked ipoed), dirty area = 0.0%.
+#0.0% of the total area was checked
+#   number of violations = 0
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 966.23 (MB), peak = 967.00 (MB)
+#Complete Detail Routing.
+#Total number of nets with non-default rule or having extra spacing = 20
+#Total wire length = 179326 um.
+#Total half perimeter of net bounding box = 158400 um.
+#Total wire length on LAYER metal1 = 5491 um.
+#Total wire length on LAYER metal2 = 47212 um.
+#Total wire length on LAYER metal3 = 57743 um.
+#Total wire length on LAYER metal4 = 24470 um.
+#Total wire length on LAYER metal5 = 23811 um.
+#Total wire length on LAYER metal6 = 15780 um.
+#Total wire length on LAYER metal7 = 1509 um.
+#Total wire length on LAYER metal8 = 1663 um.
+#Total wire length on LAYER metal9 = 1647 um.
+#Total wire length on LAYER metal10 = 0 um.
+#Total number of vias = 91174
+#Up-Via Summary (total 91174):
+#           
+#-----------------------
+# metal1          42199
+# metal2          32434
+# metal3          10518
+# metal4           3588
+# metal5           1886
+# metal6            284
+# metal7            171
+# metal8             94
+#-----------------------
+#                 91174 
+#
+#Total number of DRC violations = 0
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 1.68 (MB)
+#Total memory = 944.81 (MB)
+#Peak memory = 967.00 (MB)
+#detailRoute Statistics:
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 1.68 (MB)
+#Total memory = 944.81 (MB)
+#Peak memory = 967.00 (MB)
+#Skip updating routing design signature in db-snapshot flow
+#
+#globalDetailRoute statistics:
+#Cpu time = 00:00:02
+#Elapsed time = 00:00:02
+#Increased memory = 40.27 (MB)
+#Total memory = 936.59 (MB)
+#Peak memory = 967.00 (MB)
+#Number of warnings = 3
+#Total number of warnings = 3
+#Number of fails = 0
+#Total number of fails = 0
+#Complete globalDetailRoute on Tue Aug 18 04:19:56 2026
+#
+#% End globalDetailRoute (date=08/18 04:19:56, total cpu=0:00:02.3, real=0:00:02.0, peak res=967.0M, current mem=936.8M)
+Extraction called for design 'aes_cipher_top' of instances=12779 and nets=12625 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design aes_cipher_top.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: RC_TYP
+extractDetailRC Option : -outfile /tmp/innovus_temp_9234_qingteng_root_aQkQUz/aes_cipher_top_9234_80gx87.rcdb.d  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1054.9M)
+Extracted 10.0014% (CPU Time= 0:00:00.3  MEM= 1145.2M)
+Extracted 20.0014% (CPU Time= 0:00:00.4  MEM= 1145.2M)
+Extracted 30.0014% (CPU Time= 0:00:00.4  MEM= 1146.2M)
+Extracted 40.0014% (CPU Time= 0:00:00.5  MEM= 1149.2M)
+Extracted 50.0014% (CPU Time= 0:00:00.6  MEM= 1153.2M)
+Extracted 60.0014% (CPU Time= 0:00:00.7  MEM= 1157.2M)
+Extracted 70.0014% (CPU Time= 0:00:00.8  MEM= 1159.2M)
+Extracted 80.0014% (CPU Time= 0:00:00.9  MEM= 1161.2M)
+Extracted 90.0014% (CPU Time= 0:00:01.0  MEM= 1167.2M)
+Extracted 100% (CPU Time= 0:00:01.4  MEM= 1168.2M)
+Number of Extracted Resistors     : 232254
+Number of Extracted Ground Cap.   : 243108
+Number of Extracted Coupling Cap. : 801432
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+ Corner: RC_TYP
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1148.2M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.0  Real Time: 0:00:03.0  MEM: 1148.195M)
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'aes_cipher_top' of instances=12779 and nets=12625 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design aes_cipher_top.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: RC_TYP
+extractDetailRC Option : -outfile /tmp/innovus_temp_9234_qingteng_root_aQkQUz/aes_cipher_top_9234_80gx87.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1082.2M)
+Extracted 10.0014% (CPU Time= 0:00:00.3  MEM= 1156.5M)
+Extracted 20.0014% (CPU Time= 0:00:00.4  MEM= 1156.5M)
+Extracted 30.0014% (CPU Time= 0:00:00.5  MEM= 1156.5M)
+Extracted 40.0014% (CPU Time= 0:00:00.6  MEM= 1156.5M)
+Extracted 50.0014% (CPU Time= 0:00:00.6  MEM= 1156.5M)
+Extracted 60.0014% (CPU Time= 0:00:00.7  MEM= 1156.5M)
+Extracted 70.0014% (CPU Time= 0:00:00.8  MEM= 1158.5M)
+Extracted 80.0014% (CPU Time= 0:00:00.9  MEM= 1160.5M)
+Extracted 90.0014% (CPU Time= 0:00:01.0  MEM= 1166.5M)
+Extracted 100% (CPU Time= 0:00:01.4  MEM= 1167.5M)
+Number of Extracted Resistors     : 232254
+Number of Extracted Ground Cap.   : 243108
+Number of Extracted Coupling Cap. : 801432
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+ Corner: RC_TYP
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1147.5M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.0  Real Time: 0:00:03.0  MEM: 1147.516M)
+Starting delay calculation for Setup views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: aes_cipher_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1163.81)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+AAE_INFO: 1 threads acquired from CTE.
+Total number of fetched objects 12592
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12625,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1200.56 CPU=0:00:02.6 REAL=0:00:03.0)
+End delay calculation (fullDC). (MEM=1200.56 CPU=0:00:03.2 REAL=0:00:03.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1192.6M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1192.6M)
+Starting SI iteration 2
+Calculate early delays in OCV mode...
+Calculate late delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1147.68)
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Analyzed = 12592. 
+Total number of fetched objects 12592
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12625,  0.1 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1153.84 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1153.84 CPU=0:00:00.2 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:04.7 real=0:00:05.0 totSessionCpu=0:00:28.4 mem=1153.8M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Setup views included:
+ VIEW_TYP 
+
++--------------------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.390  |  0.390  |  0.500  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|   691   |   561   |   435   |
++--------------------+---------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      0 (0)       |
+|   max_tran     |      0 (0)       |   0.000    |      0 (0)       |
+|   max_fanout   |      0 (0)       |     0      |     17 (17)      |
+|   max_length   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 61.553%
+Total number of glitch violations: 0
+------------------------------------------------------------
+Reported timing to dir /home/host/project/aes_data/inject_violation/task1/reports/setup
+Total CPU time: 7.93 sec
+Total Real time: 10.0 sec
+Total Memory Usage: 1133.105469 Mbytes
+Reset AAE Options
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'aes_cipher_top' of instances=12779 and nets=12625 using extraction engine 'postRoute' at effort level 'low' .
+PostRoute (effortLevel low) RC Extraction called for design aes_cipher_top.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: RC_TYP
+extractDetailRC Option : -outfile /tmp/innovus_temp_9234_qingteng_root_aQkQUz/aes_cipher_top_9234_80gx87.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1131.1M)
+Extracted 10.0014% (CPU Time= 0:00:00.4  MEM= 1229.4M)
+Extracted 20.0014% (CPU Time= 0:00:00.5  MEM= 1229.4M)
+Extracted 30.0014% (CPU Time= 0:00:00.5  MEM= 1229.4M)
+Extracted 40.0014% (CPU Time= 0:00:00.6  MEM= 1231.4M)
+Extracted 50.0014% (CPU Time= 0:00:00.7  MEM= 1235.4M)
+Extracted 60.0014% (CPU Time= 0:00:00.7  MEM= 1238.4M)
+Extracted 70.0014% (CPU Time= 0:00:00.8  MEM= 1240.4M)
+Extracted 80.0014% (CPU Time= 0:00:00.9  MEM= 1242.4M)
+Extracted 90.0014% (CPU Time= 0:00:01.1  MEM= 1248.4M)
+Extracted 100% (CPU Time= 0:00:01.5  MEM= 1250.4M)
+Number of Extracted Resistors     : 232254
+Number of Extracted Ground Cap.   : 243108
+Number of Extracted Coupling Cap. : 801432
+Filtering XCap in 'relativeAndCoupling' mode using values coupling_c_threshold=0.1fF, relative_c_threshold=1, and total_c_threshold=0fF.
+ Corner: RC_TYP
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1227.2M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:02.1  Real Time: 0:00:03.0  MEM: 1227.164M)
+Starting delay calculation for Hold views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: aes_cipher_top
+# Design Mode: 45nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1140.43)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+AAE_INFO: 1 threads acquired from CTE.
+Total number of fetched objects 12592
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12625,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1188.26 CPU=0:00:02.7 REAL=0:00:03.0)
+End delay calculation (fullDC). (MEM=1188.26 CPU=0:00:03.3 REAL=0:00:03.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1188.3M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1188.3M)
+Starting SI iteration 2
+AAE_INFO: 1 threads acquired from CTE.
+Calculate late delays in OCV mode...
+Calculate early delays in OCV mode...
+Start delay calculation (fullDC) (1 T). (MEM=1153.38)
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View VIEW_TYP -- Total Number of Nets Analyzed = 12592. 
+Total number of fetched objects 12592
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+AAE_INFO-618: Total number of nets in the design is 12625,  2.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1159.54 CPU=0:00:00.1 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1159.54 CPU=0:00:00.2 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:04.5 real=0:00:04.0 totSessionCpu=0:00:36.7 mem=1159.5M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold  views included:
+ VIEW_TYP 
+
++--------------------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):| -0.019  |  0.133  | -0.019  |
+|           TNS (ns):| -0.019  |  0.000  | -0.019  |
+|    Violating Paths:|    1    |    0    |    1    |
+|          All Paths:|   691   |   561   |   435   |
++--------------------+---------+---------+---------+
+
+Density: 61.553%
+------------------------------------------------------------
+Reported timing to dir /home/host/project/aes_data/inject_violation/task1/reports/hold
+Total CPU time: 7.29 sec
+Total Real time: 8.0 sec
+Total Memory Usage: 1087.984375 Mbytes
+Reset AAE Options
+The in-memory database contained RC information but was not saved. To save 
+the RC information, use saveDesign's -rc option. Note: Saving RC information can be quite large, 
+so it should only be saved when it is really desired.
+#% Begin save design ... (date=08/18 04:20:17, mem=995.6M)
+% Begin Save ccopt configuration ... (date=08/18 04:20:17, mem=998.6M)
+% End Save ccopt configuration ... (date=08/18 04:20:17, total cpu=0:00:00.0, real=0:00:00.0, peak res=1000.3M, current mem=1000.3M)
+% Begin Save netlist data ... (date=08/18 04:20:17, mem=1000.3M)
+Writing Binary DB to /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/aes_cipher_top.v.bin in single-threaded mode...
+% End Save netlist data ... (date=08/18 04:20:18, total cpu=0:00:00.0, real=0:00:01.0, peak res=1000.4M, current mem=1000.4M)
+Saving congestion map file /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/aes_cipher_top.route.congmap.gz ...
+% Begin Save AAE data ... (date=08/18 04:20:18, mem=1001.3M)
+Saving AAE Data ...
+% End Save AAE data ... (date=08/18 04:20:18, total cpu=0:00:00.0, real=0:00:00.0, peak res=1001.3M, current mem=1001.0M)
+% Begin Save clock tree data ... (date=08/18 04:20:18, mem=1002.1M)
+% End Save clock tree data ... (date=08/18 04:20:18, total cpu=0:00:00.0, real=0:00:00.0, peak res=1002.2M, current mem=1002.2M)
+Saving preference file /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/gui.pref.tcl ...
+Saving mode setting ...
+Saving global file ...
+% Begin Save floorplan data ... (date=08/18 04:20:19, mem=1002.4M)
+Saving floorplan file ...
+% End Save floorplan data ... (date=08/18 04:20:19, total cpu=0:00:00.1, real=0:00:00.0, peak res=1002.8M, current mem=1002.8M)
+Saving PG file /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/aes_cipher_top.pg.gz
+*** Completed savePGFile (cpu=0:00:00.0 real=0:00:00.0 mem=1087.0M) ***
+Saving Drc markers ...
+... No Drc file written since there is no markers found.
+% Begin Save placement data ... (date=08/18 04:20:19, mem=1003.1M)
+** Saving stdCellPlacement_binary (version# 2) ...
+Save Adaptive View Pruing View Names to Binary file
+% End Save placement data ... (date=08/18 04:20:19, total cpu=0:00:00.0, real=0:00:00.0, peak res=1003.2M, current mem=1003.2M)
+% Begin Save routing data ... (date=08/18 04:20:19, mem=1003.2M)
+Saving route file ...
+*** Completed saveRoute (cpu=0:00:00.1 real=0:00:00.0 mem=1087.0M) ***
+% End Save routing data ... (date=08/18 04:20:19, total cpu=0:00:00.1, real=0:00:00.0, peak res=1003.3M, current mem=1003.3M)
+Saving property file /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/aes_cipher_top.prop
+*** Completed saveProperty (cpu=0:00:00.0 real=0:00:00.0 mem=1090.0M) ***
+#Saving pin access data to file /home/host/project/aes_data/inject_violation/task1/outputs/aes_task1_violated.enc.dat.tmp/aes_cipher_top.apa ...
+#
+% Begin Save power constraints data ... (date=08/18 04:20:20, mem=1004.4M)
+% End Save power constraints data ... (date=08/18 04:20:20, total cpu=0:00:00.0, real=0:00:00.0, peak res=1004.5M, current mem=1004.5M)
+Generated self-contained design aes_task1_violated.enc.dat.tmp
+#% End save design ... (date=08/18 04:20:21, total cpu=0:00:01.7, real=0:00:04.0, peak res=1008.0M, current mem=1008.0M)
+*** Message Summary: 0 warning(s), 0 error(s)
+
+TASK1_PERTURBATION_COMPLETE
+
+*** Memory Usage v#1 (Current mem = 1117.305M, initial mem = 262.344M) ***
+*** Message Summary: 28 warning(s), 0 error(s)
+
+--- Ending "Innovus" (totcpu=0:00:38.7, real=0:00:42.0, mem=1117.3M) ---
+

@@ -1,0 +1,4 @@
+{
+  "root_cause": "cell_delay",
+  "evidence": "该 Hold 路径的数据到达时间为 0.098 ns，小于要求时间 0.118 ns；路径延迟主要来自少量单元，net delay 接近 0，且不存在真实 max_cap、max_tran 或 max_fanout 违例，因此主要原因是数据路径的最小 cell delay 不足。"
+}

@@ -1,0 +1,7 @@
+{
+  "check_type": "hold",
+  "beginpoint": "text_in[23]",
+  "endpoint": "_19212_/D",
+  "slack_ns": -0.019,
+  "path_group": "aes_clk"
+}

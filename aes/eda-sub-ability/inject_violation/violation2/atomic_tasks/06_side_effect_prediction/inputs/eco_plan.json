@@ -1,0 +1,5 @@
+{
+  "eco_action": "insert_buffer",
+  "target_net": "done",
+  "target_sinks": "AES_FANOUT_T0003_LOAD_00/A through AES_FANOUT_T0003_LOAD_24/A"
+}

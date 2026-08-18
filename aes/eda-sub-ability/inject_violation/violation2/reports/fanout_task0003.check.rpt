@@ -1,0 +1,119 @@
+**WARN: (IMPREPO-209):	There are 2 Cells pin with missing geometry.
+Estimated cell power/ground rail width = 0.197 um
+Begin checking placement ... (start mem=1078.4M, init mem=1078.9M)
+Overlapping with other instance:	2
+*info: Recommended don't use cell = 0           
+*info: Placed = 12806          (Fixed = 1027)
+*info: Unplaced = 0           
+Placement Density:61.67%(15084/24459)
+Placement Density (including fixed std cells):62.08%(15352/24727)
+Finished checkPlace (total: cpu=0:00:00.1, real=0:00:00.0; vio checks: cpu=0:00:00.1, real=0:00:00.0; mem=1078.4M)
+############################################################################
+# Innovus Netlist Design Rule Check
+# Tue Aug 18 23:45:44 2026
+
+############################################################################
+Design: aes_cipher_top
+
+------ Design Summary:
+Total Standard Cell Number   (cells) : 12806
+Total Block Cell Number      (cells) : 0
+Total I/O Pad Cell Number    (cells) : 0
+Total Standard Cell Area     ( um^2) : 15351.66
+Total Block Cell Area        ( um^2) : 0.00
+Total I/O Pad Cell Area      ( um^2) : 0.00
+
+------ Design Statistics:
+
+Number of Instances            : 12806
+Number of Non-uniquified Insts : 12804
+Number of Nets                 : 12627
+Average number of Pins per Net : 3.43
+Maximum number of Pins in Net  : 38
+
+------ I/O Port summary
+
+Number of Primary I/O Ports    : 388
+Number of Input Ports          : 259
+Number of Output Ports         : 129
+Number of Bidirectional Ports  : 0
+Number of Power/Ground Ports   : 0
+Number of Floating Ports                     *: 0
+Number of Ports Connected to Multiple Pads   *: 0
+Number of Ports Connected to Core Instances   : 388
+**WARN: (IMPREPO-202):	There are 388 Ports connected to core instances.
+
+------ Design Rule Checking:
+
+Number of Output Pins connect to Power/Ground *: 0
+Number of Insts with Input Pins tied together ?: 0
+Number of TieHi/Lo term nets not connected to instance's PG terms ?: 0
+Number of Input/InOut Floating Pins            : 0
+Number of Output Floating Pins                 : 0
+Number of Output Term Marked TieHi/Lo         *: 0
+
+Number of nets with tri-state drivers          : 0
+Number of nets with parallel drivers           : 0
+Number of nets with multiple drivers           : 0
+Number of nets with no driver (No FanIn)       : 0
+Number of Output Floating nets (No FanOut)     : 587
+Number of High Fanout nets (>50)               : 0
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (IMPREPO-231):	Input netlist has a cell 'TAPCELL_X1' which is marked dont_use in the library. This cell will not be used in timing optimization. Use set_dont_use command to change. Instances of this cell are : <output of dbGet top.insts.cell.name <the cell> -p2
+**WARN: (EMS-27):	Message (IMPREPO-231) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+
+# Number of cells of input netlist marked dont_use = 1008.
+
+**WARN: (IMPREPO-213):	There are 388 I/O Pins connected to Non-IO Insts.
+Checking for any assigns in the netlist...
+Assigns in module aes_cipher_top
+  _09181_[0] dcnt[0]
+Checking routing tracks.....
+Checking other grids.....
+Checking FINFET Grid is on Manufacture Grid.....
+
+Checking core/die box is on Grid.....
+
+Checking snap rule ......
+
+Checking Row is on grid......
+
+Checking AreaIO row.....
+Checking routing blockage.....
+Checking components.....
+Checking constraints (guide/region/fence).....
+Checking groups.....
+Checking Ptn Core Box.....
+
+Checking Preroutes.....
+No. of regular pre-routes not on tracks : 0 
+ Design check done.
+Report saved in file checkDesign/aes_cipher_top.main.htm.ascii.
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary                                  
+WARNING   IMPREPO-231       1008  Input netlist has a cell '%s' which is m...
+WARNING   IMPREPO-202          1  There are %d Ports connected to core ins...
+WARNING   IMPREPO-209          1  There are %d Cells pin with missing geom...
+WARNING   IMPREPO-213          1  There are %d I/O Pins connected to Non-I...
+*** Message Summary: 1011 warning(s), 0 error(s)
+

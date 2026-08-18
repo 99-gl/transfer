@@ -1,0 +1,4 @@
+{
+  "root_cause": "fanout",
+  "evidence": "done has 25 loads against a max-fanout limit of 16; fanout slack is -9."
+}
