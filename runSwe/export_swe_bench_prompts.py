@@ -115,6 +115,8 @@ def render_prompt(record: dict[str, Any]) -> str:
             "4. Before finishing, run `git diff --check`.",
             "",
             "When finished, leave all intended source changes in the git working tree.",
+            "In your final response, output exactly `prompt fixed` and nothing else.",
+            "Do not include a summary, explanation, test results, or any other content.",
             "Do not use, inspect, search for, or apply any reference patch, gold patch, or test patch.",
             "Do not use the dataset `patch` or `test_patch` fields.",
             "",
